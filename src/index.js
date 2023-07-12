@@ -1,1 +1,2 @@
-console.log('testing if Slack integration works')
+const Users = require('./users')
+const PhotoGallery = require('./photo-gallery')

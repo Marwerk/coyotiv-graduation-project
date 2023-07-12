@@ -9,3 +9,5 @@ class User {
     this.zipcode = zipcode
   }
 }
+
+module.exports = User

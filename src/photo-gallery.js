@@ -5,3 +5,5 @@ class Photo {
     this.url = url
   }
 }
+
+module.exports = Photo
