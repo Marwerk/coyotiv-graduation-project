@@ -1,5 +1,5 @@
 const Users = require('./users')
-const Photo = require('./photo-gallery')
+const PhotoGallery = require('./photo-gallery')
 
 const marvin = new Users(
   'Marvin',
@@ -11,4 +11,4 @@ const marvin = new Users(
   '10829'
 )
 
-console.log('are we online?')
+console.log(marvin)
