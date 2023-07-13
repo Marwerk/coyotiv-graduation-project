@@ -11,4 +11,4 @@ const marvin = new Users(
   '10829'
 )
 
-console.log('are we online?')
+console.log(marvin)
