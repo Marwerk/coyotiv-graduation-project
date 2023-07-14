@@ -1,5 +1,5 @@
-const Users = require('./models/users')
-const Photo = require('./models/photos')
+const Users = require('./users')
+const Photo = require('./photo-gallery')
 
 const marvin = new Users(
   'Marvin',

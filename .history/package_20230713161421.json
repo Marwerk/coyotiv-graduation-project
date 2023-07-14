@@ -9,8 +9,7 @@
     "dev": "nodemon src/index.js",
     "eslint:check": "npx eslint .",
     "eslint:fix": "npx eslint --fix .",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "prettier-fix": "prettier --write ."
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
     "eslint": "^8.19.0",
