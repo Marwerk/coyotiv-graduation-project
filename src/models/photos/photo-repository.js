@@ -1,6 +1,6 @@
 class Photo {
-  constructor(id, title, url) {
-    this.id = id
+  constructor(idPhoto, title, url) {
+    this.idPhoto = idPhoto
     this.title = title
     this.url = url
   }

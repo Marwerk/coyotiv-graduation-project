@@ -1,13 +1,35 @@
 class Room {
-  constructor(idRoom, name, description, roomType, maxOccupancy, pricePerNight, amenities, imageUrl) {
-    this.idRoom = idRoom
+  constructor(
+    idRoom,
+    name,
+    description,
+    roomType,
+    maxOccupancy,
+    pricePerNight,
+    amenities,
+    imageUrl,
+    totalPrice,
+    checkInDate,
+    checkOutDate,
+    bookingDate,
+    bookingId,
+    userId,
+    roomId
+  ) {
+    this.bookingId = bookingId
+    this.userId = userId
+    this.roomId = roomId
     this.name = name
     this.description = description
     this.roomType = roomType
     this.maxOccupancy = maxOccupancy
     this.pricePerNight = pricePerNight
     this.amenities = amenities
-    this.imageUrl = imageUrl
+    this.PhotoId = imageUrl
+    this.totalPrice = totalPrice
+    this.checkInDate = checkInDate
+    this.checkOutDate = checkOutDate
+    this.bookingDate = bookingDate
   }
 }
 

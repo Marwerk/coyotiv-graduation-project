@@ -1,14 +1,28 @@
 class User {
-  constructor(id, firstName, lastName, phone, email, address, city, zipcode, paymentMethod) {
-    this.id = id
+  constructor(
+    userId,
+    firstName,
+    lastName,
+    phoneNumber,
+    email,
+    password,
+    address,
+    city,
+    zipcode,
+    paymentMethod,
+    creationDate
+  ) {
+    this.userID = userId
     this.firstName = firstName
     this.lastName = lastName
-    this.phone = phone
+    this.phoneNumber = phoneNumber
     this.email = email
+    this.password = password
     this.address = address
     this.city = city
     this.zipcode = zipcode
     this.paymentMethod = paymentMethod
+    this.creationDate = creationDate
   }
 }
 
