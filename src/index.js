@@ -1,11 +1,8 @@
-const User = require('./models/hotel')
-const RoomGallery = require('./models/room-gallery')
+const User = require('./models/user')
+const RoomGallery = require('./models/photos/room-gallery')
 const Hotel = require('./models/hotel')
 const Room = require('./models/room')
-
-const User = require('./models/user')
-const Photo = require('./models/photo')
-
+const Photo = require('./models/photos/photo-repository')
 
 const marvin = new User(
   'Marvin',
