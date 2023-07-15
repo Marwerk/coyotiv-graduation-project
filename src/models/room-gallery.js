@@ -1,4 +1,4 @@
-class Photo {
+class RoomGallery {
   constructor(id, title, url) {
     this.id = id
     this.title = title
@@ -6,4 +6,4 @@ class Photo {
   }
 }
 
-module.exports = Photo
+module.exports = RoomGallery
