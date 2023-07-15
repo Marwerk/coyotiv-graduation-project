@@ -1,4 +1,4 @@
-class Photo {
+class PhotoGallery {
   constructor(id, title, url) {
     this.id = id
     this.title = title
