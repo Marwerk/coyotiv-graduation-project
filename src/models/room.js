@@ -13,5 +13,4 @@ class Rooms {
 
 module.exports = Rooms
 
-
 // why is prettier messing up?

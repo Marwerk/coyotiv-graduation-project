@@ -10,3 +10,5 @@ class Hotel {
     this.imageUrl = imageUrl
   }
 }
+
+module.exports = Hotel
