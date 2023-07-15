@@ -1,6 +1,6 @@
 class Room {
-  constructor(id, name, description, roomType, maxOccupancy, pricePerNight, amenities, imageUrl) {
-    this.id = id
+  constructor(idRoom, name, description, roomType, maxOccupancy, pricePerNight, amenities, imageUrl) {
+    this.idRoom = idRoom
     this.name = name
     this.description = description
     this.roomType = roomType
