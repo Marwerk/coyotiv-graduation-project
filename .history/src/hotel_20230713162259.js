@@ -1,4 +1,4 @@
-// Main Hotel Data
+//Main Hotel Data
 
 class Hotel {
   constructor(name, location, description, rating, amenities, imageUrl) {
@@ -10,8 +10,3 @@ class Hotel {
     this.imageUrl = imageUrl
   }
 }
-<<<<<<< HEAD
-
-module.exports = Hotel
-=======
->>>>>>> 6fe55885e42d5015b262bad904a4f6e200979d63

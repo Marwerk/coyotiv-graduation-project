@@ -9,12 +9,8 @@
     "dev": "nodemon src/index.js",
     "eslint:check": "npx eslint .",
     "eslint:fix": "npx eslint --fix .",
-<<<<<<< HEAD
-    "test": "echo \"Error: no test specified\" && exit 1"
-=======
     "test": "echo \"Error: no test specified\" && exit 1",
     "prettier-fix": "prettier --write ."
->>>>>>> 6fe55885e42d5015b262bad904a4f6e200979d63
   },
   "devDependencies": {
     "eslint": "^8.19.0",
@@ -22,15 +18,7 @@
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-prettier": "^4.2.1",
-<<<<<<< HEAD
-    "nodemon": "^2.0.19",
-    "prettier": "^2.7.1"
-  },
-  "dependencies": {
-    "pluralize": "^8.0.0"
-=======
     "nodemon": "^3.0.1",
     "prettier": "^2.7.1"
->>>>>>> 6fe55885e42d5015b262bad904a4f6e200979d63
   }
 }

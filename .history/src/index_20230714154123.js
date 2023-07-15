@@ -1,12 +1,5 @@
-<<<<<<< HEAD
-const User = require('./models/hotel')
-const RoomGallery = require('./models/room-gallery')
-const Hotel = require('./models/hotel')
-const Room = require('./models/room')
-=======
 const User = require('./models/user')
 const Photo = require('./models/photo')
->>>>>>> 6fe55885e42d5015b262bad904a4f6e200979d63
 
 const marvin = new User(
   'Marvin',
