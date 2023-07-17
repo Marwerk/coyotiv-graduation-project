@@ -21,6 +21,8 @@ The focus is on individuals who value personalized service, appreciate unique cu
 
 ## 4. Features
 
+##[Link to Wireframe](./Wireframe%20"Las%20Calas".bmpr)
+
 ### Authentication
 
 **1. User Registration**
