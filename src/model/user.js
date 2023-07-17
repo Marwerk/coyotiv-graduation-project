@@ -24,6 +24,18 @@ class User {
   get allBookings() {
     return this.bookings
   }
+
+  // Method to update user details.
+  updateUserDetails(newDetails) {
+    this.firstName = newDetails.firstName || this.firstName
+    this.lastName = newDetails.lastName || this.lastName
+    this.phoneNumber = newDetails.phoneNumber || this.phoneNumber
+    this.email = newDetails.email || this.email
+    this.password = newDetails.password || this.password
+    this.address = newDetails.address || this.address
+    this.city = newDetails.city || this.city
+    this.paymentMethod = newDetails.paymentMethod || this.paymentMethod
+  }
 }
 
 module.exports = User
