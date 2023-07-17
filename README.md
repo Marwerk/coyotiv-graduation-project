@@ -1,65 +1,88 @@
-[![Open in Codespaces](https://classroom.github.com/assets/launch-codespace-7f7980b617ed060a017424585567c406b6ee15c891e84e1186181d67ecf80aa0.svg)](https://classroom.github.com/open-in-codespaces?assignment_repo_id=11440990)
+# Coyotiv School of Software Engineering - Graduation Project
 
-# Coyotiv School of Software Engineering
-
-## Node & PlantUML Starter Template
+## "Las Calas" Apart-Hotel Website Revamp
 
 ---
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-Now you can directly work in your browser!
+## 1. Introduction
 
-## Getting started
+The goal is to create a website for a small but charming apart-hotel that serves as a portal for prospective guests and provides an easy-to-use system for booking inquiries
 
-### Node / JS
+## 2. Objectives
 
-> **Note:**
+- Provide a comprehensive, user-friendly platform for prospective guests to discover the unique cultural and aesthetic appeal of Las Calas.
+- Streamline the booking process, providing clear and transparent information on room availability, rates, and amenities.
+- Showcase the strategic location benefits to prospective guests - namely, proximity to economic hubs, a large university, and a major hospital.
+- Enhance our guests' experience with digital customer service and support, both before and during their stay.
+
+## 3. Target
+
+The focus is on individuals who value personalized service, appreciate unique cultural aesthetics, and require (ideally, but not limited-to) long-term stay options near strategic city locations. The website is also an opportunity to attract those who may value the home-like ambiance, the sense of community, and the cultural narrative that Las Calas has to offer.
+
+## 4. Features
+
+### Authentication
+
+**1. User Registration**
+
+- Secure user registration system allowing individuals to create accounts with their email address and a password, essential for managing their booking details.
+
+**2. Login**
+
+- Implement a login system that allows users to authenticate themselves using their registered email and password, ensuring secure access to personal information.
+
+**3. Password Reset**
+
+- Enable users to reset their passwords via a secure link sent to their registered email address, in case they forget or need to change them.
+
+### User Profile and Settings
+
+**1. User Profiles**
+
+- Allow users to create and manage profiles, including their personal information and booking history, for a more personalized experience.
+
+**2. Booking History**
+
+- Implement a feature where users can view their past bookings and transactions, helpful for recurring guests.
+
+### Hotel Booking Features
+
+**1. Room Availability Check**
+
+- Provides real-time information on room availability, pictures, pricing, and long-term booking options, keeping users informed and reducing uncertainty.
+
+**2. Booking Process**
+
+- Implement a secure and seamless booking process, which includes selection of room type, duration of stay, and secure payment processing.
+
+**3. Booking Confirmation**
+
+- Generate immediate booking confirmation for the user once a booking is made, offering peace of mind and transparency.
+
+### Customer Support Features
+
+**1. Interactive Chat Support**
+
+- Introduce an instant messaging system for real-time customer support, addressing queries and resolving any booking concerns.
+
+**2. FAQ Section**
+
+- Include a section with answers to frequently asked questions for self-service support and quick problem resolution.
+
+**3. Contact Form**
+
+- Implement a contact form for customers to send queries or feedback directly to the hotel management, further enhancing customer engagement and satisfaction.
+
+## Next steps:
+
+> **De Long's Feedback 06.07**
 >
-> - _There is an **index.js** file located under the \*\*\_src_\*\* folder\_
-> - _The **index.js** file, it's already linked with the debugger in your **launch.json**_
-
-To run the **index.js** file:
-
-- with **_node_**, copy and enter one of the following commands on your terminal:
-
-  ```sh
-  npm start
-  ```
-
-  or:
-
-  ```sh
-  node src/index.js
-  ```
-
-- in development mode that restarts every time you save a file:
-
-  ```sh
-  npm run dev
-  ```
-
-### PlantUML
-
-> **Note:**
->
-> - There is a **class.puml** example file located in the **_architecture_** folder.
-
-To start working **_\*.puml_** files:
-
-- You can continue by editing the **class.puml** file
-- Add additional **_\*.puml_** files on that folder too.
-
-If you what to visualize a preview of the **class.puml** file or another **_\*.puml_** file on the project, please select the file and on your keyboard press the following keys:
-
-- _MacOS_: **Option + D**
-
-- _Linux/Windows_: **Alt + D**
-  The above commands will automatically open your a window and will show you live any updates that you make on the file.
-
----
-
-_Now that we are ready, let's have some coding fun!_
+> - Use the lean Ux canvas for yourself to determine a unique value proposition for the whole app
+> - Let your friend do the lean canvas as well
+> - Meet up and discuss. Create a third version
+> - integrate the new approach into your proposal
 
 ---
 
