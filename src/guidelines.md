@@ -46,3 +46,8 @@ By structuring my project with this design pattern, we are separating the respon
 - methodNamesLikeThis
 - CONSTANT_VALUES_LIKE_THIS
 - file-names-like-this.js
+
+### Commits
+
+- In present tense
+- Start with a verb
