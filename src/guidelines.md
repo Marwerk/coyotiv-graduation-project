@@ -34,3 +34,15 @@ For example, when a user searches for a room, the **'searchController'** would t
 By structuring my project with this design pattern, we are separating the responsibilities of handling data (model), user interface (view) and control flow (control) into distinct components (separation of concerns), making the system easier to understand, maintain and hopefully, expand :smile:
 
 ---
+
+## Coyotiv Coding Standards
+
+### Naming Guidelines
+
+- functionNamesLikeThis
+- variableNamesLikeThis
+- ClassNamesLikeThis
+- EnumNamesLikeThis
+- methodNamesLikeThis
+- CONSTANT_VALUES_LIKE_THIS
+- file-names-like-this.js
