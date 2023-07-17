@@ -75,14 +75,6 @@ The focus is on individuals who value personalized service, appreciate unique cu
 
 - Implement a contact form for customers to send queries or feedback directly to the hotel management, further enhancing customer engagement and satisfaction.
 
-## Next steps:
-
-> **De Long's Feedback 06.07**
->
-> - Use the lean Ux canvas for yourself to determine a unique value proposition for the whole app
-> - Let your friend do the lean canvas as well
-> - Meet up and discuss. Create a third version
-> - integrate the new approach into your proposal
 
 ---
 
