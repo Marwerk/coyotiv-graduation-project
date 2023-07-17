@@ -4,8 +4,6 @@
 
 ---
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-
 ## 1. Introduction
 
 The goal is to create a website for a small but charming apart-hotel that serves as a portal for prospective guests and provides an easy-to-use system for booking inquiries
@@ -85,6 +83,8 @@ The focus is on individuals who value personalized service, appreciate unique cu
 > - integrate the new approach into your proposal
 
 ---
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## MIT License
 
