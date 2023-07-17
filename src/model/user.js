@@ -10,6 +10,19 @@ class User {
     this.city = city
     this.paymentMethod = paymentMethod
     this.creationDate = creationDate
+    this.bookings = []
+  }
+
+  // "Setter" method to add booking.
+  // I don't use an actual setter method because I don't want to overwrite the array of bookings.
+
+  addBooking(booking) {
+    this.booking.push(booking)
+  }
+
+  // Getter method to get all bookings.
+  get allBookings() {
+    return this.bookings
   }
 }
 

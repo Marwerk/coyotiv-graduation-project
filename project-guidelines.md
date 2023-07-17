@@ -49,5 +49,5 @@ By structuring my project with this design pattern, we are separating the respon
 
 ### Commits
 
-- In present tense
 - Start with a verb
+- Always in present tense
