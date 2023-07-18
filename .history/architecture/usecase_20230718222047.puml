@@ -1,9 +1,6 @@
 @startuml
 
-title Hotel Website Use Cases
-
-' Should we design the use cases from an admin's PoV as well?
-' How granular should I go with the use cases?
+title Hotel Booking Use Cases
 
 left to right direction
 
@@ -11,6 +8,7 @@ skinparam Shadowing false
 skinparam Monochrome true
 skinparam PackageStyle rectangle
 
+// Should we design the use cases from an admin's PoV as well?
 
 actor "User" as User
 
