@@ -1,3 +1,5 @@
+const chalk = require('chalk')
+
 class Room {
   constructor(roomId, name, description, roomType, maxOccupancy, pricePerNight, amenities) {
     this.roomId = roomId
@@ -57,5 +59,7 @@ const kingRoom = new Room(3, 'Suite Room', 'One King Size Bed', 2, 200, [
   'Garden View',
   'Breakfast Included',
 ])
+
+console.log(`queenRoom6 should have a roomId of 6: ${queenRoom6.roomId === 6 ? chalk.green('✓') : chalk.red('✗')}`)
 
 module.exports = Room
