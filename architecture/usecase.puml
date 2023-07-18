@@ -1,0 +1,37 @@
+@startuml
+
+title Hotel Booking Use Cases
+
+left to right direction
+
+skinparam Shadowing false
+skinparam Monochrome true
+skinparam PackageStyle rectangle
+
+// Should we design the use cases from an admin's PoV as well?
+
+actor "User" as User
+
+package "Booking" {
+  usecase "User wants to book a room" as UC1
+  usecase "User wants to cancel a booking" as UC2
+  usecase "User wants to view a booking" as UC4
+  usecase "User wants to view all bookings" as UC5
+    package "Payment" {
+    usecase "User wants to pay for a booking" as UC7
+    usecase "User wants to view all payment methods" as UC8
+}
+}
+
+package "Website Navigation" {
+  usecase "User wants to view all rooms" as UC6
+  usecase "User wants to check the hotel's location" as UC9
+  usecase "User wants to view all pictures of the hotel" as UC10
+  usecase "User wants to view the history of the hotel" as UC11
+}
+
+
+
+
+
+@enduml
