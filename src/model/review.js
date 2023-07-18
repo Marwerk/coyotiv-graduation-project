@@ -7,3 +7,5 @@ class Review {
     this.rating = rating
   }
 }
+
+module.exports = Review

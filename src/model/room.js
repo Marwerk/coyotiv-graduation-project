@@ -8,8 +8,13 @@ class Room {
     this.pricePerNight = pricePerNight
     this.amenities = amenities
   }
+
+  updateRoomDetails(newDetails) {
+    const keys = ['name', 'description', 'roomType', 'maxOccupancy', 'pricePerNight', 'amenities']
+    keys.forEach(key => {
+      this[key] = newDetails[key] || this[key]
+    })
+  }
 }
 
 module.exports = Room
-
-// why is prettier messing up?
