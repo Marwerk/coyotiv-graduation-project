@@ -17,6 +17,8 @@ class Room {
   }
 }
 
+// Should I create an instance of each room? If so, I would make the roomId = the room number on the door)
+
 // There is a total of 3 doubleRoom in the Hotel
 const doubleRoom = new Room(1, 'Double Room', 'Two Single Size Beds', 2, 100, [
   'Private Bathroom',
@@ -27,7 +29,7 @@ const doubleRoom = new Room(1, 'Double Room', 'Two Single Size Beds', 2, 100, [
   'Breakfast Included',
 ])
 
-// There is a total of 2 queenRoom in the Hotel
+// There is a total of 3 queenRoom in the Hotel, one has an external bathroom (roomId = 6)
 const queenRoom = new Room(2, 'Single Room', 'One Queen Size Bed', 1, 100, [
   'Private Bathroom',
   'Wifi',
@@ -56,4 +58,5 @@ const kingRoom = new Room(3, 'Suite Room', 'One King Size Bed', 2, 200, [
   'Breakfast Included',
 ])
 
+// why is slack not working?
 module.exports = Room
