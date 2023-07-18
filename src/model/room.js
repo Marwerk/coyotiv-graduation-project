@@ -58,5 +58,4 @@ const kingRoom = new Room(3, 'Suite Room', 'One King Size Bed', 2, 200, [
   'Breakfast Included',
 ])
 
-// why is slack not working?
 module.exports = Room
