@@ -15,9 +15,9 @@ class User {
 
   // "Setter" method to add booking.
   // I don't use an actual setter method because I don't want to overwrite the array of bookings.
-
-  addBooking(booking) {
-    this.booking.push(booking)
+  addBooking(bookingId) {
+    this.bookings.push(bookingId)
+    // .push() to add new booking to array of bookings.
   }
 
   // Getter method to get all bookings.
@@ -25,17 +25,28 @@ class User {
     return this.bookings
   }
 
-  // Method to update user details.
+  // Method to update user details. Based on Taiga's solution.
   updateUserDetails(newDetails) {
-    this.firstName = newDetails.firstName || this.firstName
-    this.lastName = newDetails.lastName || this.lastName
-    this.phoneNumber = newDetails.phoneNumber || this.phoneNumber
-    this.email = newDetails.email || this.email
-    this.password = newDetails.password || this.password
-    this.address = newDetails.address || this.address
-    this.city = newDetails.city || this.city
-    this.paymentMethod = newDetails.paymentMethod || this.paymentMethod
+    const keys = ['firstName', 'lastName', 'phoneNumber', 'email', 'password', 'address', 'city', 'paymentMethod']
+    keys.forEach(key => {
+      this[key] = newDetails[key] || this[key]
+      // forEach loop to iterate over each key.
+      // For each key, we update the value if newDetails has a new value for that key; otherwise, we keep the current value.
+    })
   }
+  // First attempt at updateUserDetails method.
+  // This method works, but it's not very DRY.
+  //
+  // updateUserDetails(newDetails) {
+  //   this.firstName = newDetails.firstName || this.firstName
+  //   this.lastName = newDetails.lastName || this.lastName
+  //   this.phoneNumber = newDetails.phoneNumber || this.phoneNumber
+  //   this.email = newDetails.email || this.email
+  //   this.password = newDetails.password || this.password
+  //   this.address = newDetails.address || this.address
+  //   this.city = newDetails.city || this.city
+  //   this.paymentMethod = newDetails.paymentMethod || this.paymentMethod
+  // }
 }
 
 module.exports = User
