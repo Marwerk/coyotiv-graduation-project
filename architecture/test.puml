@@ -1,0 +1,14 @@
+@startuml Bookings
+
+title "Hotel Management System"
+package Booking{
+  usecase 1 : Book a room
+  usecase 2 : Cancel a booking
+  usecase 3 : Check availability
+  usecase 4 : Check in
+  usecase 5 : Check out
+  usecase 6 : Pay for a room
+  usecase 7 : View booking
+}
+
+@enduml
