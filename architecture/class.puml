@@ -1,4 +1,7 @@
-@startuml Person
+@startuml Class Interactions
+
+
+
 Class User {
   userID: Integer
   firstName: String
@@ -17,8 +20,6 @@ Class User {
   + updateUserDetails(newDetails: Object) : Void
 }
 
-User -- Hotel
-
 Class Room {
   roomId: Integer
   name: String
@@ -30,17 +31,10 @@ Class Room {
   + updateRoomDetails(newDetails: Object): Void
 }
 
-
 ' The Room classes are for visual representation only
 Class SingleRoom {}
-
 Class DoubleRoom {}
-
 Class SuiteRoom {}
-
-Room <|-- SingleRoom
-Room <|-- DoubleRoom
-Room <|-- SuiteRoom
 
 Class Booking {
   bookingId: Integer
@@ -52,10 +46,6 @@ Class Booking {
   totalPrice: Integer
   bookingStatus: String
 }
-
-' a Booking cannot exist without a user and a room
-Booking --* User
-Booking --* Room
 
 Class Hotel {
   name: String
@@ -69,9 +59,6 @@ Class Hotel {
   + addRoom(room: Room): Void
 }
 
-
-Hotel *-- Room
-
 Class Review {
   reviewId: Integer
   userId: String
@@ -80,13 +67,21 @@ Class Review {
   rating: Integer
 }
 
+Hotel <--> User
+Hotel *-- Room
+Room <|-- SingleRoom
+Room <|-- DoubleRoom
+Room <|-- SuiteRoom
+' a Booking cannot exist without a user and a room
+Booking --* User
+Booking --* Room
 ' A review can exist independent of the user
-Review o--o User
-
+Review --o User
 ' A review cannot exist without a hotel to review (:
 Review --* Hotel
-
 ' A review cannot exist without a booking
 Review --* Booking
+
+
 
 @enduml
