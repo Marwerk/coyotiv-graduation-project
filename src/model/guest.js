@@ -66,7 +66,9 @@ const guest1 = new Guest(
 guest1.addBooking(booking1)
 // console.log(guest1.allBookings)
 
+// https://github.com/coyotiv-sose/graduation-project-marwerk/issues/8
 // Why is this not working? I was able to add booking1 without issues
 // guest1.addBooking(booking2)
 
+// ------------------------------------------------------------------------
 module.exports = Guest

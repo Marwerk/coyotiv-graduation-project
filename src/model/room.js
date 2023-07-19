@@ -76,4 +76,5 @@ const kingRoom = new Room(3, 'Suite Room', 'One King Size Bed', 2, 200, [
 
 lasCalas.addRoom(kingRoom)
 
+// ------------------------------------------------------------------------
 module.exports = Room

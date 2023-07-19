@@ -1,4 +1,4 @@
-// Testing Yard
+// --- Testing Yard --- //
 
 const chalk = require('chalk')
 const Guest = require('../model/guest')
@@ -44,7 +44,11 @@ class Test {
     console.log('--- Tests for Guest ---')
     console.log(`guest1 should have a firstName: ${this.guest1.firstName ? chalk.green('✓') : chalk.red('✗')}`)
     console.log(`guest 1 should have an email: ${this.guest1.email ? chalk.green('✓') : chalk.red('✗')}`)
+
+    // https://github.com/coyotiv-sose/graduation-project-marwerk/issues/9
+    // returns completely empty, not even the empty array
     console.log(`These are the bookings of guest1: ${this.guest1.allBookings}`)
+    console.log(this.guest1.allBookings)
     console.log('')
 
     console.log('')
@@ -68,4 +72,5 @@ class Test {
 const firstTest = new Test()
 firstTest.run()
 
+// ------------------------------------------------------------------------
 module.exports = Test
