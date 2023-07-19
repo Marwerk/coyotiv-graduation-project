@@ -1,6 +1,11 @@
 // Testing Yard
 
 const chalk = require('chalk')
+const Guest = require('../model/guest')
+const Room = require('../model/room')
+const Hotel = require('../model/hotel')
+const Booking = require('../model/booking')
+const Review = require('../model/review')
 
 class Test {
   constructor() {
@@ -39,7 +44,7 @@ class Test {
     console.log('--- Tests for Guest ---')
     console.log(`guest1 should have a firstName: ${this.guest1.firstName ? chalk.green('✓') : chalk.red('✗')}`)
     console.log(`guest 1 should have an email: ${this.guest1.email ? chalk.green('✓') : chalk.red('✗')}`)
-    console.log(this.guest1.allBookings)
+    console.log(`These are the bookings of guest1: ${this.guest1.allBookings}`)
     console.log('')
 
     console.log('')
