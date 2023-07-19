@@ -18,6 +18,7 @@ Class User {
   + addBooking(bookingId: String) : Void
   + allBookings(): Booking[]
   + updateUserDetails(newDetails: Object) : Void
+  + removeBooking : not yet implemented
 }
 
 Class Room {
@@ -65,6 +66,9 @@ Class Review {
   comment: String
   reviewDate: Date
   rating: Integer
+
+  + createReview : not yet implemented
+  + deleteReview : not yet implemented
 }
 
 Hotel <--> User
