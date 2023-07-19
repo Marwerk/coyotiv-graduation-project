@@ -64,6 +64,8 @@ const guest1 = new Guest(
   '2023-07-19'
 )
 guest1.addBooking(booking1)
+// console.log(guest1.allBookings)
+
 // Why is this not working? I was able to add booking1 without issues
 // guest1.addBooking(booking2)
 

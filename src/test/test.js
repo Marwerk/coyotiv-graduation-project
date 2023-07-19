@@ -1,11 +1,6 @@
 // Testing Yard
 
 const chalk = require('chalk')
-const Guest = require('./model/guest')
-const Room = require('./model/room')
-const Hotel = require('./model/hotel')
-const Booking = require('./model/booking')
-const Review = require('./model/review')
 
 class Test {
   constructor() {
@@ -20,7 +15,8 @@ class Test {
       'Timbuktustraße 3',
       'Berlin',
       'PayPal',
-      '2023-07-19'
+      '2023-07-19',
+      [this.booking1]
     )
     this.review1 = new Review(1, 1, 5, 'This hotel is amazing!', '2021-01-01')
     this.singleRoom6 = new Room(6, 'Single Room', 'One Queen Size Bed', 1, 100, [
@@ -36,28 +32,30 @@ class Test {
   run() {
     console.log('')
     console.log('--- Tests for Booking ---')
-    console.log(`booking1 should have a bookingId: ${booking1.bookingId ? chalk.green('✓') : chalk.red('✗')}`)
+    console.log(`booking1 should have a bookingId: ${this.booking1.bookingId ? chalk.green('✓') : chalk.red('✗')}`)
     console.log('')
 
     console.log('')
     console.log('--- Tests for Guest ---')
-    console.log(`guest1 should have a firstName: ${guest1.firstName ? chalk.green('✓') : chalk.red('✗')}`)
-    console.log(`guest 1 should have an email: ${guest1.email ? chalk.green('✓') : chalk.red('✗')}`)
-    console.log(guest1.allBookings)
+    console.log(`guest1 should have a firstName: ${this.guest1.firstName ? chalk.green('✓') : chalk.red('✗')}`)
+    console.log(`guest 1 should have an email: ${this.guest1.email ? chalk.green('✓') : chalk.red('✗')}`)
+    console.log(this.guest1.allBookings)
     console.log('')
 
     console.log('')
     console.log('--- Tests for Review ---')
-    console.log(`review1 should have a guestId: ${review1.guestId ? chalk.green('✓') : chalk.red('✗')}`)
+    console.log(`review1 should have a guestId: ${this.review1.guestId ? chalk.green('✓') : chalk.red('✗')}`)
     console.log('')
 
     console.log('')
     console.log('--- Tests for Room ---')
     console.log(
-      `singleRoom6 should have a roomId of 6: ${singleRoom6.roomId === 6 ? chalk.green('✓') : chalk.red('✗')}`
+      `singleRoom6 should have a roomId of 6: ${this.singleRoom6.roomId === 6 ? chalk.green('✓') : chalk.red('✗')}`
     )
-    console.log(`singleRoom6 should have a image URL: ${singleRoom6.imageURL ? chalk.green('✓') : chalk.red('✗')}`)
-    console.log(`singleRoom6 should have a description: ${singleRoom6.description ? chalk.green('✓') : chalk.red('✗')}`)
+    console.log(`singleRoom6 should have a image URL: ${this.singleRoom6.imageURL ? chalk.green('✓') : chalk.red('✗')}`)
+    console.log(
+      `singleRoom6 should have a description: ${this.singleRoom6.description ? chalk.green('✓') : chalk.red('✗')}`
+    )
     console.log('')
   }
 }
