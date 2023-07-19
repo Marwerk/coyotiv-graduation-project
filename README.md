@@ -1,5 +1,4 @@
-# Coyotiv School of Software Engineering
-# Graduation Project
+# Coyotiv School of Software Engineering - Graduation Project
 
 ## "Las Calas" Apart-Hotel Website Revamp
 
@@ -75,7 +74,6 @@ The focus is on individuals who value personalized service, appreciate unique cu
 **3. Contact Form**
 
 - Implement a contact form for customers to send queries or feedback directly to the hotel management, further enhancing customer engagement and satisfaction.
-
 
 ---
 
