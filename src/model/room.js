@@ -25,7 +25,9 @@ class Room {
   }
 }
 
-// Should I create an instance of each room? If so, I would make the roomId = the room number on the door)
+// Should I create an instance of each room? If so, I would make the roomId = the room number on the door.
+// I can't wrap my head around how I can prevent a guest from booking all rooms of the same type,
+// Unless I create an instance of each room. I'm not sure if this is the right approach.
 
 // There is a total of 3 doubleRoom in the Hotel
 const doubleRoom = new Room(1, 'Double Room', 'Two Single Size Beds', 2, 100, [
@@ -38,7 +40,7 @@ const doubleRoom = new Room(1, 'Double Room', 'Two Single Size Beds', 2, 100, [
 ])
 
 lasCalas.addRoom(doubleRoom)
-console.log(lasCalas.rooms)
+
 // There is a total of 3 queenRoom in the Hotel, one has an external bathroom (roomId = 6)
 const singleRoom = new Room(2, 'Single Room', 'One Queen Size Bed', 1, 100, [
   'Private Bathroom',
