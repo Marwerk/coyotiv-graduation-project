@@ -49,4 +49,16 @@ class Guest {
   // }
 }
 
+const guest1 = new Guest(
+  1,
+  'Marvin',
+  'Werkmeister',
+  '017672274578',
+  'marvin.blerg@gmail.com',
+  'password123',
+  'Timbuktustraße 3',
+  'Berlin',
+  'PayPal',
+  '2023-07-19'
+)
 module.exports = Guest
