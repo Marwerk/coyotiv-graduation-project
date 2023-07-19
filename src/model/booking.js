@@ -1,7 +1,7 @@
 class Booking {
-  constructor(bookingId, userId, roomId, checkInDate, checkOutDate, numberOfGuests, totalPrice, bookingStatus) {
+  constructor(bookingId, guestId, roomId, checkInDate, checkOutDate, numberOfGuests, totalPrice, bookingStatus) {
     this.bookingId = bookingId
-    this.userId = userId
+    this.guestId = guestId
     this.roomId = roomId
     this.checkInDate = checkInDate
     this.checkOutDate = checkOutDate

@@ -40,7 +40,7 @@ const doubleRoom = new Room(1, 'Double Room', 'Two Single Size Beds', 2, 100, [
 lasCalas.addRoom(doubleRoom)
 console.log(lasCalas.rooms)
 // There is a total of 3 queenRoom in the Hotel, one has an external bathroom (roomId = 6)
-const queenRoom = new Room(2, 'Single Room', 'One Queen Size Bed', 1, 100, [
+const singleRoom = new Room(2, 'Single Room', 'One Queen Size Bed', 1, 100, [
   'Private Bathroom',
   'Wifi',
   'TV',
@@ -49,9 +49,9 @@ const queenRoom = new Room(2, 'Single Room', 'One Queen Size Bed', 1, 100, [
   'Breakfast Included',
 ])
 
-lasCalas.addRoom(queenRoom)
+lasCalas.addRoom(singleRoom)
 
-const queenRoom6 = new Room(6, 'Single Room', 'One Queen Size Bed', 1, 100, [
+const singleRoom6 = new Room(6, 'Single Room', 'One Queen Size Bed', 1, 100, [
   'Private External Bathroom', // perhaps "adjacent" is a better word than "external?
   'Wifi',
   'TV',
@@ -60,7 +60,7 @@ const queenRoom6 = new Room(6, 'Single Room', 'One Queen Size Bed', 1, 100, [
   'Breakfast Included',
 ])
 
-lasCalas.addRoom(queenRoom6)
+lasCalas.addRoom(singleRoom6)
 
 // There is a total of 3 kingRoom in the Hotel
 const kingRoom = new Room(3, 'Suite Room', 'One King Size Bed', 2, 200, [

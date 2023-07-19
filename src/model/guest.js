@@ -1,6 +1,6 @@
-class User {
-  constructor(userId, firstName, lastName, phoneNumber, email, password, address, city, paymentMethod, creationDate) {
-    this.userID = userId
+class Guest {
+  constructor(guestId, firstName, lastName, phoneNumber, email, password, address, city, paymentMethod, creationDate) {
+    this.guestId = guestId
     this.firstName = firstName
     this.lastName = lastName
     this.phoneNumber = phoneNumber
@@ -25,8 +25,8 @@ class User {
     return this.bookings
   }
 
-  // Method to update user details. Based on Taiga's solution.
-  updateUserDetails(newDetails) {
+  // Method to update guest details. Based on Taiga's solution.
+  updateGuestDetails(newDetails) {
     const keys = ['firstName', 'lastName', 'phoneNumber', 'email', 'password', 'address', 'city', 'paymentMethod']
     keys.forEach(key => {
       this[key] = newDetails[key] || this[key]
@@ -35,7 +35,7 @@ class User {
     })
   }
   // First attempt at updateUserDetails method.
-  // This method works, but it's not very DRY.
+  // This method works, but it's not very DRY. (Did I just apply premature optimization?!)
   //
   // updateUserDetails(newDetails) {
   //   this.firstName = newDetails.firstName || this.firstName
@@ -49,4 +49,4 @@ class User {
   // }
 }
 
-module.exports = User
+module.exports = Guest

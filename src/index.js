@@ -1,5 +1,5 @@
 const chalk = require('chalk')
-const User = require('./model/user')
+const Guest = require('./model/guest')
 const Room = require('./model/room')
 const Hotel = require('./model/hotel')
 const Booking = require('./model/booking')

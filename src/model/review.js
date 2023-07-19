@@ -1,10 +1,10 @@
 class Review {
-  constructor(id, userId, rating, comment, reviewDate) {
-    this.reviewId = id
-    this.userId = userId
+  constructor(reviewId, guestId, rating, comment, reviewDate) {
+    this.reviewId = reviewId
+    this.guestId = guestId
+    this.rating = rating
     this.comment = comment
     this.reviewDate = reviewDate
-    this.rating = rating
   }
 }
 
