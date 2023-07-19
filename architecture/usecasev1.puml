@@ -1,4 +1,4 @@
-@startuml
+@startuml Use Cases UML Diagram
 
 title Hotel Website Use Cases
 
@@ -48,7 +48,7 @@ User2 --> UC12
 User2 --> UC13
 
 
-' For some reason, this layout just doesn't feel right. 
+' For some reason, this layout just doesn't feel right.
 ' Feels too simple and at the same time convoluted, if that makes sense
 ' Need to think more about this.
 
