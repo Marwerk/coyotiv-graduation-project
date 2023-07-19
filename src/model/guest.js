@@ -67,7 +67,4 @@ guest1.addBooking(booking1)
 // Why is this not working? I was able to add booking1 without issues
 // guest1.addBooking(booking2)
 
-// Tests
-// console.log(guest1.bookings)
-
 module.exports = Guest

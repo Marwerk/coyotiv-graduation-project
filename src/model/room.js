@@ -76,8 +76,4 @@ const kingRoom = new Room(3, 'Suite Room', 'One King Size Bed', 2, 200, [
 
 lasCalas.addRoom(kingRoom)
 
-// Tests
-// console.log(lasCalas.rooms)
-// console.log(`queenRoom6 should have a roomId of 6: ${queenRoom6.roomId === 6 ? chalk.green('✓') : chalk.red('✗')}`)
-
 module.exports = Room
