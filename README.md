@@ -1,4 +1,5 @@
-# Coyotiv School of Software Engineering - Graduation Project
+# Coyotiv School of Software Engineering
+# Graduation Project
 
 ## "Las Calas" Apart-Hotel Website Revamp
 
