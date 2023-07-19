@@ -5,10 +5,32 @@ const Guest = require('./model/guest')
 const Room = require('./model/room')
 const Hotel = require('./model/hotel')
 const Booking = require('./model/booking')
+const Review = require('./model/review')
 
 class Test {
   constructor() {
     this.booking1 = new Booking(1, 1, 1, '2021-01-01', '2021-01-03', 2, 200, 'confirmed')
+    this.guest1 = new Guest(
+      1,
+      'Marvin',
+      'Werkmeister',
+      '017672274578',
+      'marvin.blerg@gmail.com',
+      'password123',
+      'Timbuktustraße 3',
+      'Berlin',
+      'PayPal',
+      '2023-07-19'
+    )
+    this.review1 = new Review(1, 1, 5, 'This hotel is amazing!', '2021-01-01')
+    this.singleRoom6 = new Room(6, 'Single Room', 'One Queen Size Bed', 1, 100, [
+      'Private External Bathroom', // perhaps "adjacent" is a better word than "external?
+      'Wifi',
+      'TV',
+      'Air Conditioning',
+      'Garden View',
+      'Breakfast Included',
+    ])
   }
 
   run() {
@@ -31,10 +53,16 @@ class Test {
 
     console.log('')
     console.log('--- Tests for Room ---')
-    console.log(`queenRoom6 should have a roomId of 6: ${queenRoom6.roomId === 6 ? chalk.green('✓') : chalk.red('✗')}`)
-    console.log(`kingRoom should have a image URL: ${kingRoom.imageURL ? chalk.green('✓') : chalk.red('✗')}`)
-    console.log(`kingRoom should have a description: ${kingRoom.description ? chalk.green('✓') : chalk.red('✗')}`)
+    console.log(
+      `singleRoom6 should have a roomId of 6: ${singleRoom6.roomId === 6 ? chalk.green('✓') : chalk.red('✗')}`
+    )
+    console.log(`singleRoom6 should have a image URL: ${singleRoom6.imageURL ? chalk.green('✓') : chalk.red('✗')}`)
+    console.log(`singleRoom6 should have a description: ${singleRoom6.description ? chalk.green('✓') : chalk.red('✗')}`)
     console.log('')
   }
 }
+
+const firstTest = new Test()
+firstTest.run()
+
 module.exports = Test
