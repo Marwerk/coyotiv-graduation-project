@@ -1,6 +1,92 @@
-@startuml Person 
-class Person {
-  name: string
-  age: number
+@startuml Person
+Class User {
+  userID: Integer
+  firstName: String
+  lastName: String
+  phoneNumber: Integer
+  email: String
+  password: String
+  address: String
+  city: String
+  paymentMethod: String
+  creationDate: Date
+  bookings: Booking[]
+
+  + addBooking(bookingId: String) : Void
+  + allBookings(): Booking[]
+  + updateUserDetails(newDetails: Object) : Void
 }
+
+User -- Hotel
+
+Class Room {
+  roomId: Integer
+  name: String
+  description: String
+  maxOccupancy: Integer
+  pricePerNight: Integer
+  amenities: String[]
+
+  + updateRoomDetails(newDetails: Object): Void
+}
+
+
+' The Room classes are for visual representation only
+Class SingleRoom {}
+
+Class DoubleRoom {}
+
+Class SuiteRoom {}
+
+Room <|-- SingleRoom
+Room <|-- DoubleRoom
+Room <|-- SuiteRoom
+
+Class Booking {
+  bookingId: Integer
+  userId: Integer
+  roomId: Integer
+  checkInDate: Date
+  checkOutDate: Date
+  numberOfGuests: Integer
+  totalPrice: Integer
+  bookingStatus: String
+}
+
+' a Booking cannot exist without a user and a room
+Booking --* User
+Booking --* Room
+
+Class Hotel {
+  name: String
+  location: String
+  description: String
+  rating: Integer
+  amenities: String[]
+  imageUrl: String
+  rooms: Room[]
+
+  + addRoom(room: Room): Void
+}
+
+
+Hotel *-- Room
+
+Class Review {
+  reviewId: Integer
+  userId: String
+  comment: String
+  reviewDate: Date
+  rating: Integer
+}
+
+' A review can exist independent of the user
+Review o--o User
+
+' A review cannot exist without a hotel to review (:
+Review --* Hotel
+
+' A review cannot exist without a booking
+Review --* Booking
+
 @enduml
