@@ -38,7 +38,7 @@ const doubleRoom = new Room(1, 'Double Room', 'Two Single Size Beds', 2, 100, [
 ])
 
 lasCalas.addRoom(doubleRoom)
-
+console.log(lasCalas.rooms)
 // There is a total of 3 queenRoom in the Hotel, one has an external bathroom (roomId = 6)
 const queenRoom = new Room(2, 'Single Room', 'One Queen Size Bed', 1, 100, [
   'Private Bathroom',
@@ -75,7 +75,7 @@ const kingRoom = new Room(3, 'Suite Room', 'One King Size Bed', 2, 200, [
 lasCalas.addRoom(kingRoom)
 
 // Tests
-console.log(lasCalas.rooms)
-console.log(`queenRoom6 should have a roomId of 6: ${queenRoom6.roomId === 6 ? chalk.green('✓') : chalk.red('✗')}`)
+// console.log(lasCalas.rooms)
+// console.log(`queenRoom6 should have a roomId of 6: ${queenRoom6.roomId === 6 ? chalk.green('✓') : chalk.red('✗')}`)
 
 module.exports = Room

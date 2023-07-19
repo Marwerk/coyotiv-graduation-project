@@ -6,3 +6,7 @@
 // console.log(`queenRoom6 should have a roomId of 6: ${queenRoom6.roomId === 6 ? chalk.green('✓') : chalk.red('✗')}`)
 
 // It doesn't work. It doesn't print on the terminal
+
+// Testing Yard
+
+// console.log(`queenRoom6 should have a roomId of 6: ${queenRoom6.roomId === 6 ? chalk.green('✓') : chalk.red('✗')}`)
