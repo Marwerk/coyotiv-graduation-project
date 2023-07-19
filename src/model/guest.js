@@ -1,3 +1,5 @@
+const booking1 = require('./booking')
+
 class Guest {
   constructor(guestId, firstName, lastName, phoneNumber, email, password, address, city, paymentMethod, creationDate) {
     this.guestId = guestId
@@ -61,4 +63,11 @@ const guest1 = new Guest(
   'PayPal',
   '2023-07-19'
 )
+guest1.addBooking(booking1)
+// Why is this not working? I was able to add booking1 without issues
+// guest1.addBooking(booking2)
+
+// Tests
+// console.log(guest1.bookings)
+
 module.exports = Guest
