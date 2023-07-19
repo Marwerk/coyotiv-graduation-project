@@ -1,0 +1,55 @@
+@startuml
+
+title Hotel Website Use Cases
+
+' Should we design the use cases from an admin's PoV as well?
+' How granular should I go with the use cases?
+
+left to right direction
+
+skinparam Shadowing false
+skinparam Monochrome true
+skinparam PackageStyle rectangle
+
+
+package "Booking" {
+  usecase "Book a room" as UC1
+  usecase "Cancel a booking" as UC2
+  usecase "View a booking" as UC3
+  usecase "View all bookings" as UC4
+    package "Payment" {
+    usecase "User wants to pay for a booking" as UC5
+    usecase "User wants to view all payment methods" as UC6
+}
+}
+
+package "Website Navigation" {
+  usecase "View all rooms with pictures" as UC7
+  usecase "Check the hotel's location" as UC8
+  usecase "View pictures of the hotel" as UC9
+  usecase "View pictures of amenities" as UC10
+  usecase "View the history of the hotel" as UC11
+  usecase "View the hotel's contact information" as UC12
+  usecase "View the hotel's social media" as UC13
+}
+
+User --> UC1
+User --> UC2
+User --> UC3
+User --> UC4
+User --> UC5
+User --> UC6
+User2 --> UC7
+User2 --> UC8
+User2 --> UC9
+User2 --> UC10
+User2 --> UC11
+User2 --> UC12
+User2 --> UC13
+
+
+' For some reason, this layout just doesn't feel right. 
+' Feels too simple and at the same time convoluted, if that makes sense
+' Need to think more about this.
+
+@enduml
