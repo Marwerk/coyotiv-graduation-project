@@ -39,7 +39,7 @@ const doubleRoom = new Room(1, 'Double Room', 'Two Single Size Beds', 2, 100, [
   'Breakfast Included',
 ])
 
-lasCalas.addRoom(doubleRoom)
+lasCalas.createRoom(doubleRoom)
 
 // There is a total of 3 queenRoom in the Hotel, one has an external bathroom (roomId = 6)
 const singleRoom = new Room(2, 'Single Room', 'One Queen Size Bed', 1, 100, [
@@ -51,7 +51,7 @@ const singleRoom = new Room(2, 'Single Room', 'One Queen Size Bed', 1, 100, [
   'Breakfast Included',
 ])
 
-lasCalas.addRoom(singleRoom)
+lasCalas.createRoom(singleRoom)
 
 const singleRoom6 = new Room(6, 'Single Room', 'One Queen Size Bed', 1, 100, [
   'Private External Bathroom', // perhaps "adjacent" is a better word than "external?
@@ -62,7 +62,7 @@ const singleRoom6 = new Room(6, 'Single Room', 'One Queen Size Bed', 1, 100, [
   'Breakfast Included',
 ])
 
-lasCalas.addRoom(singleRoom6)
+lasCalas.createRoom(singleRoom6)
 
 // There is a total of 3 kingRoom in the Hotel
 const kingRoom = new Room(3, 'Suite Room', 'One King Size Bed', 2, 200, [
@@ -74,7 +74,7 @@ const kingRoom = new Room(3, 'Suite Room', 'One King Size Bed', 2, 200, [
   'Breakfast Included',
 ])
 
-lasCalas.addRoom(kingRoom)
+lasCalas.createRoom(kingRoom)
 
 // ------------------------------------------------------------------------
 module.exports = Room
