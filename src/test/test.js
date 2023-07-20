@@ -34,38 +34,25 @@ class Test {
     ])
   }
 
+  // clean up console.logs and include backticks
   run() {
-    console.log('')
-    console.log('--- Tests for Booking ---')
-    console.log(`booking1 should have a bookingId: ${this.booking1.bookingId ? chalk.green('✓') : chalk.red('✗')}`)
-    console.log('')
+    console.log(`
+--- Tests for Booking ---
+booking1 should have a bookingId: ${this.booking1.bookingId ? chalk.green('✓') : chalk.red('✗')}
 
-    console.log('')
-    console.log('--- Tests for Guest ---')
-    console.log(`guest1 should have a firstName: ${this.guest1.firstName ? chalk.green('✓') : chalk.red('✗')}`)
-    console.log(`guest 1 should have an email: ${this.guest1.email ? chalk.green('✓') : chalk.red('✗')}`)
+--- Tests for Guest ---
+guest1 should have a firstName: ${this.guest1.firstName ? chalk.green('✓') : chalk.red('✗')}
+guest 1 should have an email: ${this.guest1.email ? chalk.green('✓') : chalk.red('✗')}
+These are the bookings of guest1: ${this.guest1.allBookings}
+${this.guest1.allBookings}
 
-    // https://github.com/coyotiv-sose/graduation-project-marwerk/issues/9
-    // returns completely empty, not even the empty array
-    console.log(`These are the bookings of guest1: ${this.guest1.allBookings}`)
-    console.log(this.guest1.allBookings)
-    console.log('')
+--- Tests for Review ---
+review1 should have a guestId: ${this.review1.guestId ? chalk.green('✓') : chalk.red('✗')}
 
-    console.log('')
-    console.log('--- Tests for Review ---')
-    console.log(`review1 should have a guestId: ${this.review1.guestId ? chalk.green('✓') : chalk.red('✗')}`)
-    console.log('')
-
-    console.log('')
-    console.log('--- Tests for Room ---')
-    console.log(
-      `singleRoom6 should have a roomId of 6: ${this.singleRoom6.roomId === 6 ? chalk.green('✓') : chalk.red('✗')}`
-    )
-    console.log(`singleRoom6 should have a image URL: ${this.singleRoom6.imageURL ? chalk.green('✓') : chalk.red('✗')}`)
-    console.log(
-      `singleRoom6 should have a description: ${this.singleRoom6.description ? chalk.green('✓') : chalk.red('✗')}`
-    )
-    console.log('')
+--- Tests for Room ---
+singleRoom6 should have a roomId of 6: ${this.singleRoom6.roomId === 6 ? chalk.green('✓') : chalk.red('✗')}
+singleRoom6 should have a image URL: ${this.singleRoom6.imageURL ? chalk.green('✓') : chalk.red('✗')}
+singleRoom6 should have a description: ${this.singleRoom6.description ? chalk.green('✓') : chalk.red('✗')}`)
   }
 }
 
