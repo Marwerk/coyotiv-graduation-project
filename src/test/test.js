@@ -34,7 +34,6 @@ class Test {
     ])
   }
 
-  // clean up console.logs and include backticks
   run() {
     console.log(`
 --- Tests for Booking ---
@@ -44,7 +43,6 @@ booking1 should have a bookingId: ${this.booking1.bookingId ? chalk.green('✓')
 guest1 should have a firstName: ${this.guest1.firstName ? chalk.green('✓') : chalk.red('✗')}
 guest 1 should have an email: ${this.guest1.email ? chalk.green('✓') : chalk.red('✗')}
 These are the bookings of guest1: ${this.guest1.allBookings}
-${this.guest1.allBookings}
 
 --- Tests for Review ---
 review1 should have a guestId: ${this.review1.guestId ? chalk.green('✓') : chalk.red('✗')}
