@@ -50,7 +50,8 @@ review1 should have a guestId: ${this.review1.guestId ? chalk.green('✓') : cha
 --- Tests for Room ---
 singleRoom6 should have a roomId of 6: ${this.singleRoom6.roomId === 6 ? chalk.green('✓') : chalk.red('✗')}
 singleRoom6 should have a image URL: ${this.singleRoom6.imageURL ? chalk.green('✓') : chalk.red('✗')}
-singleRoom6 should have a description: ${this.singleRoom6.description ? chalk.green('✓') : chalk.red('✗')}`)
+singleRoom6 should have a description: ${this.singleRoom6.description ? chalk.green('✓') : chalk.red('✗')}
+    `)
   }
 }
 
