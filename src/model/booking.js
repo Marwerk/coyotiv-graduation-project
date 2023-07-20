@@ -1,9 +1,15 @@
 const chalk = require('chalk')
 
 class Booking {
-  constructor(bookingCode, guestId, roomId, checkInDate, checkOutDate, numberOfGuests, totalPrice, bookingStatus) {
+  constructor(
+    bookingCode,
+    roomId,
+    checkInDate,
+    checkOutDate,
+    numberOfGuests,
+    bookingStatus
+  ) {
     this.bookingCode = bookingCode
-    this.guestId = guestId
     this.roomId = roomId
     this.checkInDate = checkInDate
     this.checkOutDate = checkOutDate

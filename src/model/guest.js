@@ -1,7 +1,16 @@
 const Booking = require('./booking')
 
-class Guest {
-  constructor(firstName, lastName, phoneNumber, email, address, city, paymentMethod, creationDate) {
+class User {
+  constructor(
+    firstName,
+    lastName,
+    phoneNumber,
+    email,
+    address,
+    city,
+    paymentMethod,
+    creationDate
+  ) {
     this.firstName = firstName
     this.lastName = lastName
     this.phoneNumber = phoneNumber
@@ -22,4 +31,4 @@ class Guest {
 }
 
 // ------------------------------------------------------------------------
-module.exports = Guest
+module.exports = User

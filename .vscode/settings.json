@@ -1,3 +1,5 @@
 {
-  "plantuml.server": "https://puml.coyotiv.dev"
+  "plantuml.server": "https://puml.coyotiv.dev",
+  "githubPullRequests.ignoredPullRequestBranches": ["main"],
+  "markdown-preview-enhanced.plantumlServer": "https://puml.coyotiv.dev"
 }
