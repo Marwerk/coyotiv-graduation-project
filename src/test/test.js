@@ -1,11 +1,10 @@
 // --- Testing Yard --- //
 
 const chalk = require('chalk')
-const Guest = require('../model/guest')
-const Room = require('../model/room')
-// const Hotel = require('../model/hotel')
+const User = require('../model/user')
+const Hotel = require('../model/hotel')
 const Booking = require('../model/booking')
-const Review = require('../model/review')
+
 
 class Test {
   constructor() {

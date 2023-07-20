@@ -1,16 +1,7 @@
 const Booking = require('./booking')
 
 class User {
-  constructor(
-    firstName,
-    lastName,
-    phoneNumber,
-    email,
-    address,
-    city,
-    paymentMethod,
-    creationDate
-  ) {
+  constructor(firstName, lastName, phoneNumber, email, address, city, paymentMethod, creationDate) {
     this.firstName = firstName
     this.lastName = lastName
     this.phoneNumber = phoneNumber

@@ -6,12 +6,14 @@ class Hotel {
     this.rating = rating
     this.amenities = amenities
     this.imageUrl = imageUrl
-    this.rooms = []
+    this.rooms = rooms // # of rooms available
   }
 
   createRoom(room) {
     this.rooms.push(room)
   }
+
+  // add a method to add a booking to the hotel (and updates the # of rooms available)
 }
 
 // ------------------------------------------------------------------------

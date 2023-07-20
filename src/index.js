@@ -1,10 +1,9 @@
 const chalk = require('chalk')
-const Guest = require('./model/guest')
-const Room = require('./model/room')
+const User = require('./model/user')
 const Hotel = require('./model/hotel')
 const Booking = require('./model/booking')
 
-const guest1 = new Guest(
+const user1 = new User(
   1,
   'Marvin',
   'Werkmeister',
@@ -18,5 +17,3 @@ const guest1 = new Guest(
 
 const booking1 = new Booking(1, 1, 1, '2021-01-01', '2021-01-03', 2, 200, 'confirmed')
 const booking2 = new Booking(2, 1, 2, '2021-01-01', '2021-01-03', 1, 100, 'confirmed')
-
-const review1 = new Review(1, 1, 5, 'This hotel is amazing!', '2021-01-01')
