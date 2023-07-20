@@ -9,7 +9,7 @@ class Hotel {
     this.rooms = []
   }
 
-  addRoom(room) {
+  createRoom(room) {
     this.rooms.push(room)
   }
 }
