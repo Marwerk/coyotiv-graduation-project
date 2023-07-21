@@ -17,7 +17,7 @@ class User {
       hotel.bookings.push(booking)
       return booking
     }
-    console.log('No rooms available')
+    return console.log('No rooms available')
   }
 }
 
