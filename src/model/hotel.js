@@ -1,11 +1,7 @@
 class Hotel {
-  constructor(name, location, description, rating, amenities, imageUrl, rooms) {
+  constructor(name, location, rooms) {
     this.name = name
     this.location = location
-    this.description = description
-    this.rating = rating
-    this.amenities = amenities
-    this.imageUrl = imageUrl
     this.rooms = rooms // # of rooms available
   }
 
