@@ -2,7 +2,8 @@ class Hotel {
   constructor(name, location, rooms) {
     this.name = name
     this.location = location
-    this.rooms = rooms // # of rooms available
+    this.rooms = rooms
+    this.bookings = []
   }
 
   createRoom(room) {

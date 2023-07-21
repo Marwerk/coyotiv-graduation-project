@@ -10,11 +10,14 @@ class User {
     this.city = city
   }
 
-  // "Setter" method to add booking.
-  // I don't use an actual setter method because I don't want to overwrite the array of bookings.
-  book(bookingId) {
-    this.bookings.push(bookingId)
-    // .push() to add new booking to array of bookings.
+  book(hotel) {
+    if (hotel.rooms > 0) {
+      hotel.rooms -= 1
+      const booking = new Booking(this)
+      hotel.bookings.push(booking)
+      return booking
+    }
+    console.log('No rooms available')
   }
 }
 
