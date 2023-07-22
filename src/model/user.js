@@ -13,9 +13,9 @@ class User {
   book(hotel) {
     if (hotel.rooms > 0) {
       hotel.rooms -= 1
-      const booking = new Booking(this)
-      hotel.bookings.push(booking)
-      return booking
+      const newBooking = new Booking(this)
+      hotel.bookings.push(newBooking)
+      return newBooking
     }
     return console.log('No rooms available')
   }

@@ -6,11 +6,19 @@ class Hotel {
     this.bookings = []
   }
 
-  createRoom(room) {
-    this.rooms.push(room)
-  }
+  cancelBooking(email) {
+    const bookingToCancel = booking => booking.guest.email === email
+    const indexOfBookingToCancel = this.bookings.findIndex(bookingToCancel)
 
-  // add a method to add a booking to the hotel (and updates the # of rooms available)
+    const bookingWasFound = indexOfBookingToCancel !== -1
+
+    if (bookingWasFound) {
+      this.bookings.splice(indexOfBookingToCancel, 1)
+      this.rooms += 1
+    }
+
+    console.log(`Booking for ${email} was ${bookingWasFound ? '' : 'not '}found`)
+  }
 }
 
 // ------------------------------------------------------------------------
