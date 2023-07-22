@@ -6,6 +6,7 @@ class Hotel {
     this.bookings = []
   }
 
+  // This method is used to cancel a booking
   cancelBooking(email) {
     const bookingToCancel = booking => booking.guest.email === email
     const indexOfBookingToCancel = this.bookings.findIndex(bookingToCancel)
@@ -20,6 +21,7 @@ class Hotel {
     console.log(`Booking for ${email} was ${bookingWasFound ? '' : 'not '}found`)
   }
 
+  // This method is used to check if there are rooms available for the requested dates
   checkAvailability(checkIn, checkOut) {
     // First check if there are rooms available, return false if not
     if (this.rooms <= 0) {
@@ -27,14 +29,11 @@ class Hotel {
     }
 
     // Loop over each existing booking to check for date overlap
-    for (let i = 0; i < this.bookings.length; i++) {
+    for (let i = 0; i < this.bookings.length; i += 1) {
       const booking = this.bookings[i]
 
       // Check if requersted check-in date OR requested check-out date is within an existing booking's dates
-      if (
-        (checkIn >= booking.checkIn && checkIn <= booking.checkOut) ||
-        (checkOut >= booking.checkIn && checkOut <= booking.checkOut)
-      ) {
+      if (checkIn < booking.checkOutDate && checkOut > booking.checkInDate) {
         return false
       }
     }
