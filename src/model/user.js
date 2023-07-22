@@ -12,6 +12,7 @@ class User {
 
   book(hotel) {
     if (hotel.rooms > 0) {
+      // eslint-disable-next-line no-param-reassign
       hotel.rooms -= 1
       const newBooking = new Booking(this)
       hotel.bookings.push(newBooking)

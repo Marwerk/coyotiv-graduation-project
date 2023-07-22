@@ -24,21 +24,25 @@ const federico = new User(
   'Berlin'
 )
 
-// Users book the hotel / A booking instance is created
-const booking1 = marvin.book(hotelLasCalas)
-const booking2 = federico.book(hotelLasCalas)
+// Users create a booking (instance) and book a room
+// const booking1 = marvin.book(hotelLasCalas)
+// const booking2 = federico.book(hotelLasCalas)
 
-// A booking is cancelled, using the email as an ID, and the room is made available again
-hotelLasCalas.cancelBooking('marvin.blerg@gmail.com')
+// Cancel a booking using email as ID and free up a room
+// hotelLasCalas.cancelBooking('marvin.blerg@gmail.com')
 
-/// -----/// TEST YARD ///-----///
+/// ----- /// TEST YARD /// ---- ///
+// console.log(`
+// --- Tests for Booking ---
+// booking1 should have a Guest: ${booking1.guest ? chalk.green('✓') : chalk.red('✗')}
+// `)
+
+// console.log(`
+// --- Tests for Guest ---
+// Guest Marvin should have an email: ${marvin.email ? chalk.green('✓') : chalk.red('✗')}
+// `)
+
 console.log(`
---- Tests for Booking ---
-booking1 should have a Guest: ${booking1.guest ? chalk.green('✓') : chalk.red('✗')}
-
---- Tests for Guest ---
-Guest Marvin should have an email: ${marvin.email ? chalk.green('✓') : chalk.red('✗')}
-
 --- Tests for Hotel ---
 hotelLasCalas has ${
   hotelLasCalas.rooms > 0 ? chalk.green(hotelLasCalas.rooms) : chalk.red(hotelLasCalas.rooms)
