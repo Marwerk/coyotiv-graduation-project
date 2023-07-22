@@ -32,7 +32,7 @@ class Hotel {
     for (let i = 0; i < this.bookings.length; i += 1) {
       const booking = this.bookings[i]
 
-      // Check if requersted check-in date OR requested check-out date is within an existing booking's dates
+      // check if the requested dates overlap with an existing booking
       if (checkIn < booking.checkOutDate && checkOut > booking.checkInDate) {
         return false
       }
