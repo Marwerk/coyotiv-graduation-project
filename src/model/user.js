@@ -11,12 +11,17 @@ class User {
   }
 
   book(hotel, checkIn, checkOut) {
-    if (hotel.checkAvailability(checkIn, checkOut)) {
-      const newBooking = new Booking(this, checkIn, checkOut)
+    // Convert check-in and check-out dates to Date objects
+    const checkInDate = new Date(`${checkIn}T00:00:00Z`)
+    const checkOutDate = new Date(`${checkOut}T00:00:00Z`)
+
+    if (hotel.checkAvailability(checkInDate, checkOutDate)) {
+      const newBooking = new Booking(this, checkInDate, checkOutDate)
       hotel.bookings.push(newBooking)
       return newBooking
     }
-    return console.log('No rooms available for the selected dates')
+
+    return console.log(`We're sorry ${this.firstName}, No rooms available for the selected dates`)
   }
 }
 
