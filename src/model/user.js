@@ -10,15 +10,13 @@ class User {
     this.city = city
   }
 
-  book(hotel) {
-    if (hotel.rooms > 0) {
-      // eslint-disable-next-line no-param-reassign
-      hotel.rooms -= 1
-      const newBooking = new Booking(this)
+  book(hotel, checkIn, checkOut) {
+    if (hotel.checkAvailability(checkIn, checkOut)) {
+      const newBooking = new Booking(this, checkIn, checkOut)
       hotel.bookings.push(newBooking)
       return newBooking
     }
-    return console.log('No rooms available')
+    return console.log('No rooms available for the selected dates')
   }
 }
 

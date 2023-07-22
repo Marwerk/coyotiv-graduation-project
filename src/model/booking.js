@@ -1,6 +1,8 @@
 class Booking {
-  constructor(guest) {
+  constructor(guest, checkIn, checkOut) {
     this.guest = guest
+    this.checkIn = checkIn
+    this.checkOut = checkOut
   }
 }
 
