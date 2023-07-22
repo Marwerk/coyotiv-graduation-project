@@ -1,7 +1,6 @@
 const chalk = require('chalk')
 const User = require('./model/user')
 const Hotel = require('./model/hotel')
-const Booking = require('./model/booking')
 
 // Las Calas Hotel instance is declared
 const hotelLasCalas = new Hotel('Las Calas', 'Asuncion, PY', 7)
@@ -24,8 +23,9 @@ const federico = new User(
   'Berlin'
 )
 
-// Users create a booking (instance) and book a room
-// const booking1 = marvin.book(hotelLasCalas)
+// User creates a booking (instance), which is added to the hotel's bookings array
+const booking1 = marvin.book(hotelLasCalas, '2019-01-01', '2019-01-05')
+const booking2 = federico.book(hotelLasCalas, '2019-01-06', '2019-01-10')
 // const booking2 = federico.book(hotelLasCalas)
 
 // Cancel a booking using email as ID and free up a room
@@ -44,7 +44,20 @@ const federico = new User(
 
 console.log(`
 --- Tests for Hotel ---
-hotelLasCalas has ${
+Las Calas Aparthotel has ${
   hotelLasCalas.rooms > 0 ? chalk.green(hotelLasCalas.rooms) : chalk.red(hotelLasCalas.rooms)
 } rooms available
+-----------------------
+These are the current bookings in Las Calas Aparthotel:
 `)
+
+hotelLasCalas.bookings.forEach((booking, i) => {
+  console.log(`
+  Booking ${i + 1}:
+  Guest: ${booking.guest.firstName} ${booking.guest.lastName}
+  Check-in date: ${booking.checkInDate}
+  Check-out date: ${booking.checkOutDate}
+  -----------------------`)
+})
+
+console.log(booking1)
