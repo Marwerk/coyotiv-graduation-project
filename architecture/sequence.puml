@@ -1,0 +1,30 @@
+@startuml Sequence Diagram
+
+' Shows the interactions between User, Booking, and Hotel objects
+' in the order that these interactions take place.
+
+actor User
+entity Hotel
+entity Booking
+
+User -> Booking: User books a room
+activate Booking
+Booking -> Hotel: checkAvailability()
+activate Hotel
+alt rooms available and no date overlap
+  Hotel -->> Booking: Return true (availability confirmed)
+  Booking -> Booking: Create new Booking
+  Booking -> Hotel: Add booking to hotel's bookings
+else no rooms available or date overlap
+  Hotel -->> Booking: Return false (availability denied)
+  Booking -->> User: Return booking unavailability message
+end
+deactivate Hotel
+deactivate Booking
+
+activate Hotel
+Hotel -->> User: Return booking details
+deactivate Hotel
+
+
+@enduml
