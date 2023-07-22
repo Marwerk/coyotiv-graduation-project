@@ -42,13 +42,6 @@
 // guest 1 should have an email: ${this.guest1.email ? chalk.green('✓') : chalk.red('✗')}
 // These are the bookings of guest1: ${this.guest1.allBookings}
 
-// --- Tests for Review ---
-// review1 should have a guestId: ${this.review1.guestId ? chalk.green('✓') : chalk.red('✗')}
-
-// --- Tests for Room ---
-// singleRoom6 should have a roomId of 6: ${this.singleRoom6.roomId === 6 ? chalk.green('✓') : chalk.red('✗')}
-// singleRoom6 should have a image URL: ${this.singleRoom6.imageURL ? chalk.green('✓') : chalk.red('✗')}
-// singleRoom6 should have a description: ${this.singleRoom6.description ? chalk.green('✓') : chalk.red('✗')}
 //     `)
 //   }
 // }
