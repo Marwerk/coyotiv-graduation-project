@@ -1,1 +1,14 @@
-state diagram for the booking itself
+@startuml State Diagram
+
+' Represents the states of a 'Booking' object and how it changes
+
+
+[*] --> Not_Booked
+
+Not_Booked --> Booked : Rooms Available
+Booked --> Not_Booked : Booking Canceled
+
+Booked --> [*]
+
+
+@enduml

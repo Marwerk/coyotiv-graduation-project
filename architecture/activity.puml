@@ -1,0 +1,20 @@
+@startuml Activity Diagram
+
+
+' Shows the series of actions that take place
+' in the system when a User tries to book a room in a Hotel.
+
+start
+
+:User tries to book a room;
+if (Is room available?) then (yes)
+    :Create new Booking;
+    :Add Booking to Hotel;
+else (no)
+    :Print "No rooms available";
+endif
+
+stop
+
+
+@enduml

@@ -6,56 +6,24 @@ skinparam Shadowing false
 skinparam Monochrome true
 skinparam PackageStyle rectangle
 
-actor Guest
+actor User
+actor Hotel_Manager
 
 package "User Management" {
-  usecase "Register an account" as UC1
-  usecase "Manage account details" as UC2
+  usecase "Create a User account" as UC1
 }
 
 package "Booking" {
-  usecase "Book a room" as UC3
+  usecase "Make a booking" as UC2
+  usecase "Check availability" as UC3
   usecase "Cancel a booking" as UC4
-  usecase "View a booking" as UC5
-  usecase "View all bookings" as UC6
+  usecase "View all bookings" as UC5
 }
 
-package "Payment" {
-  usecase "Pay for a booking" as UC7
-  usecase "Manage payment methods" as UC8
-}
-
-package "Reviews" {
-  usecase "Leave a review" as UC9
-  usecase "Manage reviews" as UC10
-  usecase "View all reviews" as UC11
-}
-
-package "Website Navigation" {
-  usecase "View all rooms" as UC12
-  usecase "Check the hotel's location" as UC13
-  usecase "View all pictures of hotel & amenities" as UC14
-  usecase "View the history of the hotel" as UC15
-  usecase "Contact information & form" as UC16
-  usecase "Link to hotel's social media" as UC17
-}
-
-Guest --> UC1
-Guest --> UC2
-Guest --> UC3
-Guest --> UC4
-Guest --> UC5
-Guest --> UC6
-Guest --> UC7
-Guest --> UC8
-Guest --> UC9
-Guest --> UC10
-Guest --> UC11
-Guest --> UC12
-Guest --> UC13
-Guest --> UC14
-Guest --> UC15
-Guest --> UC16
-Guest --> UC17
+User --> UC1
+User --> UC2
+Hotel_Manager --> UC3
+Hotel_Manager --> UC4
+User --> UC5
 
 @enduml

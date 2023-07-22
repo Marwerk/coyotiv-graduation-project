@@ -1,0 +1,41 @@
+@startuml Class Interactions
+
+class User {
+  firstName: String
+  lastName: String
+  phoneNumber: String
+  email: String
+  address: String
+  city: String
+  book(Hotel, checkInDate, checkOutDate): Booking
+}
+
+class Booking {
+  guest: User
+  checkInDate: Date
+  checkOutDate: Date
+}
+
+' The Room classes are for visual representation only
+class Room {
+Visual Representation Only
+}
+class SingleRoom {}
+class DoubleRoom {}
+class SuiteRoom {}
+
+class Hotel {
+  name: String
+  location: String
+  rooms: Room[]
+}
+
+User *-- Booking : makes >
+Booking --* Room : includes >
+Room --* Hotel : belongs to >
+User -- Room : books >
+Room <|-- SingleRoom
+Room <|-- DoubleRoom
+Room <|-- SuiteRoom
+
+@enduml
