@@ -8,6 +8,7 @@ class User {
     this.email = email
     this.address = address
     this.city = city
+    // this.bookings = []
   }
 
   book(hotel, checkIn, checkOut) {
@@ -18,6 +19,12 @@ class User {
     if (hotel.checkAvailability(checkInDate, checkOutDate)) {
       const newBooking = new Booking(this, checkInDate, checkOutDate)
       hotel.bookings.push(newBooking)
+      // this.bookings.push(newBooking)
+
+      console.log(
+        `Dear ${this.firstName}, your booking has been confirmed for ${hotel.name} from ${checkIn} to ${checkOut}.
+        The total price is $${newBooking.totalPrice}`
+      )
       return newBooking
     }
 
