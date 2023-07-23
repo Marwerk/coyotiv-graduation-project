@@ -6,7 +6,7 @@ class Hotel {
     this.bookings = []
   }
 
-  // This method is used to cancel a booking
+  // Method to cancel booking
   cancelBooking(email) {
     const bookingToCancel = booking => booking.guest.email === email
     const indexOfBookingToCancel = this.bookings.findIndex(bookingToCancel)
@@ -21,9 +21,9 @@ class Hotel {
     console.log(`Booking for ${email} was ${bookingWasFound ? '' : 'not '}found`)
   }
 
-  // This method is used to check if there are rooms available for the requested dates
+  // Check if rooms are available on given range
   checkAvailability(checkIn, checkOut) {
-    // First check if there are rooms available, return false if not
+    // Check if there are rooms available, return false if not
     if (this.rooms <= 0) {
       return false
     }
