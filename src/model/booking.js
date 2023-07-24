@@ -1,3 +1,5 @@
+const MILLISECONDS_IN_A_DAY = 1000 * 60 * 60 * 24
+
 class Booking {
   constructor(guest, checkInDate, checkOutDate) {
     this.guest = guest
@@ -6,13 +8,12 @@ class Booking {
   }
 
   get totalPrice() {
-    const PRICE_PER_NIGHT = 100
+    const pricePerNight = 100
 
-    // const differenceInTime = this.checkOutDate - this.checkInDate
     const differenceInMilliseconds = this.checkOutDate - this.checkInDate
-    const differenceInDays = differenceInMilliseconds / (1000 * 60 * 60 * 24)
+    const differenceInDays = differenceInMilliseconds / MILLISECONDS_IN_A_DAY
 
-    return differenceInDays * PRICE_PER_NIGHT
+    return differenceInDays * pricePerNight
   }
 }
 

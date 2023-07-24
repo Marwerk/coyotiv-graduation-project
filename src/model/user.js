@@ -13,8 +13,8 @@ class User {
 
   book(hotel, checkIn, checkOut) {
     // Convert check-in and check-out dates to Date objects
-    const checkInDate = new Date(`${checkIn}T00:00:00Z`)
-    const checkOutDate = new Date(`${checkOut}T00:00:00Z`)
+    const checkInDate = new Date(checkIn)
+    const checkOutDate = new Date(checkOut)
 
     if (hotel.checkAvailability(checkInDate, checkOutDate)) {
       const newBooking = new Booking(this, checkInDate, checkOutDate)
