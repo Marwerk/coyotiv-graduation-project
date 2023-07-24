@@ -5,6 +5,6 @@ block content
   p Welcome #{user.name}
 
   h2 Users
-  ul
+  ul#users
     each user in users
-      li= user.name
+      li.user= user.name
