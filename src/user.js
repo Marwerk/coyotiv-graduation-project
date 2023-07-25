@@ -1,14 +1,14 @@
 const Booking = require('./booking')
 
 class User {
-  constructor(firstName, lastName, phoneNumber, email, address, city) {
+  constructor(firstName, lastName, phoneNumber, email, address, city, bookings) {
     this.firstName = firstName
     this.lastName = lastName
     this.phoneNumber = phoneNumber
     this.email = email
     this.address = address
     this.city = city
-    // this.bookings = []
+    this.bookings = []
   }
 
   book(hotel, checkIn, checkOut) {
@@ -30,6 +30,24 @@ class User {
 
     return console.log(`We're sorry ${this.firstName}, No rooms available for the selected dates`)
   }
+
+  static create(userObj) {
+    console.log('Creating a new user...', userObj)
+    const newUser = new User(
+      userObj.firstName,
+      userObj.lastName,
+      userObj.phoneNumber,
+      userObj.email,
+      userObj.address,
+      userObj.city,
+      userObj.bookings
+    )
+
+    User.list.push(newUser)
+    return newUser
+  }
+
+  static list = []
 }
 
 // ------------------------------------------------------------------------

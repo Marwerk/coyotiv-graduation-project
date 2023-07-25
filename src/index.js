@@ -1,15 +1,32 @@
-// const chalk = require('chalk')
+const chalk = require('chalk')
 const axios = require('axios')
 const { response } = require('express')
 
-// const User = require('./model/user')
-// const Hotel = require('./model/hotel')
+const User = require('./user')
+const Hotel = require('./hotel')
 
-// fetch users with axios
+// axios.get('http://localhost:4000/users').then(response => {
+//   console.log(response.data)
+// })
 
-axios.get('http://localhost:3000/users').then(response => {
-  console.log(response.data)
-})
+// create a user with axios
+async function main() {
+  const marvin = await axios.post('http://localhost:4000/users', {
+    firstName: 'Marvin',
+    hacked: true,
+  })
+
+  const federico = await axios.post('http://localhost:4000/users', {
+    firstName: 'Federico',
+  })
+
+  const allUsers = await axios.get('http://localhost:4000/users')
+
+  console.log('List of all users', allUsers.data)
+}
+
+main()
+console.log(`index.js is running`)
 
 // Las Calas Hotel instance is declared
 // const hotelLasCalas = new Hotel('Las Calas', 'Asuncion, PY', 7)
@@ -57,7 +74,7 @@ axios.get('http://localhost:3000/users').then(response => {
 
 // console.log(`
 
-//   ------------ Tests for Hotel --------------
+// //   ------------ Tests for Hotel --------------
 
 //   Las Calas Aparthotel has ${
 //     hotelLasCalas.rooms > 0 ? chalk.green(hotelLasCalas.rooms) : chalk.red(hotelLasCalas.rooms)
