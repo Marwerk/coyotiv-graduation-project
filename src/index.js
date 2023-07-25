@@ -11,16 +11,16 @@ const Hotel = require('./hotel')
 
 // create a user with axios
 async function main() {
-  const marvin = await axios.post('http://localhost:4000/users', {
+  const marvin = await axios.post('http://localhost:3000/users', {
     firstName: 'Marvin',
     hacked: true,
   })
 
-  const federico = await axios.post('http://localhost:4000/users', {
+  const federico = await axios.post('http://localhost:3000/users', {
     firstName: 'Federico',
   })
 
-  const allUsers = await axios.get('http://localhost:4000/users')
+  const allUsers = await axios.get('http://localhost:3000/users')
 
   console.log('List of all users', allUsers.data)
 }

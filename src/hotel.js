@@ -42,6 +42,13 @@ class Hotel {
     this.rooms -= 1
     return true
   }
+
+  static create({ hotel }) {
+    console.log('Creating a new hotel...', { Hotel })
+    const newHotel = new Hotel(Hotel)
+
+    return newHotel
+  }
 }
 
 // ------------------------------------------------------------------------

@@ -31,17 +31,9 @@ class User {
     return console.log(`We're sorry ${this.firstName}, No rooms available for the selected dates`)
   }
 
-  static create(userObj) {
-    console.log('Creating a new user...', userObj)
-    const newUser = new User(
-      userObj.firstName,
-      userObj.lastName,
-      userObj.phoneNumber,
-      userObj.email,
-      userObj.address,
-      userObj.city,
-      userObj.bookings
-    )
+  static create({ firstName }) {
+    console.log('Creating a new user...', { firstName })
+    const newUser = new User(firstName)
 
     User.list.push(newUser)
     return newUser

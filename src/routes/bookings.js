@@ -1,6 +1,6 @@
 const express = require('express')
 const { render } = require('pug')
-const User = require('../user')
+const Booking = require('../booking')
 
 const router = express.Router()
 
@@ -10,7 +10,7 @@ const router = express.Router()
 // e.g. http://localhost:4000/users
 
 router.get('/', function (req, res, next) {
-  res.send(User.list)
+  res.send(Booking.list)
 })
 
 /* POST users listing. */
@@ -19,9 +19,9 @@ router.get('/', function (req, res, next) {
 // e.g. http://localhost:4000/users
 
 router.post('/', function (req, res, next) {
-  const user = User.create({ firstName: req.body.firstName })
+  const booking = Booking.create({ guest: req.body.guest })
 
-  res.send(user)
+  res.send(booking)
 })
 
 module.exports = router
