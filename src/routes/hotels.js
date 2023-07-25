@@ -6,7 +6,6 @@ const Hotel = require('../hotel')
 
 /* GET Hotel listing. */
 router.get('/', function (req, res, next) {
-  console.log('hi we are trying to debug')
   res.send('get Hotel listing')
 })
 
