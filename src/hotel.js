@@ -38,16 +38,23 @@ class Hotel {
       }
     }
 
-    // If there are rooms available and no overlap in dates, decrease the number of rooms
-    this.rooms -= 1
+    // If there are rooms available and no overlap in dates, return true
     return true
   }
 
-  static create({ name, location, rooms }) {
-    console.log('Creating a new hotel...', { name, location, rooms })
-    const newHotel = new Hotel(name, location, rooms)
+  decreaseRooms() {
+    if (this.rooms > 0) {
+      this.rooms -= 1
+    } else {
+      console.log('No rooms available to decrease')
+    }
+  }
 
-    return newHotel
+  static create({ name, location, rooms, bookings }) {
+    console.log('Creating a new hotel...', { name, location, rooms, bookings })
+    const hotel = new Hotel(name, location, rooms, bookings)
+
+    return hotel
   }
 }
 

@@ -15,7 +15,13 @@ class Booking {
 
     return differenceInDays * pricePerNight
   }
-}
 
+  static create({ hotel, checkInDate, checkOutDate }) {
+    console.log('Creating a new hotel...', { hotel, checkInDate, checkOutDate })
+    const booking = new Booking(hotel, checkInDate, checkOutDate)
+
+    return booking
+  }
+}
 // ------------------------------------------------------------------------
 module.exports = Booking

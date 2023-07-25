@@ -15,19 +15,31 @@ async function main() {
     name: 'Las Calas',
     location: 'Asuncion, PY',
     rooms: 7,
+    bookings: [],
   })
-  console.log(hotelLasCalas.data)
-  const hotel = await axios.get('http://localhost:3000/hotels')
-  console.log(`This is the ${hotel.data}`)
+  console.log('Hotel Data:', hotelLasCalas.data)
 
   const marvin = await axios.post('http://localhost:3000/users', {
     firstName: 'Marvin',
-    hacked: true,
+    lastName: 'Werkmeister',
+    phoneNumber: '555-555-5555',
+    email: 'marvin.blerg@gmail.com',
+    address: 'Timbuktustrasse 5',
+    city: 'Berlin',
+    bookings: [],
   })
 
   const federico = await axios.post('http://localhost:3000/users', {
     firstName: 'Federico',
+    lastName: 'Carrillo',
+    phoneNumber: '888-888-8888',
+    email: 'federico.blerg@gmail.com',
+    address: 'Timbuktustrasse 8',
+    city: 'Berlin',
+    bookings: [],
   })
+
+  // const booking1 = marvin.book(hotelLasCalas, '2019-01-01', '2019-01-05')
 
   const allUsers = await axios.get('http://localhost:3000/users')
 
@@ -35,7 +47,6 @@ async function main() {
 }
 
 main()
-console.log(`index.js is running`)
 
 // Las Calas Hotel instance is declared
 // const hotelLasCalas = new Hotel('Las Calas', 'Asuncion, PY', 7)
