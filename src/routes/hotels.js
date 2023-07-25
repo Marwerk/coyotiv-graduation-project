@@ -1,12 +1,13 @@
 const express = require('express')
+
+const router = express.Router()
 const { render } = require('pug')
 const Hotel = require('../hotel')
 
-const router = express.Router()
-
 /* GET Hotel listing. */
 router.get('/', function (req, res, next) {
-  res.send(Hotel.list)
+  console.log('hi we are trying to debug')
+  res.send('get Hotel listing')
 })
 
 /* POST Hotel listing. */
@@ -16,5 +17,4 @@ router.post('/', function (req, res, next) {
   res.send(hotel)
 })
 
-// TODO: we've delegated the process of new user creation to the user class
 module.exports = router

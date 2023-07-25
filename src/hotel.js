@@ -43,9 +43,9 @@ class Hotel {
     return true
   }
 
-  static create({ hotel }) {
-    console.log('Creating a new hotel...', { Hotel })
-    const newHotel = new Hotel(Hotel)
+  static create({ name, location, rooms }) {
+    console.log('Creating a new hotel...', { name, location, rooms })
+    const newHotel = new Hotel(name, location, rooms)
 
     return newHotel
   }
