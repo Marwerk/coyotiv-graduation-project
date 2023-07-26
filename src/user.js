@@ -1,7 +1,7 @@
 const Booking = require('./booking')
 
 class User {
-  constructor(firstName, lastName, phoneNumber, email, address, city, bookings) {
+  constructor(firstName, lastName, phoneNumber, email, address, city) {
     this.firstName = firstName
     this.lastName = lastName
     this.phoneNumber = phoneNumber
@@ -25,10 +25,9 @@ class User {
     if (hotel.checkAvailability(checkInDate, checkOutDate)) {
       const newBooking = Booking.create({ hotel: this, checkInDate, checkOutDate })
       hotel.bookings.push(newBooking)
-      console.log('Hotel', hotel)
-      console.log('User', this)
       hotel.decreaseAvailability()
-      // this.bookings.push(newBooking) // TODO: this line is returning a "Converting circular structure to JSON\n"
+      // this.bookings.push(newBooking)
+      // TODO: the above line is returning a "Converting circular structure to JSON\n"
 
       console.log(
         `Dear ${this.firstName}, your booking has been confirmed from ${checkIn} to ${checkOut}.

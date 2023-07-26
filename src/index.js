@@ -1,12 +1,10 @@
-const chalk = require('chalk')
 const axios = require('axios')
 const { response } = require('express')
 
-const User = require('./user')
-const Hotel = require('./hotel')
-
-// create a user with axios
+// Create instances of Hotel, User and Booking
 async function main() {
+  // Client-side HTTP POST request made to the server
+  // src/routes/hotels.js:18 for Server-side response
   const hotelLasCalas = await axios.post('http://localhost:3000/hotels', {
     name: 'LasCalas',
     location: 'Asuncion, PY',
@@ -40,24 +38,25 @@ async function main() {
     checkOut: '2019-01-05',
     email: marvin.data.email,
   })
-  console.log('--- Booking Data: ---', marvinBooking.data)
 
-  const hotelLasCalas1 = await axios.get('http://localhost:3000/hotels/LasCalas')
-  console.log('Fetch Hotel Data:', hotelLasCalas1.data)
-
-  const allHotels = await axios.get('http://localhost:3000/hotels')
-  console.log('This is the list of all hotels:', allHotels.data)
+  // Client-side HTTP GET request made to the server -> hotels.js Ln8 for Server-side response
+  const hotelInfo = await axios.get('http://localhost:3000/hotels/LasCalas')
+  console.log('----> Fetch Hotel Info & Bookings:', hotelInfo.data)
 
   const allUsers = await axios.get('http://localhost:3000/users')
-  // console.log('--- List of all users ---', allUsers.data)
+  console.log('----> List of all users:', allUsers.data)
 
-  const allBookings = await axios.get('http://localhost:3000/bookings')
-  // console.log('--- List of all bookings ----', allBookings.data)
+  // const allBookings = await axios.get('http://localhost:3000/bookings')
+  // console.log('----> List of all bookings:', allBookings.data)
 
-  // console.log('Create the Hotel Las Calas:', hotelLasCalas.data)
+  // Not tested yet
+  // const marvinInfo = await axios.get('http://localhost:3000/users/Marvin')
+  // console.log('--- Booking Data: ---', marvinBooking.data)
 }
 
 main()
+
+// -------------------------------Legacy Code-------------------------------
 
 // Las Calas Hotel instance is declared
 // const hotelLasCalas = new Hotel('Las Calas', 'Asuncion, PY', 7)

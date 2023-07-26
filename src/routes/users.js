@@ -1,8 +1,5 @@
 const express = require('express')
-const { render } = require('pug')
 const User = require('../user')
-const Hotel = require('../hotel')
-const Booking = require('../booking')
 
 const router = express.Router()
 

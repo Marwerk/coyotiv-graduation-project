@@ -1,5 +1,4 @@
 const express = require('express')
-const { render } = require('pug')
 const Booking = require('../booking')
 const User = require('../user')
 const Hotel = require('../hotel')
@@ -20,6 +19,7 @@ router.post('/', function (req, res, next) {
   res.send(booking)
 
   // currentUser.bookings.push(booking)
+  // above line causes same error as in src/user.js:29
 })
 
 // TODO: push the new booking to the users bookings array
