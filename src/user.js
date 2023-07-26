@@ -23,15 +23,18 @@ class User {
 
     // Check if the hotel has rooms available for the selected dates
     if (hotel.checkAvailability(checkInDate, checkOutDate)) {
-      const booking = new Booking(this, checkInDate, checkOutDate)
-      hotel.bookings.push(booking)
+      const newBooking = Booking.create({ hotel: this, checkInDate, checkOutDate })
+      hotel.bookings.push(newBooking)
+      console.log('Hotel', hotel)
+      console.log('User', this)
       hotel.decreaseAvailability()
+      // this.bookings.push(newBooking) // TODO: this line is returning a "Converting circular structure to JSON\n"
 
       console.log(
         `Dear ${this.firstName}, your booking has been confirmed from ${checkIn} to ${checkOut}.
-        The total price is $${booking.totalPrice}`
+        The total price is $${newBooking.totalPrice}`
       )
-      return booking
+      return newBooking
     }
 
     return console.log(

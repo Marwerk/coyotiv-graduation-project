@@ -20,22 +20,9 @@ router.post('/', function (req, res, next) {
     email: req.body.email,
     address: req.body.address,
     city: req.body.city,
+    bookings: req.body.bookings,
   })
   res.send(user)
-})
-
-/* POST users book a room */
-router.post('/bookings', function (req, res, next) {
-  const userEmail = req.body.email
-  const user = User.list.find(user => user.email === userEmail)
-
-  // Check if the user exists
-  if (!user) return res.status(404).send('User not found')
-
-  // Create a new booking with the provided dates
-  const booking = user.book(req.body.checkIn, req.body.checkOut)
-
-  res.send(booking)
 })
 
 // ------------------------------------------------------------------------

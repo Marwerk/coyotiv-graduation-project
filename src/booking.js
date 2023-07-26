@@ -17,11 +17,14 @@ class Booking {
   }
 
   static create({ hotel, checkInDate, checkOutDate }) {
-    console.log('Creating a new hotel...', { hotel, checkInDate, checkOutDate })
+    console.log('Creating a new Booking...', { hotel, checkInDate, checkOutDate })
     const booking = new Booking(hotel, checkInDate, checkOutDate)
 
+    Booking.list.push(booking)
     return booking
   }
+
+  static list = []
 }
 // ------------------------------------------------------------------------
 module.exports = Booking

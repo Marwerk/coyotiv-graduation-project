@@ -5,19 +5,14 @@ const { response } = require('express')
 const User = require('./user')
 const Hotel = require('./hotel')
 
-// axios.get('http://localhost:4000/users').then(response => {
-//   console.log(response.data)
-// })
-
 // create a user with axios
 async function main() {
   const hotelLasCalas = await axios.post('http://localhost:3000/hotels', {
-    name: 'Las Calas',
+    name: 'LasCalas',
     location: 'Asuncion, PY',
     rooms: 7,
     bookings: [],
   })
-  console.log('Hotel Data:', hotelLasCalas.data)
 
   const marvin = await axios.post('http://localhost:3000/users', {
     firstName: 'Marvin',
@@ -39,12 +34,27 @@ async function main() {
     bookings: [],
   })
 
-  // const booking1 = marvin.book(hotelLasCalas, '2019-01-01', '2019-01-05')
+  const marvinBooking = await axios.post('http://localhost:3000/bookings', {
+    hotel: hotelLasCalas.data.name,
+    checkIn: '2019-01-01',
+    checkOut: '2019-01-05',
+    email: marvin.data.email,
+  })
+  console.log('--- Booking Data: ---', marvinBooking.data)
+
+  const hotelLasCalas1 = await axios.get('http://localhost:3000/hotels/LasCalas')
+  console.log('Fetch Hotel Data:', hotelLasCalas1.data)
+
+  const allHotels = await axios.get('http://localhost:3000/hotels')
+  console.log('This is the list of all hotels:', allHotels.data)
 
   const allUsers = await axios.get('http://localhost:3000/users')
-  // const allBookings = await axios.get('http://localhost:3000/bookings')
+  // console.log('--- List of all users ---', allUsers.data)
 
-  console.log('List of all users', allUsers.data)
+  const allBookings = await axios.get('http://localhost:3000/bookings')
+  // console.log('--- List of all bookings ----', allBookings.data)
+
+  // console.log('Create the Hotel Las Calas:', hotelLasCalas.data)
 }
 
 main()
