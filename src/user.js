@@ -21,28 +21,39 @@ class User {
       return console.log('Invalid booking dates')
     }
 
-    if (!hotel.checkAvailability(checkInDate, checkOutDate)) {
+    // Check if the hotel has rooms available for the selected dates
+    if (hotel.checkAvailability(checkInDate, checkOutDate)) {
       const booking = new Booking(this, checkInDate, checkOutDate)
       hotel.bookings.push(booking)
-      hotel.decreaseRooms()
+      hotel.decreaseAvailability()
 
       console.log(
-        `Dear ${this.firstName}, your booking has been confirmed for ${hotel.name} from ${checkIn} to ${checkOut}.
+        `Dear ${this.firstName}, your booking has been confirmed from ${checkIn} to ${checkOut}.
         The total price is $${booking.totalPrice}`
       )
       return booking
     }
 
-    return console.log(`We're sorry ${this.firstName}, No rooms available for the selected dates`)
+    return console.log(
+      `We're sorry ${this.firstName}, there are no rooms available for the selected dates`
+    )
   }
 
   /* STATIC CREATE */
   static create({ firstName, lastName, phoneNumber, email, address, city, bookings }) {
-    console.log('Creating a new user...', { firstName, lastName, phoneNumber, email, address, city, bookings })
-    const newUser = new User(firstName, lastName, phoneNumber, email, address, city, bookings)
+    console.log('Creating a new user...', {
+      firstName,
+      lastName,
+      phoneNumber,
+      email,
+      address,
+      city,
+      bookings,
+    })
+    const user = new User(firstName, lastName, phoneNumber, email, address, city, bookings)
 
-    User.list.push(newUser)
-    return newUser
+    User.list.push(user)
+    return user
   }
 
   static list = []

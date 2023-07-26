@@ -42,6 +42,7 @@ async function main() {
   // const booking1 = marvin.book(hotelLasCalas, '2019-01-01', '2019-01-05')
 
   const allUsers = await axios.get('http://localhost:3000/users')
+  // const allBookings = await axios.get('http://localhost:3000/bookings')
 
   console.log('List of all users', allUsers.data)
 }
