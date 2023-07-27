@@ -1,5 +1,4 @@
 const express = require('express')
-const { restart } = require('nodemon')
 const Booking = require('../booking')
 const User = require('../user')
 const Hotel = require('../hotel')
