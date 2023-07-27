@@ -1,4 +1,5 @@
 const express = require('express')
+const { restart } = require('nodemon')
 const Booking = require('../booking')
 const User = require('../user')
 const Hotel = require('../hotel')
@@ -12,18 +13,20 @@ router.get('/', function (req, res, next) {
 
 /* POST Booking listing. */
 router.post('/', function (req, res, next) {
-  const currentUser = User.list.find(user => user.email === req.body.email)
-  const currentHotel = Hotel.list.find(hotel => hotel.name === req.body.hotel)
+  try {
+    const currentUser = User.list.find(user => user.email === req.body.email)
+    const currentHotel = Hotel.list.find(hotel => hotel.name === req.body.hotel)
 
-  const booking = currentUser.book(currentHotel, req.body.checkIn, req.body.checkOut)
-  res.send(booking)
-
-  // pass properties of the object, not the whole object itself, in order to fix circular JSON error
-  // currentUser.bookings.push(booking)
-  // above line causes same error as in src/user.js:29
+    const booking = currentUser.book(currentHotel, req.body.checkIn, req.body.checkOut)
+    console.log(booking)
+    res.send(booking)
+    currentUser.bookings.push('Booking ID##', booking.checkInDate, booking.checkOutDate)
+    // in the future, in the line above, instead of currentHotel.name, we would use a booking ID
+  } catch (error) {
+    console.log(error)
+    res.status(400).send(error.message)
+  }
 })
-
-// TODO: push the new booking to the users bookings array
 
 // ------------------------------------------------------------------------
 module.exports = router

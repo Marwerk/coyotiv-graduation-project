@@ -28,7 +28,8 @@ class User {
       hotel.decreaseAvailability()
       // this.bookings.push(newBooking)
       // TODO: the above line is returning a "Converting circular structure to JSON\n"
-      // pass properties of the object, not the whole object itself, in order to fix circular JSON error
+      // To fix: pass properties of the object, not the whole object itself
+      // FIXED IN src/routes/bookings.js:29
 
       console.log(
         `Dear ${this.firstName}, your booking has been confirmed from ${checkIn} to ${checkOut}.

@@ -48,11 +48,6 @@ async function main() {
 
   const allBookings = await axios.get('http://localhost:3000/bookings')
   console.log('----> List of all bookings:', allBookings.data)
-
-  // Not tested yet
-  // TODO Push the booking to the user's bookings array
-  // const marvinInfo = await axios.get('http://localhost:3000/users/Marvin')
-  // console.log('--- Booking Data: ---', marvinBooking.data)
 }
 
 main()
