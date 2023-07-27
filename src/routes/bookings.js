@@ -18,6 +18,7 @@ router.post('/', function (req, res, next) {
   const booking = currentUser.book(currentHotel, req.body.checkIn, req.body.checkOut)
   res.send(booking)
 
+  // pass properties of the object, not the whole object itself, in order to fix circular JSON error
   // currentUser.bookings.push(booking)
   // above line causes same error as in src/user.js:29
 })
