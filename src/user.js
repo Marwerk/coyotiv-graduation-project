@@ -26,10 +26,9 @@ class User {
       const newBooking = Booking.create({ hotel: this, checkInDate, checkOutDate })
       hotel.bookings.push(newBooking)
       hotel.decreaseAvailability()
-      // this.bookings.push(newBooking)
-      // TODO: the above line is returning a "Converting circular structure to JSON\n"
-      // To fix: pass properties of the object, not the whole object itself
-      // FIXED IN src/routes/bookings.js:29
+      this.bookings.push('Booking ID#', newBooking.checkInDate, newBooking.checkOutDate)
+      // TODO: the above line was returning a "Converting circular structure to JSON\n"
+      // FIXED by passing the properties of the object, not the whole object itself. Booking ID is a placeholder
 
       console.log(
         `Dear ${this.firstName}, your booking has been confirmed from ${checkIn} to ${checkOut}.
