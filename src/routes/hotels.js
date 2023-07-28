@@ -1,5 +1,5 @@
 const express = require('express')
-const Hotel = require('../hotel')
+const Hotel = require('../models/hotel')
 
 const router = express.Router()
 

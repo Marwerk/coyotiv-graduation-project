@@ -4,6 +4,7 @@ const path = require('path')
 const cookieParser = require('cookie-parser')
 const logger = require('morgan')
 require('dotenv').config()
+require('./database-connection')
 
 console.log(process.env.MONGODB_CONNECTION_STRING)
 
