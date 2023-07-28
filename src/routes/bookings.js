@@ -17,7 +17,6 @@ router.post('/', function (req, res, next) {
     const currentHotel = Hotel.list.find(hotel => hotel.name === req.body.hotel)
 
     const booking = currentUser.book(currentHotel, req.body.checkIn, req.body.checkOut)
-    console.log(booking)
     res.send(booking)
   } catch (error) {
     console.log(error)

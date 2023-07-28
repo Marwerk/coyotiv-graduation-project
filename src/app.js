@@ -3,6 +3,9 @@ const express = require('express')
 const path = require('path')
 const cookieParser = require('cookie-parser')
 const logger = require('morgan')
+require('dotenv').config()
+
+console.log(process.env.MONGODB_CONNECTION_STRING)
 
 // Here we "require" the routes
 const indexRouter = require('./routes/index')
