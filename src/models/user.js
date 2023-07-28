@@ -1,4 +1,15 @@
+const mongoose = require('mongoose')
 const Booking = require('./booking')
+
+const userSchema = new mongoose.Schema({
+  firstName: String,
+  lastName: String,
+  phoneNumber: String,
+  email: String,
+  address: String,
+  city: String,
+  bookings: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Booking' }],
+})
 
 class User {
   constructor(firstName, lastName, phoneNumber, email, address, city) {
