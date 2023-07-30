@@ -50,13 +50,14 @@ async function main() {
   // Client-side HTTP GET request made to the server -> hotels.js Ln8 for Server-side response
 
   const allUsers = await axios.get('http://localhost:3000/users')
-  console.log('----> List of all users:', allUsers.data)
+  console.log(chalk.bgGreenBright('----> List of all users:'), allUsers.data)
+  console.log(chalk.bgGreenBright('----> List of all users:'), allUsers.data[0].bookings[0].hotel)
 
   const allBookings = await axios.get('http://localhost:3000/bookings')
-  console.log('----> List of all bookings:', allBookings.data)
+  console.log(chalk.bgGreenBright('----> List of all bookings:'), allBookings.data)
 
   const hotelInfo = await axios.get('http://localhost:3000/hotels/LasCalas')
-  console.log('----> Fetch Hotel Info & Bookings:', hotelInfo.data)
+  console.log(chalk.bgGreenBright('----> Fetch Hotel Info & Bookings:'), hotelInfo.data)
 }
 
 main().catch(error =>
