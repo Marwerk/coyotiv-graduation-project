@@ -44,4 +44,6 @@ class User {
 
 // ------------------------------------------------------------------------
 
+userSchema.loadClass(User)
+
 module.exports = mongoose.model('User', userSchema)
