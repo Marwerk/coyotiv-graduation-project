@@ -15,6 +15,7 @@ module.exports = {
   extends: ['airbnb-base', 'plugin:prettier/recommended', 'prettier'],
   plugins: ['import', 'prettier'],
   rules: {
+    'no-underscore-dangle': ['error', { allow: ['_id'] }],
     'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     'import/newline-after-import': ['error', { count: 1 }],
