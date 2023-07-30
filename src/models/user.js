@@ -38,9 +38,6 @@ class User {
       hotel.bookings.push(newBooking)
       hotel.decreaseAvailability()
       this.bookings.push('Booking ID#', newBooking.checkInDate, newBooking.checkOutDate)
-      // this.bookings.push(newBooking)
-      // TODO: the above line was returning a "Converting circular structure to JSON\n"
-      // FIXED by passing the properties of the object, not the whole object itself. Booking ID is a placeholder
 
       console.log(
         `Dear ${this.firstName}, your booking has been confirmed from ${checkIn} to ${checkOut}.
@@ -75,4 +72,5 @@ class User {
 }
 
 // ------------------------------------------------------------------------
-module.exports = User
+// module.exports = User
+module.exports = mongoose.model('User', userSchema)
