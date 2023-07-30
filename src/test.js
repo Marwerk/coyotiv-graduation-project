@@ -51,7 +51,7 @@ async function main() {
 
   const allUsers = await axios.get('http://localhost:3000/users')
   console.log(chalk.bgGreenBright('----> List of all users:'), allUsers.data)
-  console.log(chalk.bgGreenBright('----> List of all users:'), allUsers.data[0].bookings[0].hotel)
+  // console.log(chalk.bgGreenBright('----> List of all users:'), allUsers.data[0].bookings[0].hotel)
 
   const allBookings = await axios.get('http://localhost:3000/bookings')
   console.log(chalk.bgGreenBright('----> List of all bookings:'), allBookings.data)
