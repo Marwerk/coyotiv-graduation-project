@@ -6,8 +6,8 @@ const router = express.Router()
 /* GET Hotel listing */
 // Server-side route that listens for GET request
 // src/index.js:43 for Client-side request
-router.get('/:name', function (req, res, next) {
-  const currentHotel = Hotel.list.find(hotel => hotel.name === req.params.name)
+router.get('/:name', async function (req, res, next) {
+  const currentHotel = await Hotel.find({ name: req.params.name })
   res.send(currentHotel)
 })
 
