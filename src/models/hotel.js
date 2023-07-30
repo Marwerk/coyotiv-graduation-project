@@ -59,4 +59,6 @@ class Hotel {
 
 // ------------------------------------------------------------------------
 // module.exports = Hotel
+
+hotelSchema.loadClass(Hotel)
 module.exports = mongoose.model('Hotel', hotelSchema)
