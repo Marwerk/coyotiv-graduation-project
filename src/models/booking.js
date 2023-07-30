@@ -4,7 +4,7 @@ const autopopulate = require('mongoose-autopopulate')
 const MILLISECONDS_IN_A_DAY = 1000 * 60 * 60 * 24
 
 const bookingSchema = new mongoose.Schema({
-  guest: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+  guest: { type: mongoose.Schema.Types.ObjectId, ref: 'User', autopopulate: true },
   checkInDate: Date,
   checkOutDate: Date,
 })
