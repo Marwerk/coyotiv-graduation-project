@@ -5,7 +5,9 @@ const router = express.Router()
 
 /* GET users listing. */
 router.get('/', function (req, res, next) {
-  res.send(User.list)
+  const users = User.find().then(users => {
+    res.send(users)
+  })
 })
 
 /* POST users listing. */

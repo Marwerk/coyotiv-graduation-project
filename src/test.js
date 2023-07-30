@@ -1,5 +1,6 @@
 const axios = require('axios')
 const { response } = require('express')
+const chalk = require('chalk')
 
 // Create instances of Hotel, User and Booking
 async function main() {
@@ -50,7 +51,9 @@ async function main() {
   console.log('----> List of all bookings:', allBookings.data)
 }
 
-main()
+main().catch(error =>
+  console.log(chalk.bgRedBright('Catched error message:', error.data ? error.data : error))
+)
 
 // -------------------------------Legacy Code-------------------------------
 
