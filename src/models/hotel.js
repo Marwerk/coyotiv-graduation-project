@@ -1,3 +1,12 @@
+const mongoose = require('mongoose')
+
+const hotelSchema = new mongoose.Schema({
+  name: String,
+  location: String,
+  rooms: Number,
+  bookings: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Booking' }],
+})
+
 class Hotel {
   constructor(name, location, rooms) {
     this.name = name
@@ -66,4 +75,5 @@ class Hotel {
 }
 
 // ------------------------------------------------------------------------
-module.exports = Hotel
+// module.exports = Hotel
+module.exports = mongoose.model('Hotel', hotelSchema)
