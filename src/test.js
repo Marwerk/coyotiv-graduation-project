@@ -33,12 +33,12 @@ async function main() {
     bookings: [],
   })
 
-  const marvinBooking = await axios.post('http://localhost:3000/bookings', {
-    hotel: hotelLasCalas.data.name,
-    checkIn: '2019-01-01',
-    checkOut: '2019-01-05',
-    email: marvin.data.email,
-  })
+  // const marvinBooking = await axios.post('http://localhost:3000/bookings', {
+  //   hotel: hotelLasCalas.data.name,
+  //   checkIn: '2019-01-01',
+  //   checkOut: '2019-01-05',
+  //   email: marvin.data.email,
+  // })
 
   // Client-side HTTP GET request made to the server -> hotels.js Ln8 for Server-side response
   const hotelInfo = await axios.get('http://localhost:3000/hotels/LasCalas')
