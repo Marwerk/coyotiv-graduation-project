@@ -29,6 +29,7 @@ class User {
       await hotel.save()
       hotel.decreaseAvailability()
       this.bookings.push(newBooking._id)
+      await this.save()
 
       console.log(
         `Dear ${this.firstName}, your booking has been confirmed from ${checkIn} to ${checkOut}.

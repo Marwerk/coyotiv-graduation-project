@@ -40,6 +40,13 @@ async function main() {
     email: marvin.data.email,
   })
 
+  const federicoBooking = await axios.post('http://localhost:3000/bookings', {
+    hotel: hotelLasCalas.data.name,
+    checkIn: '2019-01-06',
+    checkOut: '2019-01-10',
+    email: federico.data.email,
+  })
+
   // Client-side HTTP GET request made to the server -> hotels.js Ln8 for Server-side response
   const hotelInfo = await axios.get('http://localhost:3000/hotels/LasCalas')
   console.log('----> Fetch Hotel Info & Bookings:', hotelInfo.data)
