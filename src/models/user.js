@@ -24,10 +24,11 @@ class User {
 
     // Check if the hotel has rooms available for the selected dates
     if (hotel.checkAvailability(checkInDate, checkOutDate)) {
-      const newBooking = await Booking.create({ hotel: this, checkInDate, checkOutDate })
-      hotel.bookings.push(newBooking)
+      const newBooking = await Booking.create({ guest: this, hotel, checkInDate, checkOutDate })
+      hotel.bookings.push(newBooking._id)
+      await hotel.save()
       hotel.decreaseAvailability()
-      this.bookings.push('Booking ID#', newBooking.checkInDate, newBooking.checkOutDate)
+      this.bookings.push(newBooking._id)
 
       console.log(
         `Dear ${this.firstName}, your booking has been confirmed from ${checkIn} to ${checkOut}.

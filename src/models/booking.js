@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 const MILLISECONDS_IN_A_DAY = 1000 * 60 * 60 * 24
 
 const bookingSchema = new mongoose.Schema({
-  guest: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
+  guest: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
   checkInDate: Date,
   checkOutDate: Date,
 })
