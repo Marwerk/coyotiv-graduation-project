@@ -4,10 +4,8 @@ const User = require('../models/user')
 const router = express.Router()
 
 /* GET users listing. */
-router.get('/', function (req, res, next) {
-  const users = User.find().then(users => {
-    res.send(users)
-  })
+router.get('/', async function (req, res, next) {
+  res.send(await User.find())
 })
 
 /* POST users listing. */
