@@ -6,15 +6,18 @@ const Hotel = require('../models/hotel')
 const router = express.Router()
 
 /* GET Booking listing. */
-router.get('/', function (req, res, next) {
-  res.send(Booking.list)
+router.get('/', async function (req, res, next) {
+  res.send(await Booking.find())
 })
 
 /* POST Booking listing. */
-router.post('/', function (req, res, next) {
+router.post('/', async function (req, res, next) {
   try {
-    const currentUser = User.list.find(user => user.email === req.body.email)
-    const currentHotel = Hotel.list.find(hotel => hotel.name === req.body.hotel)
+    // const currentUser = User.list.find(user => user.email === req.body.email)
+    // const currentHotel = Hotel.list.find(hotel => hotel.name === req.body.hotel)
+
+    const currentUser = await User.find({ email: req.body.email })
+    const currentHotel = await Hotel.find({ name: req.body.hotel })
 
     const booking = currentUser.book(currentHotel, req.body.checkIn, req.body.checkOut)
     res.send(booking)
