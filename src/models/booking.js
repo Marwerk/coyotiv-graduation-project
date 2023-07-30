@@ -8,12 +8,6 @@ const bookingSchema = new mongoose.Schema({
   checkOutDate: Date,
 })
 class Booking {
-  constructor(guest, checkInDate, checkOutDate) {
-    this.guest = guest
-    this.checkInDate = checkInDate
-    this.checkOutDate = checkOutDate
-  }
-
   get totalPrice() {
     const pricePerNight = 100
 
@@ -22,16 +16,6 @@ class Booking {
 
     return differenceInDays * pricePerNight
   }
-
-  static create({ hotel, checkInDate, checkOutDate }) {
-    console.log('Creating a new Booking...', { hotel, checkInDate, checkOutDate })
-    const booking = new Booking(hotel, checkInDate, checkOutDate)
-
-    Booking.list.push(booking)
-    return booking
-  }
-
-  static list = []
 }
 // ------------------------------------------------------------------------
 // module.exports = Booking

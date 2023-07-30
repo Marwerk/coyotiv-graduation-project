@@ -12,16 +12,6 @@ const userSchema = new mongoose.Schema({
 })
 
 class User {
-  constructor(firstName, lastName, phoneNumber, email, address, city) {
-    this.firstName = firstName
-    this.lastName = lastName
-    this.phoneNumber = phoneNumber
-    this.email = email
-    this.address = address
-    this.city = city
-    this.bookings = []
-  }
-
   book(hotel, checkIn, checkOut) {
     // Convert check-in and check-out dates to Date objects
     const checkInDate = new Date(checkIn)
@@ -50,27 +40,8 @@ class User {
       `We're sorry ${this.firstName}, there are no rooms available for the selected dates`
     )
   }
-
-  /* STATIC CREATE */
-  static create({ firstName, lastName, phoneNumber, email, address, city, bookings }) {
-    console.log('Creating a new user...', {
-      firstName,
-      lastName,
-      phoneNumber,
-      email,
-      address,
-      city,
-      bookings,
-    })
-    const user = new User(firstName, lastName, phoneNumber, email, address, city, bookings)
-
-    User.list.push(user)
-    return user
-  }
-
-  static list = []
 }
 
 // ------------------------------------------------------------------------
-// module.exports = User
+
 module.exports = mongoose.model('User', userSchema)
