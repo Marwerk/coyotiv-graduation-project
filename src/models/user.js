@@ -9,7 +9,7 @@ const userSchema = new mongoose.Schema({
   email: String,
   address: String,
   city: String,
-  bookings: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Booking' }],
+  bookings: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Booking', autopopulate: true }],
 })
 
 class User {
@@ -27,8 +27,8 @@ class User {
     if (hotel.checkAvailability(checkInDate, checkOutDate)) {
       const newBooking = await Booking.create({ guest: this, hotel, checkInDate, checkOutDate })
       hotel.bookings.push(newBooking._id)
-      await hotel.save()
       hotel.decreaseAvailability()
+      await hotel.save()
       this.bookings.push(newBooking._id)
       await this.save()
 

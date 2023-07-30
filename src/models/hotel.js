@@ -1,10 +1,11 @@
 const mongoose = require('mongoose')
+const autopopulate = require('mongoose-autopopulate')
 
 const hotelSchema = new mongoose.Schema({
   name: String,
   location: String,
   rooms: Number,
-  bookings: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Booking' }],
+  bookings: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Booking', autopopulate: true }],
 })
 
 class Hotel {
@@ -60,5 +61,6 @@ class Hotel {
 // ------------------------------------------------------------------------
 // module.exports = Hotel
 
+hotelSchema.plugin(autopopulate)
 hotelSchema.loadClass(Hotel)
 module.exports = mongoose.model('Hotel', hotelSchema)

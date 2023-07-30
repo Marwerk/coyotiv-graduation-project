@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const autopopulate = require('mongoose-autopopulate')
 
 const MILLISECONDS_IN_A_DAY = 1000 * 60 * 60 * 24
 
@@ -18,7 +19,7 @@ class Booking {
   }
 }
 // ------------------------------------------------------------------------
-// module.exports = Booking
 
+bookingSchema.plugin(autopopulate)
 bookingSchema.loadClass(Booking)
 module.exports = mongoose.model('Booking', bookingSchema)
