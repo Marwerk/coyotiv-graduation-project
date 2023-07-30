@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const autopopulate = require('mongoose-autopopulate')
 const Booking = require('./booking')
 
 const userSchema = new mongoose.Schema({
@@ -46,5 +47,6 @@ class User {
 
 // ------------------------------------------------------------------------
 
+userSchema.plugin(autopopulate)
 userSchema.loadClass(User)
 module.exports = mongoose.model('User', userSchema)
