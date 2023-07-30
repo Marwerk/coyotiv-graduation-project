@@ -12,19 +12,14 @@ router.get('/', async function (req, res, next) {
 
 /* POST Booking listing. */
 router.post('/', async function (req, res, next) {
-  try {
-    // const currentUser = User.list.find(user => user.email === req.body.email)
-    // const currentHotel = Hotel.list.find(hotel => hotel.name === req.body.hotel)
+  // const currentUser = User.list.find(user => user.email === req.body.email)
+  // const currentHotel = Hotel.list.find(hotel => hotel.name === req.body.hotel)
 
-    const currentUser = await User.find({ email: req.body.email })
-    const currentHotel = await Hotel.find({ name: req.body.hotel })
+  const currentUser = await User.findOne({ email: req.body.email })
+  const currentHotel = await Hotel.findOne({ name: req.body.hotel })
 
-    const booking = currentUser.book(currentHotel, req.body.checkIn, req.body.checkOut)
-    res.send(booking)
-  } catch (error) {
-    console.log(error)
-    res.status(400).send(error.message)
-  }
+  const booking = await currentUser.book(currentHotel, req.body.checkIn, req.body.checkOut)
+  res.send(booking)
 })
 
 // ------------------------------------------------------------------------

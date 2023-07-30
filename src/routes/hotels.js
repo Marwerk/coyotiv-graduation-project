@@ -14,8 +14,8 @@ router.get('/:name', async function (req, res, next) {
 /* POST Hotel listing */
 // Server-side route that listens for POST request
 // src/index.js:8 for Client-side request
-router.post('/', function (req, res, next) {
-  const hotel = Hotel.create({
+router.post('/', async function (req, res, next) {
+  const hotel = await Hotel.create({
     name: req.body.name,
     location: req.body.location,
     rooms: req.body.rooms,

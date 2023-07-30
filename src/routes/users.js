@@ -9,8 +9,8 @@ router.get('/', async function (req, res, next) {
 })
 
 /* POST users listing. */
-router.post('/', function (req, res, next) {
-  const user = User.create({
+router.post('/', async function (req, res, next) {
+  const user = await User.create({
     firstName: req.body.firstName,
     lastName: req.body.lastName,
     phoneNumber: req.body.phoneNumber,
