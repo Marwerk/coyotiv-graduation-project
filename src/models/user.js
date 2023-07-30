@@ -12,7 +12,7 @@ const userSchema = new mongoose.Schema({
 })
 
 class User {
-  book(hotel, checkIn, checkOut) {
+  async book(hotel, checkIn, checkOut) {
     // Convert check-in and check-out dates to Date objects
     const checkInDate = new Date(checkIn)
     const checkOutDate = new Date(checkOut)
@@ -24,7 +24,7 @@ class User {
 
     // Check if the hotel has rooms available for the selected dates
     if (hotel.checkAvailability(checkInDate, checkOutDate)) {
-      const newBooking = Booking.create({ hotel: this, checkInDate, checkOutDate })
+      const newBooking = await Booking.create({ hotel: this, checkInDate, checkOutDate })
       hotel.bookings.push(newBooking)
       hotel.decreaseAvailability()
       this.bookings.push('Booking ID#', newBooking.checkInDate, newBooking.checkOutDate)
@@ -45,5 +45,4 @@ class User {
 // ------------------------------------------------------------------------
 
 userSchema.loadClass(User)
-
 module.exports = mongoose.model('User', userSchema)
