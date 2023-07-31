@@ -14,6 +14,9 @@ router.get('/:name', async function (req, res, next) {
 /* POST Hotel listing */
 // Server-side route that listens for POST request
 // src/index.js:8 for Client-side request
+
+// TODO init route for admins only
+// TODO only create hotel if it doesn't exist already (if hotel >= 1, don't create)
 router.post('/', async function (req, res, next) {
   const hotel = await Hotel.create({
     name: req.body.name,
