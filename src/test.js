@@ -2,18 +2,17 @@ const axios = require('axios')
 const { response } = require('express')
 const chalk = require('chalk')
 
-// Create instances of Hotel, User and Booking
+axios.defaults.baseURL = 'http://localhost:3000'
+
 async function main() {
-  // Client-side HTTP POST request made to the server
-  // src/routes/hotels.js:18 for Server-side response
-  const hotelLasCalas = await axios.post('http://localhost:3000/hotels', {
+  const hotelLasCalas = await axios.post('/hotels', {
     name: 'LasCalas',
     location: 'Asuncion, PY',
     rooms: 7,
     bookings: [],
   })
 
-  const marvin = await axios.post('http://localhost:3000/users', {
+  const marvin = await axios.post('/users', {
     firstName: 'Marvin',
     lastName: 'Werkmeister',
     phoneNumber: '555-555-5555',
@@ -23,7 +22,7 @@ async function main() {
     bookings: [],
   })
 
-  const federico = await axios.post('http://localhost:3000/users', {
+  const federico = await axios.post('/users', {
     firstName: 'Federico',
     lastName: 'Carrillo',
     phoneNumber: '888-888-8888',
@@ -33,30 +32,29 @@ async function main() {
     bookings: [],
   })
 
-  const marvinBooking = await axios.post('http://localhost:3000/bookings', {
+  const marvinBooking = await axios.post('/bookings', {
     hotel: hotelLasCalas.data.name,
     checkIn: '2019-01-01',
     checkOut: '2019-01-05',
     user: marvin.data._id,
   })
 
-  const federicoBooking = await axios.post('http://localhost:3000/bookings', {
+  const federicoBooking = await axios.post('/bookings', {
     hotel: hotelLasCalas.data.name,
     checkIn: '2019-01-06',
     checkOut: '2019-01-10',
     user: federico.data._id,
   })
 
-  // Client-side HTTP GET request made to the server -> hotels.js Ln8 for Server-side response
+  // const deleteFedericoBooking = await axios.delete(`/bookings/${federicoBooking.data._id}`)
 
-  const allUsers = await axios.get('http://localhost:3000/users')
+  const allUsers = await axios.get('/users')
   console.log(chalk.bgGreenBright('----> List of all users:'), allUsers.data)
-  // console.log(chalk.bgGreenBright('----> List of all users:'), allUsers.data[0].bookings[0].hotel)
 
-  const allBookings = await axios.get('http://localhost:3000/bookings')
+  const allBookings = await axios.get('/bookings')
   console.log(chalk.bgGreenBright('----> List of all bookings:'), allBookings.data)
 
-  const hotelInfo = await axios.get('http://localhost:3000/hotels/LasCalas')
+  const hotelInfo = await axios.get('/hotels/LasCalas')
   console.log(chalk.bgGreenBright('----> Fetch Hotel Info & Bookings:'), hotelInfo.data)
 }
 

@@ -5,14 +5,13 @@ const Hotel = require('../models/hotel')
 
 const router = express.Router()
 
-/* GET Booking listing. */
+/* GET route handler */
 router.get('/', async function (req, res, next) {
   res.send(await Booking.find())
 })
 
-/* POST Booking listing. */
+/* POST route handler */
 router.post('/', async function (req, res, next) {
-  // const currentUser = await User.findOne({ email: req.body.email })
   const currentUser = await User.findOne({ _id: req.body.user })
   const currentHotel = await Hotel.findOne({ name: req.body.hotel })
 
@@ -20,5 +19,10 @@ router.post('/', async function (req, res, next) {
   res.send(booking)
 })
 
+/* DELETE route handler */
+router.delete('/:id', async function (req, res, next) {
+  const deleteBooking = await Booking.findByIdAndDelete(req.params.id)
+  res.send(deleteBooking)
+})
 // ------------------------------------------------------------------------
 module.exports = router

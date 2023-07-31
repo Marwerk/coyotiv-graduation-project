@@ -9,9 +9,7 @@ const hotelSchema = new mongoose.Schema({
 })
 
 class Hotel {
-  // Check if rooms are available on given range
   checkAvailability(checkIn, checkOut) {
-    // Check if there are rooms available
     if (this.rooms <= 0) {
       return false
     }
