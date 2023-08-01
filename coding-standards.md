@@ -39,3 +39,23 @@ Use numbers appropriately (e.g. ISO9000)
 
 - Start with a verb
 - Always in present tense
+
+## Docker commands
+
+- docker run -it alpine sh
+- docker run -it node:alpinesh
+- "node" is the image : variant "alpine"
+- shortcut to run node in a container
+  - docker run -it node:alpine node
+- command to build an image
+  - docker build -t <image-name> .
+- command to run a container
+  - docker run -it -p 3000:3000 <image-name>
+
+# Step by step guide to dockerfile structure
+
+- Install an OS
+- Install node.js
+- Add your project files
+- Run npm install
+- Run npm start

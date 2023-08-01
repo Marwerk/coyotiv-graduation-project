@@ -3,14 +3,13 @@ const Hotel = require('../models/hotel')
 
 const router = express.Router()
 
-/* GET Hotel listing */
-// Server-side route that listens for GET request
-// src/index.js:43 for Client-side request
+/* GET route handler */
 router.get('/:name', async function (req, res, next) {
   const currentHotel = await Hotel.find({ name: req.params.name })
   res.send(currentHotel)
 })
 
+/* POST route handler */
 router.post('/', async function (req, res, next) {
   const hotelExists = await Hotel.findOne()
 
