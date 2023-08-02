@@ -17,13 +17,13 @@ class Hotel {
   }
 }
 
-// ------------------------------------------------------------------------
+// ------------------------------------------------------------------------ //
 
 hotelSchema.plugin(autopopulate)
 hotelSchema.loadClass(Hotel)
 module.exports = mongoose.model('Hotel', hotelSchema)
 
-// -------------------------------Legacy Code------------------------------
+// -------------------------------Legacy Code------------------------------ //
 
 // checkAvailability(checkIn, checkOut) {
 //   if (this.rooms <= 0) {

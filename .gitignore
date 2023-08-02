@@ -26,3 +26,4 @@ node_modules/
 .history
 data
 src/routes/drop-db.js
+drop-db.js

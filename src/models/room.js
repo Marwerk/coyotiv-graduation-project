@@ -19,15 +19,15 @@ class Room {
       return false
     }
 
-    // Loop over each existing booking to check for date overlap
-    for (let i = 0; i < this.units.length; i += 1) {
-      const booking = this.units[i]
+    // // Loop over each existing booking to check for date overlap
+    // for (let i = 0; i < this.units.length; i += 1) {
+    //   const booking = this.units[i]
 
-      // check if the requested dates overlap with an existing booking
-      if (checkIn < booking.checkOutDate && checkOut > booking.checkInDate) {
-        return false
-      }
-    }
+    //   // check if the requested dates overlap with an existing booking
+    //   if (checkIn < booking.checkOutDate && checkOut > booking.checkInDate) {
+    //     return false
+    //   }
+    // }
 
     // If there are rooms available and no overlap in dates, return true
     return true
@@ -38,7 +38,7 @@ class Room {
       this.units -= 1
       await this.save()
     } else {
-      console.log('All rooms are booked')
+      console.log('No rooms available in this date range')
     }
   }
 }

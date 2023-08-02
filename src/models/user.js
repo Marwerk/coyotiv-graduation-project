@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 const autopopulate = require('mongoose-autopopulate')
 const Booking = require('./booking')
+const Hotel = require('./hotel')
 
 const userSchema = new mongoose.Schema({
   firstName: String,
@@ -28,11 +29,18 @@ class User {
     // Check if the hotel has rooms available for the selected dates
     if (roomType.checkAvailability(roomType, checkInDate, checkOutDate)) {
       const newBooking = await Booking.create({ guest: this, roomType, checkInDate, checkOutDate })
+
       roomType.bookings.push(newBooking._id)
+
       await roomType.decreaseAvailability()
       await roomType.save()
+
       this.bookings.push(newBooking._id)
       await this.save()
+
+      // TODO: related to the TODO in the hotel model, line 10
+      // Hotel.bookings.push(newBooking._id)
+      // await this.save()
 
       console.log(
         `Dear ${this.firstName}, your booking has been confirmed from ${checkIn} to ${checkOut}.
@@ -47,7 +55,7 @@ class User {
   }
 }
 
-// ------------------------------------------------------------------------
+// ------------------------------------------------------------------------ //
 
 userSchema.plugin(autopopulate)
 userSchema.loadClass(User)
