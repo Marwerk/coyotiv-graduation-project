@@ -5,8 +5,7 @@ const roomSchema = new mongoose.Schema({
   hotel: { type: mongoose.Schema.Types.ObjectId, ref: 'Hotel', autopopulate: { maxDepth: 1 } },
   type: String,
   capacity: Number,
-  // TODO replace rooms with units
-  rooms: Number,
+  units: Number,
   amenities: [String],
   // TODO ask Armagan if it's necessary to keep the bookings in the room model + hotel model
   bookings: [

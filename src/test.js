@@ -18,7 +18,7 @@ async function main() {
     hotel: hotelLasCalas.data,
     type: 'double',
     capacity: 2,
-    rooms: 2,
+    units: 2,
     amenities: ['wifi', 'tv', 'air conditioning'],
   })
 
@@ -26,7 +26,7 @@ async function main() {
     hotel: hotelLasCalas.data,
     type: 'single',
     capacity: 1,
-    rooms: 3,
+    units: 3,
     amenities: ['wifi', 'tv', 'air conditioning'],
   })
 
@@ -34,7 +34,7 @@ async function main() {
     hotel: hotelLasCalas.data,
     type: 'suite',
     capacity: 2,
-    rooms: 2,
+    units: 2,
     amenities: ['wifi', 'tv', 'air conditioning', 'balcony'],
   })
 
@@ -75,10 +75,13 @@ async function main() {
   // const deleteFedericoBooking = await axios.delete(`/bookings/${federicoBooking.data._id}`)
 
   const allUsers = await axios.get('/users')
-  console.log(chalk.bgGreenBright('----> List of all users:'), allUsers.data)
+  console.log(chalk.bgGreenBright('----> List of all users <----'), allUsers.data)
 
   const allBookings = await axios.get('/bookings')
-  console.log(chalk.bgGreenBright('----> List of all bookings:'), allBookings.data)
+  console.log(chalk.bgGreenBright('----> List of all bookings <----'), allBookings.data)
+
+  const allRooms = await axios.get('/rooms')
+  console.log(chalk.bgGreenBright('----> List of all rooms <----'), allRooms.data)
 
   const hotelInfo = await axios.get('/hotels/LasCalas')
   console.log(chalk.bgGreenBright('----> Fetch Hotel Info & Bookings:'), hotelInfo.data)
