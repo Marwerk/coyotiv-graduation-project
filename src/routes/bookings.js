@@ -24,5 +24,6 @@ router.delete('/:id', async function (req, res, next) {
   const deleteBooking = await Booking.findByIdAndDelete(req.params.id)
   res.send(deleteBooking)
 })
+
 // ------------------------------------------------------------------------
 module.exports = router

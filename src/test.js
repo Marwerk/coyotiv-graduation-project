@@ -7,6 +7,10 @@ axios.defaults.baseURL = 'http://localhost:3000'
 // ------------------------------------------------------------------------
 
 async function main() {
+  // DROP DB
+  await axios.get('/drop-db')
+
+  // CREATE
   const hotelLasCalas = await axios.post('/hotels', {
     name: 'LasCalas',
     location: 'Asuncion, PY',

@@ -14,6 +14,7 @@ const usersRouter = require('./routes/users')
 const hotelsRouter = require('./routes/hotels')
 const bookingsRouter = require('./routes/bookings')
 const roomsRouter = require('./routes/rooms')
+const dropDbRouter = require('./routes/drop-db')
 
 const app = express()
 
@@ -42,6 +43,7 @@ app.use('/users', usersRouter)
 app.use('/hotels', hotelsRouter)
 app.use('/bookings', bookingsRouter)
 app.use('/rooms', roomsRouter)
+app.use('/drop-db', dropDbRouter)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

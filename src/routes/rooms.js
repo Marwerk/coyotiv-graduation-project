@@ -13,7 +13,6 @@ router.post('/', async function (req, res, next) {
 
   if (roomTypeExists) {
     res.status(200).send(roomTypeExists)
-    console.log('Room type already exists')
   } else {
     const room = await Room.create({
       hotel: req.body.hotel,
