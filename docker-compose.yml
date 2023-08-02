@@ -9,7 +9,7 @@ services:
     # depends_on:
     #  - db
     env_file:
-      - .env.example
+      - .env
     environment:
       - APP_NAME=api
     volumes:
