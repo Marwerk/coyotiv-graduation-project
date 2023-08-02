@@ -17,7 +17,13 @@ class Hotel {
   }
 }
 
-// -------------------------------Legacy Code-------------------------------
+// ------------------------------------------------------------------------
+
+hotelSchema.plugin(autopopulate)
+hotelSchema.loadClass(Hotel)
+module.exports = mongoose.model('Hotel', hotelSchema)
+
+// -------------------------------Legacy Code------------------------------
 
 // checkAvailability(checkIn, checkOut) {
 //   if (this.rooms <= 0) {
@@ -56,9 +62,3 @@ class Hotel {
 
 //   console.log(`Booking for ${email} was ${bookingWasFound ? '' : 'not '}found`)
 // }
-
-// ------------------------------------------------------------------------
-
-hotelSchema.plugin(autopopulate)
-hotelSchema.loadClass(Hotel)
-module.exports = mongoose.model('Hotel', hotelSchema)

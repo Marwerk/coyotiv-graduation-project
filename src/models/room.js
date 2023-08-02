@@ -34,8 +34,8 @@ class Room {
   }
 
   async decreaseAvailability() {
-    if (this.rooms > 0) {
-      this.rooms -= 1
+    if (this.units > 0) {
+      this.units -= 1
       await this.save()
     } else {
       console.log('All rooms are booked')

@@ -91,7 +91,7 @@ main().catch(error =>
   console.log(chalk.bgRedBright('Error message:', error.data ? error.data : error))
 )
 
-// -------------------------------Legacy Code-------------------------------
+// -------------------------------Legacy Code------------------------------
 
 // Las Calas Hotel instance is declared
 // const hotelLasCalas = new Hotel('Las Calas', 'Asuncion, PY', 7)
