@@ -9,15 +9,23 @@ router.get('/', async function (req, res, next) {
 })
 
 router.post('/', async function (req, res, next) {
-  const room = await Room.create({
-    hotel: req.body.hotel,
-    type: req.body.type,
-    capacity: req.body.capacity,
-    units: req.body.units,
-    amenities: req.body.amenities,
-  })
-  await room.hotel.addRoom(room)
-  res.send(room)
+  const roomTypeExists = await Room.findOne({ type: req.body.type })
+
+  if (roomTypeExists) {
+    res.status(200).send(roomTypeExists)
+    console.log('Room type already exists')
+  } else {
+    const room = await Room.create({
+      hotel: req.body.hotel,
+      type: req.body.type,
+      capacity: req.body.capacity,
+      units: req.body.units,
+      amenities: req.body.amenities,
+    })
+
+    await room.hotel.addRoom(room)
+    res.status(201).send(room)
+  }
 })
 
 // ------------------------------------------------------------------------
