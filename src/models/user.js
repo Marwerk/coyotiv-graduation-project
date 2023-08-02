@@ -9,7 +9,9 @@ const userSchema = new mongoose.Schema({
   email: String,
   address: String,
   city: String,
-  bookings: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Booking', autopopulate: true }],
+  bookings: [
+    { type: mongoose.Schema.Types.ObjectId, ref: 'Booking', autopopulate: { maxDepth: 1 } },
+  ],
 })
 
 class User {

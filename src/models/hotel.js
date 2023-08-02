@@ -4,8 +4,10 @@ const autopopulate = require('mongoose-autopopulate')
 const hotelSchema = new mongoose.Schema({
   name: String,
   location: String,
-  rooms: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Room', autopopulate: true }],
-  bookings: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Booking', autopopulate: true }],
+  rooms: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Room', autopopulate: { maxDepth: 1 } }],
+  bookings: [
+    { type: mongoose.Schema.Types.ObjectId, ref: 'Booking', autopopulate: { maxDepth: 1 } },
+  ],
 })
 
 class Hotel {
