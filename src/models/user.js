@@ -15,7 +15,7 @@ const userSchema = new mongoose.Schema({
 })
 
 class User {
-  async book(hotel, checkIn, checkOut) {
+  async book(roomType, checkIn, checkOut) {
     // Convert check-in and check-out dates to Date objects
     const checkInDate = new Date(checkIn)
     const checkOutDate = new Date(checkOut)
@@ -26,11 +26,11 @@ class User {
     }
 
     // Check if the hotel has rooms available for the selected dates
-    if (hotel.checkAvailability(checkInDate, checkOutDate)) {
-      const newBooking = await Booking.create({ guest: this, hotel, checkInDate, checkOutDate })
-      hotel.bookings.push(newBooking._id)
-      await hotel.decreaseAvailability()
-      await hotel.save()
+    if (roomType.checkAvailability(roomType, checkInDate, checkOutDate)) {
+      const newBooking = await Booking.create({ guest: this, roomType, checkInDate, checkOutDate })
+      roomType.bookings.push(newBooking._id)
+      await roomType.decreaseAvailability()
+      await roomType.save()
       this.bookings.push(newBooking._id)
       await this.save()
 
