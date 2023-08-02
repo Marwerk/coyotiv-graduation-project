@@ -2,10 +2,14 @@ const mongoose = require('mongoose')
 const autopopulate = require('mongoose-autopopulate')
 
 const roomSchema = new mongoose.Schema({
+  hotel: { type: mongoose.Schema.Types.ObjectId, ref: 'Hotel', autopopulate: true },
   type: String,
   capacity: Number,
-  units: Number,
+  // TODO replace rooms with units
+  rooms: Number,
   amenities: [String],
+  // TODO ask Armagan if it's necessary to keep the bookings in the room model + hotel model
+  bookings: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Booking', autopopulate: true }],
 })
 
 class Room {

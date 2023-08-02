@@ -27,7 +27,7 @@ class User {
     if (hotel.checkAvailability(checkInDate, checkOutDate)) {
       const newBooking = await Booking.create({ guest: this, hotel, checkInDate, checkOutDate })
       hotel.bookings.push(newBooking._id)
-      hotel.decreaseAvailability()
+      await hotel.decreaseAvailability()
       await hotel.save()
       this.bookings.push(newBooking._id)
       await this.save()

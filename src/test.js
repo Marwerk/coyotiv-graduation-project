@@ -10,28 +10,31 @@ async function main() {
   const hotelLasCalas = await axios.post('/hotels', {
     name: 'LasCalas',
     location: 'Asuncion, PY',
-    rooms: 7,
+    // rooms: 7,
     bookings: [],
   })
 
-  const doubleRoom = await axios.post('/hotels/rooms', {
+  const doubleRoom = await axios.post('/rooms', {
+    hotel: hotelLasCalas.data,
     type: 'double',
     capacity: 2,
-    units: 2,
+    rooms: 2,
     amenities: ['wifi', 'tv', 'air conditioning'],
   })
 
-  const singleRoom = await axios.post('/hotels/rooms', {
+  const singleRoom = await axios.post('/rooms', {
+    hotel: hotelLasCalas.data,
     type: 'single',
     capacity: 1,
-    units: 3,
+    rooms: 3,
     amenities: ['wifi', 'tv', 'air conditioning'],
   })
 
-  const suiteRoom = await axios.post('/hotels/rooms', {
+  const suiteRoom = await axios.post('/rooms', {
+    hotel: hotelLasCalas.data,
     type: 'suite',
     capacity: 2,
-    units: 2,
+    rooms: 2,
     amenities: ['wifi', 'tv', 'air conditioning', 'balcony'],
   })
 
