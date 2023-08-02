@@ -4,12 +4,35 @@ const chalk = require('chalk')
 
 axios.defaults.baseURL = 'http://localhost:3000'
 
+// ------------------------------------------------------------------------
+
 async function main() {
   const hotelLasCalas = await axios.post('/hotels', {
     name: 'LasCalas',
     location: 'Asuncion, PY',
     rooms: 7,
     bookings: [],
+  })
+
+  const doubleRoom = await axios.post('/hotels/rooms', {
+    type: 'double',
+    capacity: 2,
+    units: 2,
+    amenities: ['wifi', 'tv', 'air conditioning'],
+  })
+
+  const singleRoom = await axios.post('/hotels/rooms', {
+    type: 'single',
+    capacity: 1,
+    units: 3,
+    amenities: ['wifi', 'tv', 'air conditioning'],
+  })
+
+  const suiteRoom = await axios.post('/hotels/rooms', {
+    type: 'suite',
+    capacity: 2,
+    units: 2,
+    amenities: ['wifi', 'tv', 'air conditioning', 'balcony'],
   })
 
   const marvin = await axios.post('/users', {

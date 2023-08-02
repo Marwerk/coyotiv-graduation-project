@@ -1,0 +1,24 @@
+
+Hotel has a total of 7 rooms
+
+**doubleRoom
+
+type: double
+capacity: 2 people each room
+units: 2 available (room 1 and 3)
+amenities: lorem ipsum
+
+
+**single/suiteRoom
+
+type: single
+capacity: 1 person each room
+units: 3 available (room 2, 4 and 6)
+amenities: lorem ipsum
+
+**suiteRoom
+
+type: suite
+capacity: 2 people each room
+units: 2 available (room 5 and 7)
+amenities: lorem ipsum
