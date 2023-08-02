@@ -1,7 +1,7 @@
 const express = require('express')
 const Booking = require('../models/booking')
 const User = require('../models/user')
-const Hotel = require('../models/hotel')
+const Room = require('../models/room')
 
 const router = express.Router()
 
@@ -13,9 +13,9 @@ router.get('/', async function (req, res, next) {
 /* POST route handler */
 router.post('/', async function (req, res, next) {
   const currentUser = await User.findOne({ _id: req.body.user })
-  const currentHotel = await Hotel.findOne({ name: req.body.hotel })
+  const roomType = await Room.findOne({ type: req.body.type })
 
-  const booking = await currentUser.book(currentHotel, req.body.checkIn, req.body.checkOut)
+  const booking = await currentUser.book(roomType, req.body.checkIn, req.body.checkOut)
   res.send(booking)
 })
 

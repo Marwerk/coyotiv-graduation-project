@@ -59,14 +59,14 @@ async function main() {
   })
 
   const marvinBooking = await axios.post('/bookings', {
-    hotel: hotelLasCalas.data.name,
+    type: doubleRoom.data.type,
     checkIn: '2019-01-01',
     checkOut: '2019-01-05',
     user: marvin.data._id,
   })
 
   const federicoBooking = await axios.post('/bookings', {
-    hotel: hotelLasCalas.data.name,
+    type: suiteRoom.data.type,
     checkIn: '2019-01-06',
     checkOut: '2019-01-10',
     user: federico.data._id,
@@ -84,7 +84,7 @@ async function main() {
   console.log(chalk.bgGreenBright('----> List of all rooms <----'), allRooms.data)
 
   const hotelInfo = await axios.get('/hotels/LasCalas')
-  console.log(chalk.bgGreenBright('----> Fetch Hotel Info & Bookings:'), hotelInfo.data)
+  console.log(chalk.bgGreenBright('----> Fetch Hotel Info & Bookings <----'), hotelInfo.data)
 }
 
 main().catch(error =>
