@@ -21,6 +21,8 @@ node_modules/
 .env.test.local
 .env.production.local
 .env.local
+
+# Miscellaneuos
 .history
 data
-src/models/types of rooms
+src/routes/drop-db.js
