@@ -42,11 +42,8 @@ Use numbers appropriately (e.g. ISO9000)
 
 ## Docker commands
 
-- docker run -it alpine sh
-- docker run -it node:alpinesh
+- docker run -it node:alpine
 - "node" is the image : variant "alpine"
-- shortcut to run node in a container
-  - docker run -it node:alpine node
 - command to build an image
   - docker build -t <image-name> .
 - command to run a container
