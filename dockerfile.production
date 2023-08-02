@@ -12,3 +12,5 @@ ADD bin ./bin
 ADD src ./src
 
 CMD [ "npm", "start" ]
+
+# File ilustrating the setup of the production environment

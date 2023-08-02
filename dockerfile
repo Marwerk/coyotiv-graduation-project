@@ -13,3 +13,5 @@ RUN npm install
 ADD bin ./bin
 
 CMD [ "nodemon" ]
+
+# File ilustrating the setup of the development environment
