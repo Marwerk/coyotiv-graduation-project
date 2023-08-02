@@ -18,6 +18,7 @@ class Booking {
     return differenceInDays * pricePerNight
   }
 }
+
 // ------------------------------------------------------------------------
 
 bookingSchema.plugin(autopopulate)
