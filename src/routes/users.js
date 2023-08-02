@@ -10,16 +10,24 @@ router.get('/', async function (req, res, next) {
 
 /* POST users listing. */
 router.post('/', async function (req, res, next) {
-  const user = await User.create({
-    firstName: req.body.firstName,
-    lastName: req.body.lastName,
-    phoneNumber: req.body.phoneNumber,
-    email: req.body.email,
-    address: req.body.address,
-    city: req.body.city,
-    bookings: req.body.bookings,
-  })
-  res.send(user)
+  const userExists = await User.findOne({ email: req.body.email })
+
+  if (userExists) {
+    res.status(200).send(userExists)
+    console.log('User already exists')
+  } else {
+    const user = await User.create({
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      phoneNumber: req.body.phoneNumber,
+      email: req.body.email,
+      address: req.body.address,
+      city: req.body.city,
+      bookings: req.body.bookings,
+    })
+
+    res.status(201).send(user)
+  }
 })
 
 // ------------------------------------------------------------------------
