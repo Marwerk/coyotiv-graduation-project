@@ -25,6 +25,10 @@ router.delete('/:id', async function (req, res, next) {
   res.send(deleteBooking)
 })
 
+// TODO PATCH Route Handler
+
+// TODO DELETE Route Handler
+
 // ------------------------------------------------------------------------ //
 
 module.exports = router

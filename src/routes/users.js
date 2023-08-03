@@ -3,12 +3,12 @@ const User = require('../models/user')
 
 const router = express.Router()
 
-/* GET users listing. */
+//  GET Route Handler
 router.get('/', async function (req, res, next) {
   res.send(await User.find())
 })
 
-/* POST users listing. */
+// POST Route Handler
 router.post('/', async function (req, res, next) {
   const userExists = await User.findOne({ email: req.body.email })
 
@@ -30,5 +30,10 @@ router.post('/', async function (req, res, next) {
   }
 })
 
-// ------------------------------------------------------------------------
+// TODO PATCH Route Handler
+
+// TODO DELETE Route Handler
+
+// ------------------------------------------------------------------------ //
+
 module.exports = router

@@ -4,7 +4,7 @@ const chalk = require('chalk')
 
 axios.defaults.baseURL = 'http://localhost:3000'
 
-// ------------------------------------------------------------------------
+// ------------------------------------------------------------------------ //
 
 async function main() {
   // DROP DB
@@ -76,8 +76,10 @@ async function main() {
     user: federico.data._id,
   })
 
+  // DELETE
   // const deleteFedericoBooking = await axios.delete(`/bookings/${federicoBooking.data._id}`)
 
+  // READ
   const allUsers = await axios.get('/users')
   console.log(chalk.bgGreenBright('----> List of all users <----'), allUsers.data)
 
@@ -95,7 +97,7 @@ main().catch(error =>
   console.log(chalk.bgRedBright('Error message:', error.data ? error.data : error))
 )
 
-// -------------------------------Legacy Code------------------------------
+// -------------------------------Legacy Code------------------------------ //
 
 // Las Calas Hotel instance is declared
 // const hotelLasCalas = new Hotel('Las Calas', 'Asuncion, PY', 7)

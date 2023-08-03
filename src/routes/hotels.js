@@ -3,13 +3,13 @@ const Hotel = require('../models/hotel')
 
 const router = express.Router()
 
-/* GET route handler */
+//  GET Route Handler
 router.get('/:name', async function (req, res, next) {
   const currentHotel = await Hotel.find({ name: req.params.name })
   res.send(currentHotel)
 })
 
-/* POST route handler */
+// POST Route Handler
 router.post('/', async function (req, res, next) {
   const hotelExists = await Hotel.findOne()
 
@@ -25,5 +25,11 @@ router.post('/', async function (req, res, next) {
     res.send(hotel)
   }
 })
+
+// TODO PATCH Route Handler
+
+// TODO DELETE Route Handler
+
+// ------------------------------------------------------------------------ //
 
 module.exports = router

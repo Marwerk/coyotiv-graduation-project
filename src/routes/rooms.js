@@ -3,11 +3,13 @@ const Room = require('../models/room')
 
 const router = express.Router()
 
+//  GET Route Handler
 router.get('/', async function (req, res, next) {
   const allRooms = await Room.find()
   res.send(allRooms)
 })
 
+// POST Route Handler
 router.post('/', async function (req, res, next) {
   const roomTypeExists = await Room.findOne({ type: req.body.type })
 
@@ -27,6 +29,10 @@ router.post('/', async function (req, res, next) {
   }
 })
 
-// ------------------------------------------------------------------------
+// TODO PATCH Route Handler
+
+// TODO DELETE Route Handler
+
+// ------------------------------------------------------------------------ //
 
 module.exports = router
