@@ -23,6 +23,7 @@ class User {
 
     // Check if the dates are valid before creating a booking
     if (checkInDate >= checkOutDate) {
+      // throw new Error('Invalid booking dates')
       return console.log('Invalid booking dates')
     }
 
@@ -33,11 +34,13 @@ class User {
     if (roomType.checkAvailability(roomType, checkInDate, checkOutDate)) {
       const newBooking = await Booking.create({ guest: this, roomType, checkInDate, checkOutDate })
 
+      // TODO remove ._id
       roomType.bookings.push(newBooking._id)
 
       await roomType.decreaseAvailability()
       await roomType.save()
 
+      // TODO remove ._id
       this.bookings.push(newBooking._id)
       await this.save()
 

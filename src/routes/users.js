@@ -23,7 +23,6 @@ router.post('/', async function (req, res, next) {
       email: req.body.email,
       address: req.body.address,
       city: req.body.city,
-      bookings: req.body.bookings,
     })
 
     res.status(201).send(user)

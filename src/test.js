@@ -62,6 +62,16 @@ async function main() {
     bookings: [],
   })
 
+  const numan = await axios.post('/users', {
+    firstName: 'Numan',
+    lastName: 'Duman',
+    phoneNumber: '888-888-8888',
+    email: 'numan.blerg@gmail.com',
+    address: 'Timbuktustrasse 8',
+    city: 'Berlin',
+    bookings: [],
+  })
+
   const marvinBooking = await axios.post('/bookings', {
     type: doubleRoom.data.type,
     checkIn: '2019-01-01',
@@ -74,6 +84,20 @@ async function main() {
     checkIn: '2019-01-06',
     checkOut: '2019-01-10',
     user: federico.data._id,
+  })
+
+  const numanBooking = await axios.post('/bookings', {
+    type: suiteRoom.data.type,
+    checkIn: '2019-01-08',
+    checkOut: '2019-01-12',
+    user: numan.data._id,
+  })
+
+  const marvinBooking2 = await axios.post('/bookings', {
+    type: suiteRoom.data.type,
+    checkIn: '2019-01-11',
+    checkOut: '2019-01-12',
+    user: marvin.data._id,
   })
 
   // DELETE

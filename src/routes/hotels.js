@@ -4,6 +4,7 @@ const Hotel = require('../models/hotel')
 const router = express.Router()
 
 //  GET Route Handler
+// TODO replace name with id
 router.get('/:name', async function (req, res, next) {
   const currentHotel = await Hotel.find({ name: req.params.name })
   res.send(currentHotel)
