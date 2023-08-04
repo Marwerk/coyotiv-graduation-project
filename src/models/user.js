@@ -27,6 +27,9 @@ class User {
     }
 
     // Check if the hotel has rooms available for the selected dates
+    // TODO: struggling a bit to understand this. A check in overlapping dates would only make sense
+    // when there are no more rooms available, in order to return the earliest available date, right?
+
     if (roomType.checkAvailability(roomType, checkInDate, checkOutDate)) {
       const newBooking = await Booking.create({ guest: this, roomType, checkInDate, checkOutDate })
 
@@ -38,7 +41,7 @@ class User {
       this.bookings.push(newBooking._id)
       await this.save()
 
-      // TODO: related to the TODO in the hotel model, line 10
+      // TODO: related to the TODO in the room model, line 10
       // Hotel.bookings.push(newBooking._id)
       // await this.save()
 
