@@ -20,7 +20,15 @@ class Room {
     const currentDate = new Date()
     let overlappingBookings = 0
 
-    // Loop over each existing booking to check for date overlap
+    // First, filter out expired bookings and update the room's availability
+    this.bookings = this.bookings.filter(booking => {
+      if (booking.checkOutDate < currentDate) {
+        this.increaseAvailability()
+        return false
+      }
+      return true
+    })
+    // Second, loop over each existing booking to check for date overlap
     for (let i = 0; i < this.bookings.length; i += 1) {
       const booking = this.bookings[i]
 

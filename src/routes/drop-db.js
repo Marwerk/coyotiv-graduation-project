@@ -13,7 +13,7 @@ router.get('/', async function (req, res, next) {
   await Hotel.deleteMany()
   await Rooms.deleteMany()
 
-  res.send(console.log(chalk.bgRedBright('Deleted all users and posts')))
+  res.send(console.log(chalk.bgRedBright('Deleted all DB data!')))
 })
 
 module.exports = router
