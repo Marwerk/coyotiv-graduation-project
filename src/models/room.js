@@ -14,19 +14,36 @@ const roomSchema = new mongoose.Schema({
 })
 
 class Room {
-  checkAvailability(checkIn, checkOut) {
-    if (this.units <= 0) {
-      return false
-    }
+  async checkAvailability(checkIn, checkOut) {
+    console.log('Checking availability for:', checkIn, 'to', checkOut)
+
+    const currentDate = new Date()
+    let overlappingBookings = 0
+
     // Loop over each existing booking to check for date overlap
-    for (let i = 0; i < this.units.length; i += 1) {
-      const booking = this.units[i]
-      // check if the requested dates overlap with an existing booking
-      if (checkIn <= booking.checkOutDate && checkOut >= booking.checkInDate) {
-        return false
+    for (let i = 0; i < this.bookings.length; i += 1) {
+      const booking = this.bookings[i]
+
+      console.log('Existing booking:', booking.checkInDate, 'to', booking.checkOutDate)
+
+      // If the bookings has expired, remove it from the array and save
+      if (booking.checkOutDate < currentDate) {
+        this.increaseAvailability()
+        this.bookings.pull(booking)
+      }
+
+      // If the booking is still active and overlaps with the requested dates, return false
+      else if (checkIn <= booking.checkOutDate && checkOut >= booking.checkInDate) {
+        console.log('Overlap detected.')
+        overlappingBookings += 1
       }
     }
-    // If there are rooms available and no overlap in dates, return true
+    if (overlappingBookings > this.units) {
+      console.log('No rooms available.')
+      return false
+    }
+
+    console.log('Room available.')
     return true
   }
 
@@ -34,10 +51,14 @@ class Room {
     if (this.units > 0) {
       this.units -= 1
       await this.save()
-    } else {
-      // throw new Error('No rooms available in this date range')
-      console.log('No rooms available in this date range')
+      console.log('Room availability decreased')
     }
+  }
+
+  async increaseAvailability() {
+    this.units += 1
+    await this.save()
+    console.log('Room availability increased')
   }
 }
 

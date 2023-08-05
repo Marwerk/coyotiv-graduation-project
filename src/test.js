@@ -14,7 +14,6 @@ async function main() {
   const hotelLasCalas = await axios.post('/hotels', {
     name: 'LasCalas',
     location: 'Asuncion, PY',
-    // rooms: 7,
     bookings: [],
   })
 
@@ -73,32 +72,32 @@ async function main() {
   })
 
   const marvinBooking = await axios.post('/bookings', {
-    type: doubleRoom.data.type,
-    checkIn: '2019-01-01',
-    checkOut: '2019-01-05',
+    type: suiteRoom.data.type,
+    checkIn: '2023-09-01',
+    checkOut: '2023-09-05',
     user: marvin.data._id,
   })
 
   const federicoBooking = await axios.post('/bookings', {
     type: suiteRoom.data.type,
-    checkIn: '2019-01-06',
-    checkOut: '2019-01-10',
+    checkIn: '2023-09-01',
+    checkOut: '2023-09-05',
     user: federico.data._id,
   })
 
   const numanBooking = await axios.post('/bookings', {
     type: suiteRoom.data.type,
-    checkIn: '2019-01-08',
-    checkOut: '2019-01-12',
+    checkIn: '2023-09-11',
+    checkOut: '2023-09-12',
     user: numan.data._id,
   })
 
-  const marvinBooking2 = await axios.post('/bookings', {
-    type: suiteRoom.data.type,
-    checkIn: '2019-01-11',
-    checkOut: '2019-01-12',
-    user: marvin.data._id,
-  })
+  // const marvinBooking2 = await axios.post('/bookings', {
+  //   type: suiteRoom.data.type,
+  //   checkIn: '2023-09-11',
+  //   checkOut: '2023-09-12',
+  //   user: marvin.data._id,
+  // })
 
   // DELETE
   // const deleteFedericoBooking = await axios.delete(`/bookings/${federicoBooking.data._id}`)

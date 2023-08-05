@@ -31,12 +31,11 @@ class User {
     // TODO: struggling a bit to understand this. A check in overlapping dates would only make sense
     // when there are no more rooms available, in order to return the earliest available date, right?
 
-    if (roomType.checkAvailability(roomType, checkInDate, checkOutDate)) {
+    if (await roomType.checkAvailability(checkInDate, checkOutDate)) {
       const newBooking = await Booking.create({ guest: this, roomType, checkInDate, checkOutDate })
 
       // TODO remove ._id
       roomType.bookings.push(newBooking._id)
-
       await roomType.decreaseAvailability()
       await roomType.save()
 
@@ -44,9 +43,10 @@ class User {
       this.bookings.push(newBooking._id)
       await this.save()
 
-      // TODO: related to the TODO in the room model, line 10
-      // Hotel.bookings.push(newBooking._id)
-      // await this.save()
+      // Update the hotel's bookings
+      const hotel = await Hotel.findOne()
+      hotel.bookings.push(newBooking._id)
+      await hotel.save()
 
       console.log(
         `Dear ${this.firstName}, your booking has been confirmed from ${checkIn} to ${checkOut}.
