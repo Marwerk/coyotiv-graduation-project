@@ -1,0 +1,7 @@
+// Provides intellisense to all matchers built into Jest
+
+{
+  "typeAcquisition": {
+    "include": ["jest"]
+  }
+}
