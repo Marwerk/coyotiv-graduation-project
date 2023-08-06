@@ -1,29 +1,18 @@
-const mongoose = require('mongoose')
-
-jest.mock('mongoose', () => ({
-  Schema: jest.fn(),
-  model: jest.fn(),
-  SchemaTypes: {
-    ObjectId: jest.fn(),
-  },
-}))
-
 const Hotel = require('../src/models/hotel')
 
-describe('Hotel', () => {
-  describe('addRoom', () => {
-    it('should add a room to the hotel', async () => {
-      const mockSave = jest.fn()
-      const mockHotel = {
-        rooms: [],
-        save: mockSave,
-      }
+it('should add a room to the hotel', async () => {
+  // Mock the Hotel instance and its save method
+  const mockSave = jest.fn().mockResolvedValue(true) // Mock it to resolve true for simplicity
+  const mockHotel = {
+    rooms: [],
+    save: mockSave,
+  }
 
-      const room = { _id: 'room1' }
-      await Hotel.prototype.addRoom.call(mockHotel, room)
+  const room = { _id: 'room1' }
 
-      expect(mockHotel.rooms).toContain(room)
-      expect(mockSave).toHaveBeenCalled()
-    })
-  })
+  // Call the addRoom prototype method directly using .call()
+  await Hotel.prototype.addRoom.call(mockHotel, room)
+
+  expect(mockHotel.rooms).toContain(room)
+  expect(mockSave).toHaveBeenCalled()
 })
