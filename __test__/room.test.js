@@ -24,18 +24,3 @@ describe('Room', () => {
     })
   })
 })
-
-// // it = individual test
-// it('converts checkIn date string to Date objects', () => {
-//   const date = checkIn
-//   const dateObject = new Date(date)
-
-//   expect(dateObject).toEqual(new Date(date))
-// })
-
-// it('converts checkOut date string to Date objects', () => {
-//   const date = checkOut
-//   const dateObject = new Date(date)
-
-//   expect(dateObject).toEqual(new Date(date))
-// })

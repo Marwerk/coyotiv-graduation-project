@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1691353477226" clover="3.2.0">
-  <project timestamp="1691353477226" name="All files">
+<coverage generated="1691354124751" clover="3.2.0">
+  <project timestamp="1691354124751" name="All files">
     <metrics statements="35" coveredstatements="14" conditionals="12" coveredconditionals="1" methods="4" coveredmethods="1" elements="51" coveredelements="16" complexity="0" loc="35" ncloc="35" packages="1" files="1" classes="1"/>
     <file name="room.js" path="/workspaces/graduation-project-marwerk/src/models/room.js">
       <metrics statements="35" coveredstatements="14" conditionals="12" coveredconditionals="1" methods="4" coveredmethods="1"/>
