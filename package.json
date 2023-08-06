@@ -9,7 +9,7 @@
     "dev": "nodemon ./bin/www",
     "eslint:check": "npx eslint .",
     "eslint:fix": "npx eslint --fix .",
-    "test": "jest --watchAll --verbose",
+    "test": "jest --watchAll --verbose --coverage",
     "prettier-fix": "prettier --write .",
     "test:watch": "jest"
   },
