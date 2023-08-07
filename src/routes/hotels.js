@@ -12,19 +12,22 @@ router.get('/:name', async function (req, res, next) {
 
 // POST Route Handler
 router.post('/', async function (req, res, next) {
-  const hotelExists = await Hotel.findOne()
+  // const hotelExists = await Hotel.findOne()
 
-  if (hotelExists) {
-    res.status(200).send(hotelExists)
-  } else {
-    const hotel = await Hotel.create({
-      name: req.body.name,
-      location: req.body.location,
-      rooms: req.body.rooms,
-    })
+  // if (hotelExists) {
+  //   console.log('here')
+  //   res.status(200).send(hotelExists)
+  // } else {
+  //   console.log('and here')
 
-    res.send(hotel)
-  }
+  // TODO move the hotel creation to app.js since it's only one instance
+  const hotel = await Hotel.create({
+    name: req.body.name,
+    location: req.body.location,
+    rooms: req.body.rooms,
+  })
+
+  res.send(hotel)
 })
 
 // TODO PATCH Route Handler
