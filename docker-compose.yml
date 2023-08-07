@@ -1,17 +1,17 @@
 services:
   api:
-    image: development
+    image: hotel-api
     build:
-      context: .
+      context: backend
       dockerfile: dockerfile
     ports:
       - '3000:3000'
     env_file:
-      - .env
+      - backend/.env
     environment:
       - APP_NAME=api
     volumes:
-      - ./src:/app/src
+      - ./backend/src:/app/src
 
   mongo:
     image: mongo

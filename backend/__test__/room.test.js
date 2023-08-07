@@ -1,4 +1,4 @@
-const Room = require('../src/models/room')
+const Room = require('../../src/models/room')
 
 // Test Case 1: Checking availability when room is available
 it('should return true if room savailable', async () => {
