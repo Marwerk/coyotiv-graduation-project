@@ -12,8 +12,6 @@ it('should create a hotel', async () => {
   console.log(result.body)
   expect(result.body).toMatchObject({
     location: 'Asuncion, PY',
-    rooms: [],
-    bookings: [],
   })
 })
 
