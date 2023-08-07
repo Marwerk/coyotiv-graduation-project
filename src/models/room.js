@@ -14,8 +14,8 @@ const roomSchema = new mongoose.Schema({
 })
 
 class Room {
-  // TODO: I'm able to create two instances of overlapping bookings, which is possible because suiteRoom has 2 units available.
-  // I'm also able to store a third booking that has no overlap, but I'm not able to store a fourth booking that has no overlap.
+  // TODO: I am able to create two instances of overlapping bookings, which is possible because suiteRoom has 2 units available.
+  // I am also able to store a third booking that has no overlap, but I am not able to store a fourth booking that has no overlap.
   // In my mind, this means that the second booking instance is not updating the # of rooms available once it "expires".
   // Check how that is happening in the code of the first booking instance to see how it expires and updates the # of rooms available.
 
