@@ -1,6 +1,6 @@
 const request = require('supertest')
-const Hotel = require('..backend/src/models/hotel')
-const app = require('../backend/src/app')
+const Hotel = require('../../src/models/hotel')
+const app = require('../../src/app')
 
 it('should create a hotel', async () => {
   // Mock the Hotel instance and its save method
