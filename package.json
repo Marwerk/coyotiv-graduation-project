@@ -9,9 +9,9 @@
     "dev": "nodemon ./bin/www",
     "eslint:check": "npx eslint .",
     "eslint:fix": "npx eslint --fix .",
-    "test": "jest --watchAll --verbose --coverage",
-    "prettier-fix": "prettier --write .",
-    "test:watch": "jest"
+    "test": "jest",
+    "test:watch": "jest --watchAll --verbose --coverage",
+    "prettier-fix": "prettier --write ."
   },
   "devDependencies": {
     "@types/jest": "^29.5.3",

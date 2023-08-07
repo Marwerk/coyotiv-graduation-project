@@ -1,0 +1,28 @@
+name: 'Run tests on PR'
+
+on: pull_request
+# Use this when we have a backend folder
+# on:
+#   pull_request:
+#     paths:
+#       - 'backend/**'
+
+jobs:
+  check-run-tests:
+    runs-on: ubuntu-latest
+    # Use this when we have a backend folder
+    # defaults:
+    #   run:
+    #     working-directory: ./backend
+    steps:
+      - name: checkout
+        uses: actions/checkout@master
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '20.3'
+      - name: install dependencies
+        run: npm install
+      - name: run test
+        env:
+          MONGODB_CONNECTION_STRING: ${{ secrets.MONGODB_CONNECTION_STRING }}
+        run: npm run test
