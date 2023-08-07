@@ -27,4 +27,3 @@ node_modules/
 data
 src/routes/drop-db.js
 drop-db.js
-coverage
