@@ -22,6 +22,8 @@ jobs:
           node-version: '20.3'
       - name: Install dependencies
         run: npm install
+      - name: Check ESLint
+        run: npm run eslint:check
       - name: Run tests
         env:
           MONGODB_CONNECTION_STRING: ${{ secrets.MONGODB_CONNECTION_STRING }}
