@@ -9,10 +9,10 @@
     "dev": "nodemon ./bin/www",
     "eslint:check": "npx eslint .",
     "eslint:fix": "npx eslint --fix .",
-    "test": "jest --forceExit",
-    "test:watch": "jest --watchAll --verbose",
-    "test:coverage": "jest --coverage",
-    "prettier-fix": "prettier --write ."
+    "prettier-fix": "prettier --write .",
+    "test": "DOTENV_CONFIG_PATH=./.env.test.local jest --detectOpenHandles --forceExit",
+    "test:watch": "DOTENV_CONFIG_PATH=./.env.test.local jest --watch --coverage --detectOpenHandles --forceExit",
+    "test:coverage": "DOTENV_CONFIG_PATH=./.env.test.local jest --coverage --detectOpenHandles --forceExit"
   },
   "devDependencies": {
     "@types/jest": "^29.5.3",
@@ -44,5 +44,13 @@
     "pluralize": "^8.0.0",
     "prettier": "^2.7.1",
     "pug": "^3.0.2"
+  },
+  "jest": {
+    "setupFiles": [
+      "dotenv/config"
+    ],
+    "setupFilesAfterEnv": [
+      "./__test__/setup.js"
+    ]
   }
 }
