@@ -1,33 +1,16 @@
-<script>
+<script setup>
 import axios from 'axios'
+import CounterComp from '../components/CounterComp.vue'
 
-export default {
-  data() {
-    return {
-      users: []
-    }
-  },
+const usersResponse = await axios.get('http://localhost:3000/users')
 
-  mounted() {
-    console.log('The component is mounted')
-  },
-
-  async created() {
-    const usersResponse = await axios.get('http://localhost:3000/users')
-
-    this.users = usersResponse.data
-  },
-  watch: {
-    users() {
-      console.log('The users have changed!')
-    }
-  }
-}
+const users = usersResponse.data
 </script>
 
 <template>
   <div class="users">
     <h1>Users</h1>
+    <CounterComp />
     <ul>
       <li v-for="user in users" :key="user.id">
         <a :href="`/users/${user.id}`">
