@@ -16,6 +16,11 @@ export default {
     const usersResponse = await axios.get('http://localhost:3000/users')
 
     this.users = usersResponse.data
+  },
+  watch: {
+    users() {
+      console.log('The users have changed!')
+    }
   }
 }
 </script>
