@@ -1,6 +1,8 @@
 <script setup>
 import axios from 'axios'
-import CounterComp from '../components/CounterComp.vue'
+
+import Counter from '../components/Counter.vue'
+import CounterOptionsApi from '../components/CounterOptionsApi.vue'
 
 const usersResponse = await axios.get('http://localhost:3000/users')
 
@@ -10,7 +12,8 @@ const users = usersResponse.data
 <template>
   <div class="users">
     <h1>Users</h1>
-    <CounterComp />
+    <Counter />
+    <CounterOptionsApi />
     <ul>
       <li v-for="user in users" :key="user.id">
         <a :href="`/users/${user.id}`">
