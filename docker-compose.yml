@@ -1,6 +1,6 @@
 services:
-  api:
-    image: hotel-api
+  backend:
+    image: hotel-backend
     build:
       context: backend
       dockerfile: dockerfile
