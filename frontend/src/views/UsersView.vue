@@ -1,9 +1,23 @@
-<script setup>
+<script>
 import axios from 'axios'
 
-const usersResponse = await axios.get('http://localhost:3000/users')
+export default {
+  data() {
+    return {
+      users: []
+    }
+  },
 
-const users = usersResponse.data
+  mounted() {
+    console.log('The component is mounted')
+  },
+
+  async created() {
+    const usersResponse = await axios.get('http://localhost:3000/users')
+
+    this.users = usersResponse.data
+  }
+}
 </script>
 
 <template>
