@@ -17,7 +17,7 @@ const users = usersResponse.data
   </div>
 </template>
 
-<style scoped>
+<!-- <style scoped>
 h1 {
   color: blueviolet;
 }
@@ -25,4 +25,4 @@ h1 {
 a {
   color: blue;
 }
-</style>
+</style> -->

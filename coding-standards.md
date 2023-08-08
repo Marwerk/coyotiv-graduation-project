@@ -42,17 +42,13 @@ Use numbers appropriately (e.g. ISO9000)
 
 ## Docker commands
 
-- docker run -it node:alpine
-- "node" is the image : variant "alpine"
-- command to build an image
-  - docker build -t <image-name> .
-- command to run a container
-  - docker run -it -p 3000:3000 <image-name>
+- docker compose up --build
+- docker compose up -d mongo
+- docker compose up backend
+- docker compose up frontend
 
-# Step by step guide to dockerfile structure
+## On Vue.js CSS components
 
-- Install an OS
-- Install node.js
-- Add your project files
-- Run npm install
-- Run npm start
+1. Use CSS component if you can
+2. If not, use a simple component that doesn't have any logic inside
+3. If not, use a fully fledged component with its own logic
