@@ -1,7 +1,16 @@
-<!-- Imperative Programming -->
+<!-- eslint-disable no-unused-vars -->
+
+<!-- ----- Imperative Programming ----- -->
 
 <script setup>
 import { ref } from 'vue'
+
+defineProps({
+  name: {
+    type: String,
+    required: true
+  }
+})
 
 const count = ref(0)
 
@@ -16,8 +25,8 @@ const decrement = () => {
 
 <template lang="pug">
 .counter
-  h1 Counter
-  p The count is: {{ count }}
-  button(@click='increment') Increment
-  button(@click='decrement') Decrement
+  h1 {{ name }}
+  p Number of guests: {{ count }}
+  button(@click='increment') +
+  button(@click='decrement') -
 </template>
