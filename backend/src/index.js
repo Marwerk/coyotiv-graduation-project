@@ -32,14 +32,6 @@ async function main() {
     amenities: ['wifi', 'tv', 'air conditioning'],
   })
 
-  // const doubleRoom = await axios.post('/rooms', {
-  //   hotel: hotelLasCalas.data,
-  //   type: 'double',
-  //   capacity: 2,
-  //   units: 2,
-  //   amenities: ['wifi', 'tv', 'air conditioning'],
-  // })
-
   const roomSingle1 = await axios.post('/rooms', {
     hotel: hotelLasCalas.data,
     type: 'single',
@@ -61,13 +53,6 @@ async function main() {
     capacity: 2,
     amenities: ['wifi', 'tv', 'air conditioning'],
   })
-  // const singleRoom = await axios.post('/rooms', {
-  //   hotel: hotelLasCalas.data,
-  //   type: 'single',
-  //   capacity: 1,
-  //   units: 3,
-  //   amenities: ['wifi', 'tv', 'air conditioning'],
-  // })
 
   const roomSuite1 = await axios.post('/rooms', {
     hotel: hotelLasCalas.data,
@@ -83,13 +68,6 @@ async function main() {
     capacity: 2,
     amenities: ['wifi', 'tv', 'air conditioning'],
   })
-  // const suiteRoom = await axios.post('/rooms', {
-  //   hotel: hotelLasCalas.data,
-  //   type: 'suite',
-  //   capacity: 2,
-  //   units: 2,
-  //   amenities: ['wifi', 'tv', 'air conditioning', 'balcony'],
-  // })
 
   const marvin = await axios.post('/users', {
     firstName: 'Marvin',

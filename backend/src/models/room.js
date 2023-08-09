@@ -16,7 +16,6 @@ const roomSchema = new mongoose.Schema({
 
 class Room {
   isAvailable(checkIn, checkOut) {
-    // check if the room is available
     const checkInDate = new Date(checkIn)
     const checkOutDate = new Date(checkOut)
 
@@ -25,57 +24,26 @@ class Room {
       const bookingEnd = new Date(booking.checkOutDate)
 
       return checkInDate >= bookingEnd || checkOutDate <= bookingStart
-      // if (
-      //   (checkInDate >= bookingStart && checkInDate < bookingEnd) ||
-      //   (checkOutDate > bookingStart && checkOutDate <= bookingEnd)
-      // ) {
-      //   return false
-      // }
-
-      // return true
     })
   }
-  // function isAvailable(checkIn, checkOut, existingReservations) {
-  //   const proposedCheckIn = new Date(checkIn);
-  //   const proposedCheckOut = new Date(checkOut);
-
-  //   for (const reservation of existingReservations) {
-  //     const existingCheckIn = new Date(reservation.checkIn);
-  //     const existingCheckOut = new Date(reservation.checkOut);
-
-  //     if (
-  //       (proposedCheckIn >= existingCheckIn && proposedCheckIn < existingCheckOut) ||
-  //       (proposedCheckOut > existingCheckIn && proposedCheckOut <= existingCheckOut)
-  //     ) {
-  //       return false; // Overlapping reservation found
-  //     }
-  //   }
-
-  //   return true; // No overlapping reservation found, room is available
-  // }
-
-  async decreaseAvailability() {
-    if (this.units > 0) {
-      this.units -= 1
-      await this.save()
-      console.log('Room availability decreased')
-    }
-  }
-
-  async increaseAvailability() {
-    this.units += 1
-    await this.save()
-    console.log('Room availability increased')
-  }
 }
+
+// async decreaseAvailability() {
+//   if (this.units > 0) {
+//     this.units -= 1
+//     await this.save()
+//     console.log('Room availability decreased')
+//   }
+// }
+
+// async increaseAvailability() {
+//   this.units += 1
+//   await this.save()
+//   console.log('Room availability increased')
+// }
 
 // ------------------------------------------------------------------------
 
 roomSchema.plugin(autopopulate)
 roomSchema.loadClass(Room)
 module.exports = mongoose.model('Room', roomSchema)
-
-// TODO: I am able to create two instances of overlapping bookings, which is possible because suiteRoom has 2 units available.
-// I am also able to store a third booking that has no overlap, but I am not able to store a fourth booking that has no overlap.
-// In my mind, this means that the second booking instance is not updating the # of rooms available once it "expires".
-// Check how that is happening in the code of the first booking instance to see how it expires and updates the # of rooms available.

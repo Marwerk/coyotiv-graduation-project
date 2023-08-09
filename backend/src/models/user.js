@@ -2,6 +2,7 @@ const mongoose = require('mongoose')
 const autopopulate = require('mongoose-autopopulate')
 const Booking = require('./booking')
 const Hotel = require('./hotel')
+const Room = require('./room')
 
 const userSchema = new mongoose.Schema({
   firstName: String,
@@ -22,10 +23,10 @@ class User {
     const checkOutDate = new Date(checkOut)
 
     const booking = await Booking.create({
-      checkInDate,
-      checkOutDate,
       guest: this,
       room,
+      checkInDate,
+      checkOutDate,
     })
 
     this.bookings.push(booking)
