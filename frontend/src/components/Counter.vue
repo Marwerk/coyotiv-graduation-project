@@ -1,5 +1,3 @@
-<!-- eslint-disable no-unused-vars -->
-
 <!-- ----- Imperative Programming ----- -->
 
 <script setup>
