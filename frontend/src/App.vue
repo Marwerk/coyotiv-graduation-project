@@ -1,6 +1,8 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
+import { useRoomStore } from './stores/RoomStore'
+
+useRoomStore()
 </script>
 
 <template>
