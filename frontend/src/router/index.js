@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import UsersView from '../views/UsersView.vue'
 
+// Views = pages of your webapp
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
