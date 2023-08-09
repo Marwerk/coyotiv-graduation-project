@@ -115,8 +115,8 @@ async function main() {
 
   const numanBooking = await axios.post('/bookings', {
     type: 'suite',
-    checkIn: '2023-09-02',
-    checkOut: '2023-09-03',
+    checkIn: '2023-09-12',
+    checkOut: '2023-09-13',
     user: numan.data._id,
   })
 

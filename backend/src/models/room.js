@@ -28,20 +28,6 @@ class Room {
   }
 }
 
-// async decreaseAvailability() {
-//   if (this.units > 0) {
-//     this.units -= 1
-//     await this.save()
-//     console.log('Room availability decreased')
-//   }
-// }
-
-// async increaseAvailability() {
-//   this.units += 1
-//   await this.save()
-//   console.log('Room availability increased')
-// }
-
 // ------------------------------------------------------------------------
 
 roomSchema.plugin(autopopulate)
