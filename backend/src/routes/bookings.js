@@ -15,6 +15,13 @@ router.post('/', async function (req, res, next) {
   const currentUser = await User.findOne({ _id: req.body.user })
   const roomType = await Room.findOne({ type: req.body.type })
 
+  // find all the rooms by given room type
+  // loop over all the rooms
+  // room.isAvailable()
+  // if room is available return true
+  // use available room ( assisgn the room to a variable)
+  // call the user.book()
+
   const booking = await currentUser.book(roomType, req.body.checkIn, req.body.checkOut)
   res.send(booking)
 })

@@ -2,6 +2,7 @@ const mongoose = require('mongoose')
 const autopopulate = require('mongoose-autopopulate')
 const Booking = require('./booking')
 const Hotel = require('./hotel')
+const Room = require('./room')
 
 const userSchema = new mongoose.Schema({
   firstName: String,
@@ -23,41 +24,47 @@ class User {
 
     // Check if the dates are valid before creating a booking
     if (checkInDate >= checkOutDate) {
-      // throw new Error('Invalid booking dates')
       return console.log('Invalid booking dates')
     }
 
+    // fetch rooms by room type
+    const rooms = await Room.find({ type: roomType })
+
     // Check if the hotel has rooms available for the selected dates
-    // TODO: struggling a bit to understand this. A check in overlapping dates would only make sense
-    // when there are no more rooms available, in order to return the earliest available date, right?
+    rooms.map(async room => {
+      // Check if the hotel has rooms available for the selected dates
+      if (await room.checkAvailability(checkInDate, checkOutDate)) {
+        const newBooking = await Booking.create({
+          guest: this,
+          room,
+          checkInDate,
+          checkOutDate,
+        })
 
-    if (await roomType.checkAvailability(checkInDate, checkOutDate)) {
-      const newBooking = await Booking.create({ guest: this, roomType, checkInDate, checkOutDate })
+        // TODO remove ._id
+        room.bookings.push(newBooking._id)
+        await room.decreaseAvailability()
+        await room.save()
 
-      // TODO remove ._id
-      roomType.bookings.push(newBooking._id)
-      await roomType.decreaseAvailability()
-      await roomType.save()
+        // TODO remove ._id
+        this.bookings.push(newBooking._id)
+        await this.save()
 
-      // TODO remove ._id
-      this.bookings.push(newBooking._id)
-      await this.save()
+        // Update the hotel's bookings
+        const hotel = await Hotel.findOne()
+        hotel.bookings.push(newBooking._id)
+        await hotel.save()
 
-      // Update the hotel's bookings
-      const hotel = await Hotel.findOne()
-      hotel.bookings.push(newBooking._id)
-      await hotel.save()
-
-      console.log(
-        `Dear ${this.firstName}, your booking has been confirmed from ${checkIn} to ${checkOut}.
+        console.log(
+          `Dear ${this.firstName}, your booking has been confirmed from ${checkIn} to ${checkOut}.
         The total price is $${newBooking.totalPrice}`
+        )
+        return newBooking
+      }
+      return console.log(
+        `We're sorry ${this.firstName}, there are no rooms available for the selected dates`
       )
-      return newBooking
-    }
-
-    return console.log(
-      `We're sorry ${this.firstName}, there are no rooms available for the selected dates`
-    )
+    })
   }
 }
 

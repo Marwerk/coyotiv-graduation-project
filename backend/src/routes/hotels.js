@@ -18,9 +18,6 @@ router.post('/', async function (req, res, next) {
     console.log('here')
     res.status(200).send(hotelExists)
   } else {
-    console.log('and here')
-
-    // TODO move the hotel creation to app.js since it's only one instance
     const hotel = await Hotel.create({
       name: req.body.name,
       location: req.body.location,
