@@ -4,8 +4,9 @@ const autopopulate = require('mongoose-autopopulate')
 const roomSchema = new mongoose.Schema({
   hotel: { type: mongoose.Schema.Types.ObjectId, ref: 'Hotel', autopopulate: { maxDepth: 1 } },
   type: String,
-  capacity: Number,
+  doorNumber: Number,
   units: Number,
+  capacity: Number,
   amenities: [String],
   // TODO ask Armagan if it's necessary to keep the bookings in the room model + hotel model
   bookings: [
@@ -14,38 +15,44 @@ const roomSchema = new mongoose.Schema({
 })
 
 class Room {
-  async checkAvailability(checkIn, checkOut) {
-    console.log('Checking availability for:', checkIn, 'to', checkOut)
+  isAvailable(checkIn, checkOut) {
+    // check if the room is available
+    const checkInDate = new Date(checkIn)
+    const checkOutDate = new Date(checkOut)
 
-    const currentDate = new Date()
-    let overlappingBookings = 0
+    return this.bookings.every(booking => {
+      const bookingStart = new Date(booking.checkInDate)
+      const bookingEnd = new Date(booking.checkOutDate)
 
-    // Loop through the bookings array
-    for (let i = 0; i < this.bookings.length; i += 1) {
-      const booking = this.bookings[i]
+      return checkInDate >= bookingEnd || checkOutDate <= bookingStart
+      // if (
+      //   (checkInDate >= bookingStart && checkInDate < bookingEnd) ||
+      //   (checkOutDate > bookingStart && checkOutDate <= bookingEnd)
+      // ) {
+      //   return false
+      // }
 
-      // If the bookings has expired, remove it from the array and save
-      if (booking.checkOutDate < currentDate) {
-        this.increaseAvailability()
-        this.bookings.pull(booking)
-      }
-
-      // Count overlapping bookings
-      else if (checkIn <= booking.checkOutDate && checkOut >= booking.checkInDate) {
-        console.log('Overlap detected.')
-        overlappingBookings += 1
-      }
-    }
-
-    // Check if there are enough rooms available
-    if (overlappingBookings > this.units) {
-      console.log('No rooms available.')
-      return false
-    }
-
-    console.log('Room available.')
-    return true
+      // return true
+    })
   }
+  // function isAvailable(checkIn, checkOut, existingReservations) {
+  //   const proposedCheckIn = new Date(checkIn);
+  //   const proposedCheckOut = new Date(checkOut);
+
+  //   for (const reservation of existingReservations) {
+  //     const existingCheckIn = new Date(reservation.checkIn);
+  //     const existingCheckOut = new Date(reservation.checkOut);
+
+  //     if (
+  //       (proposedCheckIn >= existingCheckIn && proposedCheckIn < existingCheckOut) ||
+  //       (proposedCheckOut > existingCheckIn && proposedCheckOut <= existingCheckOut)
+  //     ) {
+  //       return false; // Overlapping reservation found
+  //     }
+  //   }
+
+  //   return true; // No overlapping reservation found, room is available
+  // }
 
   async decreaseAvailability() {
     if (this.units > 0) {

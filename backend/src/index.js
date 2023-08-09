@@ -8,7 +8,7 @@ axios.defaults.baseURL = 'http://localhost:3000'
 
 async function main() {
   // DROP DB
-  // await axios.get('/drop-db')
+  await axios.get('/drop-db')
 
   // CREATE
   const hotelLasCalas = await axios.post('/hotels', {
@@ -17,29 +17,79 @@ async function main() {
     bookings: [],
   })
 
-  const doubleRoom = await axios.post('/rooms', {
+  const roomDouble1 = await axios.post('/rooms', {
     hotel: hotelLasCalas.data,
     type: 'double',
+    doorNumber: 1,
     capacity: 2,
-    units: 2,
+    amenities: ['wifi', 'tv', 'air conditioning'],
+  })
+  const roomDouble2 = await axios.post('/rooms', {
+    hotel: hotelLasCalas.data,
+    type: 'double',
+    doorNumber: 3,
+    capacity: 2,
     amenities: ['wifi', 'tv', 'air conditioning'],
   })
 
-  const singleRoom = await axios.post('/rooms', {
+  // const doubleRoom = await axios.post('/rooms', {
+  //   hotel: hotelLasCalas.data,
+  //   type: 'double',
+  //   capacity: 2,
+  //   units: 2,
+  //   amenities: ['wifi', 'tv', 'air conditioning'],
+  // })
+
+  const roomSingle1 = await axios.post('/rooms', {
     hotel: hotelLasCalas.data,
     type: 'single',
-    capacity: 1,
-    units: 3,
+    doorNumber: 2,
+    capacity: 2,
     amenities: ['wifi', 'tv', 'air conditioning'],
   })
+  const roomSingle2 = await axios.post('/rooms', {
+    hotel: hotelLasCalas.data,
+    type: 'single',
+    doorNumber: 5,
+    capacity: 2,
+    amenities: ['wifi', 'tv', 'air conditioning'],
+  })
+  const roomSingle3 = await axios.post('/rooms', {
+    hotel: hotelLasCalas.data,
+    type: 'single',
+    doorNumber: 7,
+    capacity: 2,
+    amenities: ['wifi', 'tv', 'air conditioning'],
+  })
+  // const singleRoom = await axios.post('/rooms', {
+  //   hotel: hotelLasCalas.data,
+  //   type: 'single',
+  //   capacity: 1,
+  //   units: 3,
+  //   amenities: ['wifi', 'tv', 'air conditioning'],
+  // })
 
-  const suiteRoom = await axios.post('/rooms', {
+  const roomSuite1 = await axios.post('/rooms', {
     hotel: hotelLasCalas.data,
     type: 'suite',
+    doorNumber: 4,
     capacity: 2,
-    units: 2,
-    amenities: ['wifi', 'tv', 'air conditioning', 'balcony'],
+    amenities: ['wifi', 'tv', 'air conditioning'],
   })
+  const roomSuite2 = await axios.post('/rooms', {
+    hotel: hotelLasCalas.data,
+    type: 'suite',
+    doorNumber: 6,
+    capacity: 2,
+    amenities: ['wifi', 'tv', 'air conditioning'],
+  })
+  // const suiteRoom = await axios.post('/rooms', {
+  //   hotel: hotelLasCalas.data,
+  //   type: 'suite',
+  //   capacity: 2,
+  //   units: 2,
+  //   amenities: ['wifi', 'tv', 'air conditioning', 'balcony'],
+  // })
 
   const marvin = await axios.post('/users', {
     firstName: 'Marvin',
@@ -72,30 +122,30 @@ async function main() {
   })
 
   const marvinBooking = await axios.post('/bookings', {
-    type: suiteRoom.data.type,
+    type: 'suite',
     checkIn: '2023-09-01',
     checkOut: '2023-09-05',
     user: marvin.data._id,
   })
 
   const federicoBooking = await axios.post('/bookings', {
-    type: suiteRoom.data.type,
+    type: 'suite',
     checkIn: '2023-09-01',
     checkOut: '2023-09-05',
     user: federico.data._id,
   })
 
   const numanBooking = await axios.post('/bookings', {
-    type: suiteRoom.data.type,
-    checkIn: '2023-09-11',
-    checkOut: '2023-09-12',
+    type: 'suite',
+    checkIn: '2023-09-02',
+    checkOut: '2023-09-03',
     user: numan.data._id,
   })
 
   const marvinBooking2 = await axios.post('/bookings', {
-    type: suiteRoom.data.type,
-    checkIn: '2023-09-11',
-    checkOut: '2023-09-12',
+    type: 'suite',
+    checkIn: '2023-09-05',
+    checkOut: '2023-09-06',
     user: marvin.data._id,
   })
 
