@@ -1,25 +1,25 @@
-<script setup>
-import { RouterLink, RouterView } from 'vue-router'
-import { useRoomStore } from './stores/RoomStore'
-
-useRoomStore()
-</script>
-
+<!-- This is the HTML structure -->
 <template>
-  <header>
-    <div class="wrapper">
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-        <RouterLink to="/users">Users</RouterLink>
-      </nav>
-    </div>
-  </header>
-  <Suspense>
-    <RouterView />
-  </Suspense>
+  <div id="app">
+    <TopBar />
+    <!-- Other view(page) components go here -->
+  </div>
 </template>
 
+<!-- This is where we define the component's behaviour -->
+<script>
+import TopBar from './components/TopBar.vue'
+
+export default {
+  name: 'App',
+  components: {
+    TopBar
+  }
+}
+</script>
+
+<!-- This is where we define the styles of the app
+by adding "scoped" we ensure that the styling is applied only within this view -->
 <style scoped>
 header {
   line-height: 1.5;
