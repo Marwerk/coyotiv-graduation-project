@@ -113,19 +113,26 @@ async function main() {
     user: federico.data._id,
   })
 
-  const numanBooking = await axios.post('/bookings', {
-    type: 'suite',
-    checkIn: '2023-09-12',
-    checkOut: '2023-09-13',
-    user: numan.data._id,
-  })
+  try {
+    const numanBooking = await axios.post('/bookings', {
+      type: 'suite',
+      checkIn: '2023-09-02',
+      checkOut: '2023-09-04',
+      user: numan.data._id,
+    })
+  } catch (error) {
+    // log the error status code
+    if (error.response.status === 400) {
+      console.log(chalk.bgRedBright('Failed as expected:', error.response.data))
+    }
+  }
 
-  const marvinBooking2 = await axios.post('/bookings', {
-    type: 'suite',
-    checkIn: '2023-09-12',
-    checkOut: '2023-09-13',
-    user: marvin.data._id,
-  })
+  // const marvinBooking2 = await axios.post('/bookings', {
+  //   type: 'suite',
+  //   checkIn: '2023-09-12',
+  //   checkOut: '2023-09-13',
+  //   user: marvin.data._id,
+  // })
 
   // DELETE
   // const deleteFedericoBooking = await axios.delete(`/bookings/${federicoBooking.data._id}`)
