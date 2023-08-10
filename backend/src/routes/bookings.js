@@ -12,18 +12,28 @@ router.get('/', async function (req, res, next) {
 
 /* POST route handler */
 router.post('/', async function (req, res, next) {
-  const currentUser = await User.findOne({ _id: req.body.user })
-  const roomType = await Room.findOne({ type: req.body.type })
+  try {
+    const currentUser = await User.findOne({ _id: req.body.user })
+    const rooms = await Room.find({ type: req.body.type })
 
-  // find all the rooms by given room type
-  // loop over all the rooms
-  // room.isAvailable()
-  // if room is available return true
-  // use available room ( assisgn the room to a variable)
-  // call the user.book()
+    const availableRooms = rooms.filter(room =>
+      room.isAvailable(req.body.checkIn, req.body.checkOut)
+    )
 
-  const booking = await currentUser.book(roomType, req.body.checkIn, req.body.checkOut)
-  res.send(booking)
+    if (availableRooms.length === 0) {
+      console.log('No rooms available')
+      res.status(400).send('No rooms available')
+      return
+    }
+
+    const room = availableRooms[0]
+
+    const booking = await currentUser.book(room, req.body.checkIn, req.body.checkOut)
+    res.send(booking)
+  } catch (error) {
+    console.error(error)
+    res.status(500).send('Something went wrong')
+  }
 })
 
 /* DELETE route handler */

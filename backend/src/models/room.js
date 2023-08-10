@@ -4,8 +4,9 @@ const autopopulate = require('mongoose-autopopulate')
 const roomSchema = new mongoose.Schema({
   hotel: { type: mongoose.Schema.Types.ObjectId, ref: 'Hotel', autopopulate: { maxDepth: 1 } },
   type: String,
-  capacity: Number,
+  doorNumber: Number,
   units: Number,
+  capacity: Number,
   amenities: [String],
   // TODO ask Armagan if it's necessary to keep the bookings in the room model + hotel model
   bookings: [
@@ -14,51 +15,19 @@ const roomSchema = new mongoose.Schema({
 })
 
 class Room {
-  async checkAvailability(checkIn, checkOut) {
-    console.log('Checking availability for:', checkIn, 'to', checkOut)
 
-    const currentDate = new Date()
-    let overlappingBookings = 0
+  isAvailable(checkIn, checkOut) {
+    const checkInDate = new Date(checkIn)
+    const checkOutDate = new Date(checkOut)
 
-    // Loop through the bookings array
-    for (let i = 0; i < this.bookings.length; i += 1) {
-      const booking = this.bookings[i]
 
-      // If the bookings has expired, remove it from the array and save
-      if (booking.checkOutDate < currentDate) {
-        this.increaseAvailability()
-        this.bookings.pull(booking)
-      }
+    return this.bookings.every(booking => {
+      const bookingStart = new Date(booking.checkInDate)
+      const bookingEnd = new Date(booking.checkOutDate)
 
-      // Count overlapping bookings
-      else if (checkIn <= booking.checkOutDate && checkOut >= booking.checkInDate) {
-        console.log('Overlap detected.')
-        overlappingBookings += 1
-      }
-    }
+      return checkInDate >= bookingEnd || checkOutDate <= bookingStart
+    })
 
-    // Check if there are enough rooms available
-    if (overlappingBookings > this.units) {
-      console.log('No rooms available.')
-      return false
-    }
-
-    console.log('Room available.')
-    return true
-  }
-
-  async decreaseAvailability() {
-    if (this.units > 0) {
-      this.units -= 1
-      await this.save()
-      console.log('Room availability decreased')
-    }
-  }
-
-  async increaseAvailability() {
-    this.units += 1
-    await this.save()
-    console.log('Room availability increased')
   }
 }
 
