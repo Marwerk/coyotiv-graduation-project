@@ -15,9 +15,11 @@ const roomSchema = new mongoose.Schema({
 })
 
 class Room {
+
   isAvailable(checkIn, checkOut) {
     const checkInDate = new Date(checkIn)
     const checkOutDate = new Date(checkOut)
+
 
     return this.bookings.every(booking => {
       const bookingStart = new Date(booking.checkInDate)
@@ -25,6 +27,7 @@ class Room {
 
       return checkInDate >= bookingEnd || checkOutDate <= bookingStart
     })
+
   }
 }
 
@@ -33,3 +36,8 @@ class Room {
 roomSchema.plugin(autopopulate)
 roomSchema.loadClass(Room)
 module.exports = mongoose.model('Room', roomSchema)
+
+// TODO: I am able to create two instances of overlapping bookings, which is possible because suiteRoom has 2 units available.
+// I am also able to store a third booking that has no overlap, but I am not able to store a fourth booking that has no overlap.
+// In my mind, this means that the second booking instance is not updating the # of rooms available once it "expires".
+// Check how that is happening in the code of the first booking instance to see how it expires and updates the # of rooms available.

@@ -19,6 +19,7 @@ class User {
     const checkInDate = new Date(checkIn)
     const checkOutDate = new Date(checkOut)
 
+
     const booking = await Booking.create({
       guest: this,
       room,
@@ -40,6 +41,7 @@ class User {
     await room.save()
 
     return booking
+
   }
 }
 
