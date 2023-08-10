@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 const autopopulate = require('mongoose-autopopulate')
 const Booking = require('./booking')
+const Hotel = require('./hotel')
 
 const userSchema = new mongoose.Schema({
   firstName: String,
@@ -38,6 +39,10 @@ class User {
     //  at model.book (/app/src/models/user.js:34:10)
     room.bookings.push(booking)
     await room.save()
+
+    const hotel = await Hotel.findOne({ _id: room.hotel })
+    hotel.bookings.push(booking)
+    await hotel.save()
 
     return booking
   }

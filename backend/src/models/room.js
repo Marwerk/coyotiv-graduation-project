@@ -15,11 +15,9 @@ const roomSchema = new mongoose.Schema({
 })
 
 class Room {
-
   isAvailable(checkIn, checkOut) {
     const checkInDate = new Date(checkIn)
     const checkOutDate = new Date(checkOut)
-
 
     return this.bookings.every(booking => {
       const bookingStart = new Date(booking.checkInDate)
@@ -27,7 +25,6 @@ class Room {
 
       return checkInDate >= bookingEnd || checkOutDate <= bookingStart
     })
-
   }
 }
 

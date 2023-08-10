@@ -8,7 +8,7 @@ axios.defaults.baseURL = 'http://localhost:3000'
 
 async function main() {
   // DROP DB
-  // await axios.get('/drop-db')
+  await axios.get('/drop-db')
 
   // CREATE
   const hotelLasCalas = await axios.post('/hotels', {
@@ -122,8 +122,8 @@ async function main() {
 
   const marvinBooking2 = await axios.post('/bookings', {
     type: 'suite',
-    checkIn: '2023-09-05',
-    checkOut: '2023-09-06',
+    checkIn: '2023-09-12',
+    checkOut: '2023-09-13',
     user: marvin.data._id,
   })
 

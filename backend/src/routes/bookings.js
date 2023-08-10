@@ -20,17 +20,14 @@ router.post('/', async function (req, res, next) {
       room.isAvailable(req.body.checkIn, req.body.checkOut)
     )
 
-    // something in this if statement is not preventing the rest of the code to execute if there are no rooms available
     if (availableRooms.length === 0) {
       console.log('No rooms available')
       res.status(400).send('No rooms available')
-      return
+    } else {
+      const room = availableRooms[0]
+      const booking = await currentUser.book(room, req.body.checkIn, req.body.checkOut)
+      res.send(booking)
     }
-
-    const room = availableRooms[0]
-
-    const booking = await currentUser.book(room, req.body.checkIn, req.body.checkOut)
-    res.send(booking)
   } catch (error) {
     console.error(error)
     res.status(500).send('Something went wrong')
