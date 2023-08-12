@@ -1,6 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import UsersView from '../views/UsersView.vue'
+import RoomsView from '../views/RoomsView.vue'
+import ContactView from '../views/ContactView.vue'
 
 // Views = pages of your webapp
 const router = createRouter({
@@ -12,18 +14,23 @@ const router = createRouter({
       component: HomeView
     },
     {
+      path: '/rooms',
+      name: 'rooms',
+      component: RoomsView
+    },
+    {
       path: '/users',
       name: 'users',
       component: UsersView
     },
     {
-      path: '/about',
-      name: 'about',
+      path: '/contact',
+      name: 'contact',
       // TODO: vue components homework
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import('../views/AboutView.vue')
+      component: () => import('../views/ContactView.vue')
     }
   ]
 })

@@ -1,45 +1,43 @@
-<!-- This is a child component of App.vue -->
-<script>
-// This is a child component of TopBar.vue
-import DropDownMenu from './DropDownMenu.vue'
+<script></script>
 
-export default {
-  name: 'TopBar',
-  components: {
-    DropDownMenu
-  },
-  data() {
-    return {
-      menuItems: ['Rooms', 'Location', 'Gallery', 'History', 'Trip to natural reserve']
-    }
-  }
-}
-</script>
+<template lang="pug">
 
-<template>
-  <div class="top-bar">
-    <DropDownMenu :items="menuItems" />
-    <button class="book-btn">Book a Room</button>
-  </div>
+nav.navbar.navbar-expand-lg.bg-body-tertiary
+  .container-fluid.d-flex.align-items-center.justify-content-between
+    div.d-flex
+      button.navbar-toggler(type='button' data-bs-toggle='collapse' data-bs-target='#navbarText' aria-controls='navbarText' aria-expanded='false' aria-label='Toggle navigation')
+        span.navbar-toggler-icon
+      router-link.navbar-brand(to="/") Hotel Las Calas
+    #navbarText.collapse.navbar-collapse
+      ul.navbar-nav.mr-auto.mb-2.mb-lg-0
+        li.nav-item
+          router-link.nav-link.active(aria-current='page' to="/rooms") Rooms
+        li.nav-item
+          router-link.nav-link(to="/users") User
+        li.nav-item
+          router-link.nav-link(to="/contact") Contact
+
+    button.btn.btn-secondary.btn-sm(type='button') Book a room
+
+
+
+
 </template>
 
 <style scoped>
-.top-bar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem;
-  background-color: #333;
-  color: white;
-  width: 100%;
+#navbarText {
+  flex-grow: 1;
 }
 
-.book-btn {
-  background-color: #007bff;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  color: white;
+.navbar-toggler {
+  margin-right: 15px; /* Add some space between the toggler and the brand */
+}
+
+.router-link.navbar-brand {
+  order: 2; /* make Brand appear second */
+}
+
+button.btn.btn-secondary.btn-sm {
+  order: 3; /* make button appear third */
 }
 </style>
