@@ -1,22 +1,33 @@
-<!-- This is the HTML structure -->
-<template>
-  <div id="app">
-    <TopBar />
-    <!-- Other view(page) components go here -->
-  </div>
-</template>
-
 <!-- This is where we define the component's behaviour -->
 <script>
 import TopBar from './components/TopBar.vue'
+import { RouterLink, RouterView } from 'vue-router'
 
 export default {
   name: 'App',
   components: {
-    TopBar
+    TopBar,
+    RouterLink,
+    RouterView
   }
 }
 </script>
+
+<!-- This is the HTML structure -->
+<template>
+  <div id="app">
+    <TopBar />
+    <nav>
+      <RouterLink to="/">Home</RouterLink>
+      <RouterLink to="/users">Users</RouterLink>
+      <RouterLink to="/rooms">Rooms</RouterLink>
+      <RouterLink to="/about">About</RouterLink>
+      <RouterLink to="/contact">Contact</RouterLink>
+    </nav>
+    <!-- Other view(page) components go here -->
+    <RouterView />
+  </div>
+</template>
 
 <!-- This is where we define the styles of the app
 by adding "scoped" we ensure that the styling is applied only within this view -->

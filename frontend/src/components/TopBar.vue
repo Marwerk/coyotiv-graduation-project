@@ -1,13 +1,5 @@
 <!-- This is a child component of App.vue -->
-<template>
-  <div class="top-bar">
-    <DropDownMenu :items="menuItems" />
-    <button class="book-btn">Book a Room</button>
-  </div>
-</template>
-
 <script>
-import { ref } from 'vue'
 // This is a child component of TopBar.vue
 import DropDownMenu from './DropDownMenu.vue'
 
@@ -16,14 +8,20 @@ export default {
   components: {
     DropDownMenu
   },
-  setup() {
-    const menuItems = ref(['Rooms', 'Location', 'Gallery', 'History', 'Trip to natural reserve'])
+  data() {
     return {
-      menuItems
+      menuItems: ['Rooms', 'Location', 'Gallery', 'History', 'Trip to natural reserve']
     }
   }
 }
 </script>
+
+<template>
+  <div class="top-bar">
+    <DropDownMenu :items="menuItems" />
+    <button class="book-btn">Book a Room</button>
+  </div>
+</template>
 
 <style scoped>
 .top-bar {
