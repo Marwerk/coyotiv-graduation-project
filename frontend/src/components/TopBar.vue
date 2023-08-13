@@ -16,8 +16,10 @@ nav.navbar.navbar-expand-lg.bg-body-tertiary
           router-link.nav-link(to="/users") User
         li.nav-item
           router-link.nav-link(to="/contact") Contact
+        li.nav-item
+          router-link.nav-link(to="/bookings") Bookings
 
-    router-link.btn.btn-secondary.btn-sm(type='button' to="/bookings") Book a room
+    router-link.btn.btn-secondary.btn-sm(type='button' to="/newbooking") Book a room
 
 
 

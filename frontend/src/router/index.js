@@ -4,6 +4,7 @@ import UsersView from '../views/UsersView.vue'
 import RoomsView from '../views/RoomsView.vue'
 import ContactView from '../views/ContactView.vue'
 import BookingsView from '../views/BookingsView.vue'
+import NewBookingView from '../views/NewBookingView.vue'
 import ErrorView from '../views/ErrorView.vue'
 
 // Views = pages of your webapp
@@ -32,8 +33,13 @@ const router = createRouter({
     },
     {
       path: '/bookings',
-      name: 'book a room',
+      name: 'bookings',
       component: BookingsView
+    },
+    {
+      path: '/newbooking',
+      name: 'book a room',
+      component: NewBookingView
     },
     {
       path: '/:pathMatch(.*)*',
