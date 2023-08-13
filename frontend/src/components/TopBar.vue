@@ -17,7 +17,7 @@ nav.navbar.navbar-expand-lg.bg-body-tertiary
         li.nav-item
           router-link.nav-link(to="/contact") Contact
 
-    button.btn.btn-secondary.btn-sm(type='button') Book a room
+    router-link.btn.btn-secondary.btn-sm(type='button' to="/bookings") Book a room
 
 
 

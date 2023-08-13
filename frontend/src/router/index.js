@@ -3,6 +3,7 @@ import HomeView from '../views/HomeView.vue'
 import UsersView from '../views/UsersView.vue'
 import RoomsView from '../views/RoomsView.vue'
 import ContactView from '../views/ContactView.vue'
+import ErrorView from '../views/ErrorView.vue'
 
 // Views = pages of your webapp
 const router = createRouter({
@@ -27,6 +28,11 @@ const router = createRouter({
       path: '/contact',
       name: 'contact',
       component: ContactView
+    },
+    {
+      path: '/:pathMatch(.*)*',
+      name: '404',
+      component: ErrorView
     }
   ]
 })
