@@ -1,9 +1,12 @@
-<script>
-export default {}
+<script setup>
+import TopBar from '../components/TopBar.vue'
 </script>
 
-<template lang="pug">
-
+<template>
+  <main>
+    <TopBar />
+  </main>
 </template>
 
-<style lang=""></style>
+<style scoped></style>
+```

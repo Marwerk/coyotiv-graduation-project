@@ -1,25 +1,13 @@
-<!-- This is where we define the component's behaviour -->
-<script>
-import TopBar from './components/TopBar.vue'
-import { RouterView } from 'vue-router'
-
-export default {
-  name: 'App',
-  components: {
-    TopBar,
-    RouterView
-  }
-}
+<script setup>
+import { RouterLink, RouterView } from 'vue-router'
 </script>
 
-<!-- This is the HTML structure -->
 <template>
-  <div id="app">
-    <TopBar />
-    <RouterView />
-  </div>
+  <main class="containter">
+    <Suspense>
+      <RouterView />
+    </Suspense>
+  </main>
 </template>
 
-<!-- This is where we define the styles of the app
-by adding "scoped" we ensure that the styling is applied only within this view -->
 <style scoped></style>
