@@ -1,12 +1,15 @@
+<!-- eslint-disable no-unused-vars -->
 <script setup>
 import { ref, onMounted } from 'vue'
-import axios from 'axios' // Directly import Axios
+import axios from 'axios'
+
+import TopBar from '../components/TopBar.vue'
 
 const users = ref([])
 
 onMounted(async () => {
   try {
-    const response = await axios.get('http://127.0.0.1:3000/users') // Use the full URL here
+    const response = await axios.get('http://127.0.0.1:3000/users')
     users.value = response.data
   } catch (error) {
     console.error('Error fetching users:', error)
@@ -15,6 +18,7 @@ onMounted(async () => {
 </script>
 
 <template lang="pug">
+TopBar
 div
   h1 All Users
   ul
@@ -22,6 +26,4 @@ div
       | {{ user.firstName }} {{ user.lastName }}
 </template>
 
-<style lang="">
-/* Your styles here */
-</style>
+<style lang=""></style>

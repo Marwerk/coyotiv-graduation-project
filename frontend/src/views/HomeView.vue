@@ -1,15 +1,14 @@
+<!-- eslint-disable no-unused-vars -->
 <script setup>
 import TopBar from '../components/TopBar.vue'
 </script>
 
-<template>
-  <main>
-    <TopBar />
-    <div class="content">
-      <h1>Welcome to Las Calas</h1>
-      <p>In the heart of the capital of Paraguay, Asunción</p>
-    </div>
-  </main>
+<template lang="pug">
+main
+  TopBar
+    .content
+      h1 Welcome to Las Calas
+      p In the heart of the capital of Paraguay, Asunción
 </template>
 
 <style scoped>
