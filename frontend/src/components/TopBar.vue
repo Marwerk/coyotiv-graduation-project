@@ -11,7 +11,7 @@ nav.navbar.navbar-expand-lg.bg-body-tertiary
     #navbarText.collapse.navbar-collapse
       ul.navbar-nav.mr-auto.mb-2.mb-lg-0
         li.nav-item
-          router-link.nav-link.active(aria-current='page' to="/rooms") Rooms
+          router-link.nav-link.active(to="/rooms") Rooms
         li.nav-item
           router-link.nav-link(to="/users") User
         li.nav-item
@@ -35,9 +35,5 @@ nav.navbar.navbar-expand-lg.bg-body-tertiary
 
 .router-link.navbar-brand {
   order: 2; /* make Brand appear second */
-}
-
-button.btn.btn-secondary.btn-sm {
-  order: 3; /* make button appear third */
 }
 </style>

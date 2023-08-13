@@ -1,7 +1,27 @@
-<script setup></script>
+<script setup>
+import { ref, onMounted } from 'vue'
+import axios from 'axios' // Directly import Axios
+
+const users = ref([])
+
+onMounted(async () => {
+  try {
+    const response = await axios.get('http://127.0.0.1:3000/users') // Use the full URL here
+    users.value = response.data
+  } catch (error) {
+    console.error('Error fetching users:', error)
+  }
+})
+</script>
 
 <template lang="pug">
-
+div
+  h1 All Users
+  ul
+    li(v-for="user in users" :key="user._id")
+      | {{ user.firstName }} {{ user.lastName }}
 </template>
 
-<style lang=""></style>
+<style lang="">
+/* Your styles here */
+</style>
