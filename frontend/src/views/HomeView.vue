@@ -6,9 +6,9 @@ import TopBar from '../components/TopBar.vue'
 <template lang="pug">
 main
   TopBar
-    .content
-      h1 Welcome to Las Calas
-      p In the heart of the capital of Paraguay, Asunción
+  .content
+    h1 Welcome to Las Calas
+    p In the heart of the capital of Paraguay, Asunción
 </template>
 
 <style scoped>
