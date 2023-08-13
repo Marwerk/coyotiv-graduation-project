@@ -30,13 +30,6 @@ class User {
     this.bookings.push(booking)
     await this.save()
 
-    // TODO: this is where the app crashes
-    // when a third booking that overlaps with the first two is created, it the app crashes and the server returns a socket hangup error
-    // /app/src/models/user.js:34
-    //  room.bookings.push(booking)
-    //      ^
-    //  TypeError: Cannot read properties of undefined (reading 'bookings')
-    //  at model.book (/app/src/models/user.js:34:10)
     room.bookings.push(booking)
     await room.save()
 
