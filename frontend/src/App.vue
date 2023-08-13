@@ -1,5 +1,7 @@
 <script setup>
 import { RouterView } from 'vue-router'
+import { useBookingStore } from './stores/BookingStore'
+useBookingStore()
 </script>
 
 <template>

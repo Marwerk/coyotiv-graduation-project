@@ -5,6 +5,10 @@ import axios from 'axios'
 
 import TopBar from '../components/TopBar.vue'
 
+import { useBookingStore } from '../stores/BookingStore'
+
+const bookingStore = useBookingStore()
+
 const bookingForm = ref({
   user: '64d8f9560dc47834af58e23e',
   guest: {
@@ -20,7 +24,8 @@ const bookingForm = ref({
 
 async function bookRoom() {
   try {
-    const response = await axios.post('http://127.0.0.1:3000/bookings', bookingForm.value)
+    bookingStore.setBookingData(bookingForm.value)
+    await bookingStore.addBooking()
     alert('Booking successful!')
   } catch (err) {
     alert('Error booking room.')

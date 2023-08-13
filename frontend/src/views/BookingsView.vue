@@ -1,20 +1,21 @@
 <!-- eslint-disable no-unused-vars -->
 <script setup>
-import { ref, onMounted } from 'vue'
-import axios from 'axios'
-
+import { onMounted } from 'vue'
 import TopBar from '../components/TopBar.vue'
+import { useBookingStore } from '../stores/BookingStore'
 
-const bookings = ref([])
+const bookingStore = useBookingStore()
 
 onMounted(async () => {
   try {
-    const response = await axios.get('http://127.0.0.1:3000/bookings')
-    bookings.value = response.data
+    // Fetch bookings using the store action
+    await bookingStore.fetchBookings()
   } catch (error) {
     console.error('Error fetching bookings:', error)
   }
 })
+
+const allBookings = bookingStore.bookings
 </script>
 
 <template lang="pug">
@@ -22,7 +23,7 @@ TopBar
 div
   h1 All Bookings
   ul
-    li(v-for="booking in bookings" :key="booking._id")
+    li(v-for="booking in allBookings" :key="booking._id")
       | Booking for {{ booking.guest.firstName }} {{ booking.guest.lastName }} from {{ booking.checkInDate }} to {{ booking.checkOutDate }}
 </template>
 
