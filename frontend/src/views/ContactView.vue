@@ -1,10 +1,10 @@
 <!-- eslint-disable no-unused-vars -->
 <script setup>
-import TopBar from '../components/TopBar.vue'
+import TheNavBar from '../components/TheNavBar.vue'
 </script>
 
 <template lang="pug">
-TopBar
+TheNavBar
 </template>
 
 <style lang=""></style>

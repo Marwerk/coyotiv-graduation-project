@@ -1,7 +1,7 @@
 <!-- eslint-disable no-unused-vars -->
 <script setup>
 import { onMounted } from 'vue'
-import TopBar from '../components/TopBar.vue'
+import TheNavBar from '../components/TheNavBar.vue'
 import { useBookingStore } from '../stores/BookingStore'
 
 const bookingStore = useBookingStore()
@@ -19,7 +19,7 @@ const allBookings = bookingStore.bookings
 </script>
 
 <template lang="pug">
-TopBar
+TheNavBar
 div
   h1 All Bookings
   ul
