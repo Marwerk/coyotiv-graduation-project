@@ -1,34 +1,47 @@
 <!-- eslint-disable no-unused-vars -->
-<script setup>
-import { ref } from 'vue'
+<script>
 import axios from 'axios'
-
 import TopBar from '../components/TopBar.vue'
-
 import { useBookingStore } from '../stores/BookingStore'
 
-const bookingStore = useBookingStore()
-
-const bookingForm = ref({
-  user: '64d8f9560dc47834af58e23e',
-  guest: {
-    firstName: '',
-    lastName: '',
-    email: '',
-    phoneNumber: ''
+export default {
+  components: {
+    TopBar
   },
-  checkIn: '',
-  checkOut: '',
-  type: ''
-})
 
-async function bookRoom() {
-  try {
-    bookingStore.setBookingData(bookingForm.value)
-    await bookingStore.addBooking()
-    alert('Booking successful!')
-  } catch (err) {
-    alert('Error booking room.')
+  data() {
+    return {
+      bookingForm: {
+        user: '64d8f9560dc47834af58e23e',
+        guest: {
+          firstName: '',
+          lastName: '',
+          email: '',
+          phoneNumber: ''
+        },
+        checkIn: '',
+        checkOut: '',
+        type: ''
+      }
+    }
+  },
+
+  computed: {
+    bookingStore() {
+      return useBookingStore()
+    }
+  },
+
+  methods: {
+    async bookRoom() {
+      try {
+        this.bookingStore.setBookingData(this.bookingForm)
+        await this.bookingStore.addBooking()
+        alert('Booking successful!')
+      } catch (err) {
+        alert('Error booking room.')
+      }
+    }
   }
 }
 </script>
