@@ -5,6 +5,8 @@ const cookieParser = require('cookie-parser')
 const logger = require('morgan')
 const cors = require('cors')
 const session = require('express-session')
+const MongoStore = require('connect-mongo')
+const mongoose = require('mongoose')
 
 require('dotenv').config()
 require('./database-connection')
@@ -26,12 +28,25 @@ app.use(cors())
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'pug')
 
+const connectionPromise = mongoose.connection
+  .asPromise()
+  // eslint-disable-next-line no-return-assign, no-param-reassign
+  .then(connection => (connection = connection.getClient()))
+
 app.use(
   session({
     secret: 'asdfg25050525!!__rwet5',
     resave: false,
     saveUninitialized: true,
-    cookie: { secure: process.env.NODE_ENV === 'development', maxAge: 1000 * 60 * 60 * 24 * 15 }, // cookie expires after 15 days
+    cookie: {
+      secure: process.env.NODE_ENV === 'development',
+      maxAge: 1000 * 60 * 60 * 24 * 15,
+    }, // cookie expires after 15 days
+    store: MongoStore.create({
+      // mongoUrl: process.env.MONGODB_CONNECTION_STRING,
+      clientPromise: connectionPromise,
+      // ttl: 60 * 60 * 24 * 15,
+    }),
   })
 )
 
