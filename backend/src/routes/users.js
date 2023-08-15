@@ -10,7 +10,7 @@ router.get('/', async function (req, res, next) {
 
 // POST Route Handler
 router.post('/', async function (req, res, next) {
-  const userExists = await User.findOne({ email: req.body.email })
+  const userExists = await User.findOne({ firstName: req.body.firstName })
 
   if (userExists) {
     res.status(200).send(userExists)
@@ -20,7 +20,6 @@ router.post('/', async function (req, res, next) {
       firstName: req.body.firstName,
       lastName: req.body.lastName,
       phoneNumber: req.body.phoneNumber,
-      email: req.body.email,
       address: req.body.address,
       city: req.body.city,
     })

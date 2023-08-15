@@ -16,7 +16,6 @@ export default {
         guest: {
           firstName: '',
           lastName: '',
-          email: '',
           phoneNumber: ''
         },
         checkIn: '',
