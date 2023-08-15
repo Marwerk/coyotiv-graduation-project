@@ -12,7 +12,6 @@ export default {
   data() {
     return {
       bookingForm: {
-        user: '64d8f9560dc47834af58e23e',
         guest: {
           firstName: '',
           lastName: '',

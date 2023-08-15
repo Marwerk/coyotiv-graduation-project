@@ -12,17 +12,9 @@ router.get('/session', async function (req, res, next) {
 router.post('/', async function (req, res, next) {
   const { name, email, password } = req.body
 
-  const user = new User({ name, email })
-  await user.setPassword(password)
-  await user.save()
+  const user = await User.register({ name, email }, password)
 
-  try {
-    const user = await User.create(req.body)
-    req.session.user = user
-    res.send(user)
-  } catch (err) {
-    next(err)
-  }
+  res.send(user)
 })
 
 module.exports = router
