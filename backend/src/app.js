@@ -35,6 +35,17 @@ app.use(
   })
 )
 
+app.use((req, res, next) => {
+  const numberOfVisits = req.session.numberOfVisits || 0
+  req.session.numberOfVisits = numberOfVisits + 1
+  req.session.history = req.session.history || []
+  req.session.history.push({ url: req.url, date: new Date(), ip: req.ip })
+
+  console.log(req.session)
+
+  next()
+})
+
 // express.js
 app.use(logger('dev'))
 app.use(express.json())
