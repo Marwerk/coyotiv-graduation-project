@@ -6,10 +6,22 @@ const logger = require('morgan')
 const cors = require('cors')
 const session = require('express-session')
 const MongoStore = require('connect-mongo')
+
 const mongoose = require('mongoose')
 
 require('dotenv').config()
 require('./database-connection')
+
+// requires the model with Passport-Local Mongoose plugged in
+const passport = require('passport')
+const User = require('./models/user')
+
+// use static authenticate method of model in LocalStrategy
+passport.use(User.createStrategy())
+
+// use static serialize and deserialize of model for passport session support
+passport.serializeUser(User.serializeUser())
+passport.deserializeUser(User.deserializeUser())
 
 // Here we "require" the routes
 const indexRouter = require('./routes/index')
@@ -17,6 +29,7 @@ const usersRouter = require('./routes/users')
 const hotelsRouter = require('./routes/hotels')
 const bookingsRouter = require('./routes/bookings')
 const roomsRouter = require('./routes/rooms')
+const accountsRouter = require('./routes/accounts')
 const dropDbRouter = require('./routes/drop-db')
 
 const app = express()
@@ -46,6 +59,8 @@ app.use(
   })
 )
 
+app.use(passport.session())
+
 app.use((req, res, next) => {
   const numberOfVisits = req.session.numberOfVisits || 0
   req.session.numberOfVisits = numberOfVisits + 1
@@ -70,6 +85,7 @@ app.use('/users', usersRouter)
 app.use('/hotels', hotelsRouter)
 app.use('/bookings', bookingsRouter)
 app.use('/rooms', roomsRouter)
+app.use('/accounts', accountsRouter)
 app.use('/drop-db', dropDbRouter)
 
 // catch 404 and forward to error handler
