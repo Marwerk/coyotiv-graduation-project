@@ -9,23 +9,13 @@ router.get('/', async function (req, res, next) {
 })
 
 // POST Route Handler
+
 router.post('/', async function (req, res, next) {
-  const userExists = await User.findOne({ firstName: req.body.firstName })
+  const { name, email, password } = req.body
 
-  if (userExists) {
-    res.status(200).send(userExists)
-    console.log('User already exists')
-  } else {
-    const user = await User.create({
-      firstName: req.body.firstName,
-      lastName: req.body.lastName,
-      phoneNumber: req.body.phoneNumber,
-      address: req.body.address,
-      city: req.body.city,
-    })
+  const user = await User.register({ name, email }, password)
 
-    res.status(201).send(user)
-  }
+  res.status(201).send(user)
 })
 
 // TODO PATCH Route Handler

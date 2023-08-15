@@ -136,12 +136,23 @@ async function main() {
 
   // READ
 
-  const marwerk = await axios.post('/accounts', {
-    name: 'marvin',
+  // const marwerk = await axios.post('/users', {
+  //   firstName: 'marvin',
+  //   lastName: 'werkmeister',
+  //   phoneNumber: '555-555-5555',
+  //   email: 'marwerk@getMaxListeners.com',
+  //   address: 'Timbuktustrasse 5',
+  //   city: 'Berlin',
+  //   password: '12345678',
+  // })
+  // console.log(chalk.bgGreenBright('----> Create Account <----'), marwerk.data)
+
+  const loggedInMarvin = await axios.post('/accounts/session', {
     email: 'marwerk@getMaxListeners.com',
     password: '12345678',
   })
-  console.log(chalk.bgGreenBright('----> Create Account <----'), marwerk.data)
+
+  console.log(chalk.bgGreenBright('----> Login <----'), loggedInMarvin.data)
 }
 
 // const allUsers = await axios.get('/users')
