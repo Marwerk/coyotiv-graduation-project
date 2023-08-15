@@ -4,6 +4,7 @@ const express = require('express')
 const cookieParser = require('cookie-parser')
 const logger = require('morgan')
 const cors = require('cors')
+const session = require('express-session')
 
 require('dotenv').config()
 require('./database-connection')
@@ -25,6 +26,16 @@ app.use(cors())
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'pug')
 
+app.use(
+  session({
+    secret: 'asdfg25050525!!__rwet5',
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: process.env.NODE_ENV === 'development', maxAge: 1000 * 60 * 60 * 24 * 15 }, // cookie expires after 15 days
+  })
+)
+
+// express.js
 app.use(logger('dev'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
