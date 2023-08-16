@@ -8,12 +8,8 @@ import { mapActions, mapState } from 'pinia'
 export default {
   name: 'App',
   components: {
+    RouterLink,
     RouterView
-  },
-  created() {
-    const bookingStore = useBookingStore()
-    const accountStore = useAccountStore()
-    // If useBookingStore had any methods or properties you wanted to use, you'd call them here
   },
   async mounted() {
     await this.fetchUser()
@@ -40,6 +36,7 @@ export default {
       </nav>
     </div>
   </header>
+  <h1>Logged in as: {{ user?.email }}</h1>
   <Suspense>
     <RouterView />
   </Suspense>

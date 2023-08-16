@@ -13,8 +13,9 @@ export default {
   },
   methods: {
     ...mapActions(useAccountStore, ['login']),
-    doLogin() {
-      this.login(this.email, this.password)
+    async doLogin() {
+      await this.login(this.email, this.password)
+      this.$router.push('/')
     }
   }
 }
