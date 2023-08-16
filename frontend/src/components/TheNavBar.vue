@@ -15,6 +15,10 @@ nav.navbar.navbar-expand-lg.bg-body-tertiary
         li.nav-item
           router-link.nav-link(to="/users") User
         li.nav-item
+          router-link.nav-link(to="/login") Log In
+        li.nav-item
+          router-link.nav-link(to="/signup") Sign Up
+        li.nav-item
           router-link.nav-link(to="/contact") Contact
         li.nav-item
           router-link.nav-link(to="/bookings") Bookings
