@@ -30,7 +30,7 @@ export const useBookingStore = defineStore('bookings', {
 
     async fetchBookings() {
       try {
-        const response = await axios.get('http://localhost:3000/bookings')
+        const response = await axios.get('/bookings')
         this.bookings = response.data
       } catch (error) {
         console.error('Error fetching bookings:', error)
@@ -41,7 +41,7 @@ export const useBookingStore = defineStore('bookings', {
       console.log('Trying to add a new booking with data:', this.currentBooking)
 
       try {
-        const response = await axios.post('http://localhost:3000/bookings', this.currentBooking)
+        const response = await axios.post('/bookings', this.currentBooking)
         console.log('Booking response from server:', response.data)
         this.bookings.push(response.data)
         this.currentBooking = {
