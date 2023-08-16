@@ -1,12 +1,10 @@
 <!-- eslint-disable no-unused-vars -->
 <script>
-import TheNavBar from '../components/TheNavBar.vue'
 import { useBookingStore } from '../stores/BookingStore'
 import { useAccountStore } from '../stores/AccountStore'
 
 export default {
   components: {
-    TheNavBar
   },
   data() {
     const bookingStore = useBookingStore()
@@ -27,7 +25,6 @@ export default {
 </script>
 
 <template lang="pug">
-TheNavBar
 div
   h1 All Bookings
   ul

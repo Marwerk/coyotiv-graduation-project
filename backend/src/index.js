@@ -134,8 +134,6 @@ async function main() {
   // DELETE
   // const deleteFedericoBooking = await axios.delete(`/bookings/${federicoBooking.data._id}`)
 
-  // READ
-
   // const marwerk = await axios.post('/users', {
   //   firstName: 'marvin',
   //   lastName: 'werkmeister',
@@ -155,6 +153,7 @@ async function main() {
   console.log(chalk.bgGreenBright('----> Login <----'), loggedInMarvin.data)
 }
 
+// READ
 // const allUsers = await axios.get('/users')
 // console.log(chalk.bgGreenBright('----> List of all users <----'), allUsers.data)
 

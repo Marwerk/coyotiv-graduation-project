@@ -1,10 +1,8 @@
 <!-- eslint-disable no-unused-vars -->
-<script setup>
-import TheNavBar from '../components/TheNavBar.vue'
-</script>
+<script setup></script>
 
 <template lang="pug">
-TheNavBar
+
 </template>
 
 <style lang=""></style>

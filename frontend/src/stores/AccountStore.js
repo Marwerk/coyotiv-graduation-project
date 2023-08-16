@@ -1,6 +1,8 @@
-import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
 import axios from 'axios'
+
+axios.defaults.withCredentials = true
+axios.defaults.baseURL = 'http://localhost:3000'
 
 export const useAccountStore = defineStore('Account', {
   state: () => ({
@@ -8,26 +10,18 @@ export const useAccountStore = defineStore('Account', {
   }),
   actions: {
     async fetchUser() {
-      this.user = await axios.get('http://localhost:3000/accounts/session', {
-        withCredentials: true
-      }).data
+      this.user = (await axios.get('/accounts/session')).data
     },
     async login(email, password) {
-      this.user = axios.post(
-        'http://localhost:3000/accounts/session',
-        {
+      this.user = (
+        await axios.post('/accounts/session', {
           email: email,
           password: password
-        },
-        {
-          withCredentials: true
-        }
-      )
+        })
+      ).data
     },
     async logout() {
-      this.user = axios.delete('http://localhost:3000/accounts/session', {
-        withCredentials: true
-      })
+      await axios.delete('/accounts/session')
       this.user = null
     }
   }

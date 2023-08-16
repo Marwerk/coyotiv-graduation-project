@@ -1,13 +1,10 @@
 <script>
 import axios from 'axios'
-import TheNavbar from '../components/TheNavBar.vue'
 import { useAccountStore } from '../stores/AccountStore'
 import { mapActions } from 'pinia'
 
 export default {
-  components: {
-    TheNavbar
-  },
+  components: {},
   data() {
     return {
       email: '',
@@ -24,7 +21,7 @@ export default {
 </script>
 
 <template lang="pug">
-TheNavbar
+
 h2 Log in to your account
 
 form(@submit.prevent="doLogin")
