@@ -2,7 +2,7 @@ const axios = require('axios')
 const { response } = require('express')
 const chalk = require('chalk')
 
-axios.defaults.baseURL = 'http://localhost:3000'
+axios.defaults.baseURL = import.meta.env.VITE_API_BASE_URL
 
 // ------------------------------------------------------------------------ //
 
