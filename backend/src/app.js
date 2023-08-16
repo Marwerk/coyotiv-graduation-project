@@ -102,9 +102,4 @@ app.use(function (err, req, res, next) {
   res.render('error')
 })
 
-// Share link with friends for the lulz. Renders users.pug page
-app.get('/users', (req, res) => {
-  res.render('users')
-})
-
 module.exports = app
