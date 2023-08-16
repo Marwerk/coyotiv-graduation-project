@@ -11,6 +11,24 @@ export const useAccountStore = defineStore('Account', {
       this.user = await axios.get('http://localhost:3000/accounts/session', {
         withCredentials: true
       }).data
+    },
+    async login(email, password) {
+      this.user = axios.post(
+        'http://localhost:3000/accounts/session',
+        {
+          email: email,
+          password: password
+        },
+        {
+          withCredentials: true
+        }
+      )
+    },
+    async logout() {
+      this.user = axios.delete('http://localhost:3000/accounts/session', {
+        withCredentials: true
+      })
+      this.user = null
     }
   }
 })

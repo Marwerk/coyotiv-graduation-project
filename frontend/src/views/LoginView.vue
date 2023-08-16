@@ -1,8 +1,13 @@
 <script>
 import axios from 'axios'
+import TheNavbar from '../components/TheNavBar.vue'
 import { useAccountStore } from '../stores/AccountStore'
+import { mapActions } from 'pinia'
 
 export default {
+  components: {
+    TheNavbar
+  },
   data() {
     return {
       email: '',
@@ -10,26 +15,19 @@ export default {
     }
   },
   methods: {
-    async login() {
-      axios.post(
-        'http://localhost:3000/accounts/session',
-        {
-          email: this.email,
-          password: this.password
-        },
-        {
-          withCredentials: true
-        }
-      )
+    ...mapActions(useAccountStore, ['login']),
+    doLogin() {
+      this.login(this.email, this.password)
     }
   }
 }
 </script>
 
 <template lang="pug">
+TheNavbar
 h2 Log in to your account
 
-form(@submit.prevent="login")
+form(@submit.prevent="doLogin")
   div
     label(for="email") Email
     input#email(type="email" v-model="email" required)

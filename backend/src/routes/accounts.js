@@ -18,4 +18,13 @@ router.post(
   }
 )
 
+router.delete('/session', async function (req, res, next) {
+  await req.logout()
+
+  req.session.regenerate(err => {
+    if (err) next(err)
+    res.sendStatus(200)
+  })
+})
+
 module.exports = router
