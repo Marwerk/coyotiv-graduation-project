@@ -5,16 +5,17 @@ axios.defaults.withCredentials = true
 axios.defaults.baseURL = import.meta.env.VITE_API_BASE_URL
 
 export const useAccountStore = defineStore('account', {
-  state: () => ({
-    user: null
-  }),
+  state: () => ({ user: null }),
+  getters: {
+    username: (state) => state.user?.username,
+    isLoggedIn: (state) => !!state.user
+  },
   actions: {
     async fetchUser() {
       this.user = (await axios.get('/accounts/session')).data
     },
-    async login(email, password) {
-      const response = await axios.post('/accounts/session', { email, password })
-      this.user = response.data
+    async login({ username, password }) {
+      this.user = (await axios.post('/accounts/session', { username, password })).data
     },
     async logout() {
       await axios.delete('/accounts/session')
