@@ -10,7 +10,11 @@ export const useAccountStore = defineStore('Account', {
   }),
   actions: {
     async fetchUser() {
-      this.user = (await axios.get('/accounts/session')).data
+      try {
+        this.user = (await axios.get('/accounts/session')).data
+      } catch (error) {
+        console.log('Error in line 16 of AccountStore.js', error)
+      }
     },
     async login(email, password) {
       this.user = (
