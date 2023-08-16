@@ -35,7 +35,8 @@ const dropDbRouter = require('./routes/drop-db')
 const app = express()
 
 // CORS
-app.use(cors())
+// in the future, origin should be your frontend_url
+app.use(cors({ origin: true, credentials: true }))
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'))
@@ -67,7 +68,7 @@ app.use((req, res, next) => {
   req.session.history = req.session.history || []
   req.session.history.push({ url: req.url, date: new Date(), ip: req.ip })
 
-  console.log(req.session)
+  // console.log(req.session)
 
   next()
 })
