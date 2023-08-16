@@ -35,7 +35,7 @@ const app = express()
 
 // CORS
 // in the future, origin should be your frontend_url
-app.use(cors({ origin: true, credentials: true }))
+app.use(cors({ origin: 'frontend-d4mfykq4iq-ew.a.run.app', credentials: true }))
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'))

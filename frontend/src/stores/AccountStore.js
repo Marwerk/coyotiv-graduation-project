@@ -12,7 +12,15 @@ export const useAccountStore = defineStore('account', {
   },
   actions: {
     async fetchUser() {
-      this.user = (await axios.get('/accounts/session')).data
+      try {
+        this.user = (await axios.get('/accounts/session')).data
+      } catch (error) {
+        if (error.response && error.response.status === 401) {
+          this.user = null
+        } else {
+          console.error('We have an error while fetching user session:', error)
+        }
+      }
     },
     async login({ username, password }) {
       this.user = (await axios.post('/accounts/session', { username, password })).data
