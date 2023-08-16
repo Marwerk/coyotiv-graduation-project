@@ -3,7 +3,7 @@
 import { ref, onMounted } from 'vue'
 import axios from 'axios'
 
-import TheNavBar from '../components/TheNavBar.vue'
+// import TheNavBar from '../components/TheNavBar.vue'
 
 const users = ref([])
 
@@ -18,7 +18,7 @@ onMounted(async () => {
 </script>
 
 <template lang="pug">
-TheNavBar
+//- TheNavBar
 div
   h1 All Users
   ul
