@@ -52,7 +52,7 @@ app.use(
     resave: false,
     saveUninitialized: true,
     cookie: {
-      secure: process.env.NODE_ENV === 'development',
+      secure: process.env.NODE_ENV === 'production',
       maxAge: 1000 * 60 * 60 * 24 * 15, // cookie expires after 15 days
       sameSite: 'none',
     },
