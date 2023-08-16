@@ -54,7 +54,7 @@ app.use(
     cookie: {
       secure: process.env.NODE_ENV === 'development',
       maxAge: 1000 * 60 * 60 * 24 * 15, // cookie expires after 15 days
-      // sameSite: 'none',
+      sameSite: 'none',
     },
     store: MongoStore.create({ clientPromise, stringify: false }),
   })
