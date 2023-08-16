@@ -1,5 +1,22 @@
-<script></script>
+<script>
+// Import the store
+import { useAccountStore } from '@/stores/AccountStore'
 
+export default {
+  data() {
+    return {
+      // ... your other data properties
+    }
+  },
+  computed: {
+    // Access the user from the AccountStore
+    user() {
+      const accountStore = useAccountStore()
+      return accountStore.user
+    }
+  }
+}
+</script>
 <template lang="pug">
 
 nav.navbar.navbar-expand-lg.bg-body-tertiary
@@ -15,14 +32,17 @@ nav.navbar.navbar-expand-lg.bg-body-tertiary
         li.nav-item
           router-link.nav-link(to="/users") User
         li.nav-item
+          router-link.nav-link(v-if="!user" to="/login") Log In
+        li.nav-item
+          router-link.nav-link(v-if="!user" to="/signup") Sign Up
+        li.nav-item
+          a.nav-link(v-if="user" @click.prevent="logout") LOG OUT
+        li.nav-item
           router-link.nav-link(to="/contact") Contact
         li.nav-item
           router-link.nav-link(to="/bookings") Bookings
 
     router-link.btn.btn-secondary.btn-sm(type='button' to="/newbooking") Book a room
-
-
-
 
 </template>
 

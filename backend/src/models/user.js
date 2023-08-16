@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 const autopopulate = require('mongoose-autopopulate')
+const passportLocalMongoose = require('passport-local-mongoose')
 const Booking = require('./booking')
 const Hotel = require('./hotel')
 
@@ -7,11 +8,14 @@ const userSchema = new mongoose.Schema({
   firstName: String,
   lastName: String,
   phoneNumber: String,
-  email: String,
   address: String,
   city: String,
   bookings: [
-    { type: mongoose.Schema.Types.ObjectId, ref: 'Booking', autopopulate: { maxDepth: 1 } },
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Booking',
+      autopopulate: { maxDepth: 1 },
+    },
   ],
 })
 
@@ -44,5 +48,6 @@ class User {
 // ------------------------------------------------------------------------ //
 
 userSchema.plugin(autopopulate)
+userSchema.plugin(passportLocalMongoose, { usernameField: 'email' })
 userSchema.loadClass(User)
 module.exports = mongoose.model('User', userSchema)

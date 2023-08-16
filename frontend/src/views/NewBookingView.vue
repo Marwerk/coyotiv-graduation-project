@@ -1,22 +1,18 @@
 <!-- eslint-disable no-unused-vars -->
 <script>
 import axios from 'axios'
-import TheNavBar from '../components/TheNavBar.vue'
+
 import { useBookingStore } from '../stores/BookingStore'
 
 export default {
-  components: {
-    TheNavBar
-  },
+  components: {},
 
   data() {
     return {
       bookingForm: {
-        user: '64d8f9560dc47834af58e23e',
         guest: {
           firstName: '',
           lastName: '',
-          email: '',
           phoneNumber: ''
         },
         checkIn: '',
@@ -47,7 +43,7 @@ export default {
 </script>
 
 <template lang="pug">
-TheNavBar
+
 div.container
   h1.mb-4 Book a Room
   form(@submit.prevent="bookRoom")

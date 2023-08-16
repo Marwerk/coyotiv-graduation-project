@@ -1,15 +1,45 @@
-<script setup>
-import { RouterView } from 'vue-router'
+<script>
+import axios from 'axios'
+import { RouterLink, RouterView } from 'vue-router'
 import { useBookingStore } from './stores/BookingStore'
-useBookingStore()
+import { useAccountStore } from './stores/AccountStore'
+import { mapActions, mapState } from 'pinia'
+
+export default {
+  name: 'App',
+  components: {
+    RouterLink,
+    RouterView
+  },
+  async mounted() {
+    await this.fetchUser()
+  },
+  methods: {
+    ...mapActions(useAccountStore, ['fetchUser', 'logout'])
+  },
+  computed: {
+    ...mapState(useAccountStore, ['user'])
+  }
+}
 </script>
 
 <template>
-  <main class="containter">
-    <Suspense>
-      <RouterView />
-    </Suspense>
-  </main>
+  <header>
+    <div class="container">
+      <nav>
+        <RouterLink to="/">Home</RouterLink>
+        <RouterLink to="/rooms">Rooms</RouterLink>
+        <RouterLink to="/bookings">Bookings</RouterLink>
+        <RouterLink v-if="!user" to="/login">Login</RouterLink>
+        <RouterLink v-if="!user" to="/signup">Signup</RouterLink>
+        <a v-if="user" @click="logout">Logout</a>
+      </nav>
+    </div>
+  </header>
+  <h1>Logged in as: {{ user?.email }}</h1>
+  <Suspense>
+    <RouterView />
+  </Suspense>
 </template>
 
 <style scoped></style>

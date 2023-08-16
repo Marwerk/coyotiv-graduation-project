@@ -3,8 +3,6 @@
 import { ref, onMounted } from 'vue'
 import axios from 'axios'
 
-import TheNavBar from '../components/TheNavBar.vue'
-
 const rooms = ref([])
 
 onMounted(async () => {
@@ -18,7 +16,7 @@ onMounted(async () => {
 </script>
 
 <template lang="pug">
-TheNavBar
+
 div
   h1 All Rooms
   ul

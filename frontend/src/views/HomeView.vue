@@ -1,11 +1,9 @@
 <!-- eslint-disable no-unused-vars -->
-<script setup>
-import TheNavBar from '../components/TheNavBar.vue'
-</script>
+<script setup></script>
 
 <template lang="pug">
 main
-  TheNavBar
+
   .content
     h1 Welcome to Las Calas
     p In the heart of the capital of Paraguay, Asunción

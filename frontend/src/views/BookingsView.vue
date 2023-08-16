@@ -1,25 +1,30 @@
 <!-- eslint-disable no-unused-vars -->
-<script setup>
-import { onMounted } from 'vue'
-import TheNavBar from '../components/TheNavBar.vue'
+<script>
 import { useBookingStore } from '../stores/BookingStore'
+import { useAccountStore } from '../stores/AccountStore'
 
-const bookingStore = useBookingStore()
-
-onMounted(async () => {
-  try {
-    // Fetch bookings using the store action
-    await bookingStore.fetchBookings()
-  } catch (error) {
-    console.error('Error fetching bookings:', error)
+export default {
+  components: {
+  },
+  data() {
+    const bookingStore = useBookingStore()
+    return {
+      allBookings: bookingStore.bookings
+    }
+  },
+  mounted() {
+    const bookingStore = useBookingStore()
+    try {
+      // Fetch bookings using the store action
+      bookingStore.fetchBookings()
+    } catch (error) {
+      console.error('Error fetching bookings:', error)
+    }
   }
-})
-
-const allBookings = bookingStore.bookings
+}
 </script>
 
 <template lang="pug">
-TheNavBar
 div
   h1 All Bookings
   ul
