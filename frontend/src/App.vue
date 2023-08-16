@@ -3,6 +3,8 @@ import axios from 'axios'
 import { RouterLink, RouterView } from 'vue-router'
 import { useBookingStore } from './stores/BookingStore'
 import { useAccountStore } from './stores/AccountStore'
+// TODO: create userStore for Sign Up, in the store, we would call the route.post handler from our users.js route in the backend
+// create a Sign Up view accordingly
 import { mapActions, mapState } from 'pinia'
 
 export default {
