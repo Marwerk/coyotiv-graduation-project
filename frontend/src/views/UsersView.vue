@@ -9,7 +9,7 @@ const users = ref([])
 
 onMounted(async () => {
   try {
-    const response = await axios.get('http://127.0.0.1:3000/users')
+    const response = await axios.get('http://localhost:3000/users')
     users.value = response.data
   } catch (error) {
     console.error('Error fetching users:', error)

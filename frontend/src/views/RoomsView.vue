@@ -7,7 +7,7 @@ const rooms = ref([])
 
 onMounted(async () => {
   try {
-    const response = await axios.get('http://127.0.0.1:3000/rooms')
+    const response = await axios.get('http://localhost:3000/rooms')
     rooms.value = response.data
   } catch (error) {
     console.error('Error fetching rooms:', error)
