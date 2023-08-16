@@ -29,7 +29,7 @@ export default {
 
 <template>
   <header>
-    <div class="containter">
+    <div class="container">
       <nav>
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/rooms">Rooms</RouterLink>
