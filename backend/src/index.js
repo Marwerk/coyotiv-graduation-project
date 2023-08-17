@@ -2,7 +2,7 @@ const axios = require('axios')
 const { response } = require('express')
 const chalk = require('chalk')
 
-axios.defaults.baseURL = import.meta.env.VITE_API_BASE_URL
+axios.defaults.baseURL = 'http://localhost:3000'
 
 // ------------------------------------------------------------------------ //
 
@@ -131,23 +131,23 @@ async function main() {
   // DELETE
   // const deleteFedericoBooking = await axios.delete(`/bookings/${federicoBooking.data._id}`)
 
-  // const marwerk = await axios.post('/users', {
-  //   firstName: 'marvin',
-  //   lastName: 'werkmeister',
-  //   phoneNumber: '555-555-5555',
-  //   email: 'marwerk@getMaxListeners.com',
-  //   address: 'Timbuktustrasse 5',
-  //   city: 'Berlin',
-  //   password: '12345678',
-  // })
-  // console.log(chalk.bgGreenBright('----> Create Account <----'), marwerk.data)
-
-  const loggedInMarvin = await axios.post('/accounts/session', {
+  const marwerk = await axios.post('/users', {
+    firstName: 'marvin',
+    lastName: 'werkmeister',
+    phoneNumber: '555-555-5555',
     email: 'marwerk@getMaxListeners.com',
+    address: 'Timbuktustrasse 5',
+    city: 'Berlin',
     password: '12345678',
   })
+  console.log(chalk.bgGreenBright('----> Create Account <----'), marwerk.data)
 
-  console.log(chalk.bgGreenBright('----> Login <----'), loggedInMarvin.data)
+  //   const loggedInMarvin = await axios.post('/accounts/session', {
+  //     email: 'marwerk@getMaxListeners.com',
+  //     password: '12345678',
+  //   })
+
+  //   console.log(chalk.bgGreenBright('----> Login <----'), loggedInMarvin.data)
 }
 
 // READ
