@@ -59,6 +59,7 @@ app.use(
   })
 )
 
+app.set('trust proxy', 1)
 app.use(passport.session())
 
 app.use((req, res, next) => {
