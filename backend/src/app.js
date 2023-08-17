@@ -52,14 +52,15 @@ app.use(
     saveUninitialized: true,
     cookie: {
       secure: process.env.NODE_ENV === 'production',
+      sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
       maxAge: 1000 * 60 * 60 * 24 * 15, // cookie expires after 15 days
-      sameSite: 'none',
     },
     store: MongoStore.create({ clientPromise, stringify: false }),
   })
 )
 
 app.set('trust proxy', 1)
+
 app.use(passport.session())
 
 app.use((req, res, next) => {
