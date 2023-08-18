@@ -163,7 +163,7 @@ async function main() {
 // const hotelInfo = await axios.get('/hotels/LasCalas')
 // console.log(chalk.bgGreenBright('----> Fetch Hotel Info & Bookings <----'), hotelInfo.data)
 
-main().catch(error =>
+main().catch(err =>
   console.log(chalk.bgRedBright('Error message:', err.data.message ? err.data.message : err))
 )
 

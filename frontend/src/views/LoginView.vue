@@ -1,5 +1,4 @@
 <script>
-import axios from 'axios'
 import { useAccountStore } from '../stores/AccountStore'
 import { mapActions } from 'pinia'
 

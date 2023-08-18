@@ -6,6 +6,7 @@ import ContactView from '../views/ContactView.vue'
 import BookingsView from '../views/BookingsView.vue'
 import NewBookingView from '../views/NewBookingView.vue'
 import LoginView from '../views/LoginView.vue'
+import SignupView from '../views/SignupView.vue'
 import ErrorView from '../views/ErrorView.vue'
 
 // Views = pages of your webapp
@@ -31,6 +32,11 @@ const router = createRouter({
       path: '/users',
       name: 'users',
       component: UsersView
+    },
+    {
+      path: '/signup',
+      name: 'signup',
+      component: SignupView
     },
     {
       path: '/contact',
