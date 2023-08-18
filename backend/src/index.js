@@ -131,16 +131,16 @@ async function main() {
   // DELETE
   // const deleteFedericoBooking = await axios.delete(`/bookings/${federicoBooking.data._id}`)
 
-  // const marwerk = await axios.post('/users', {
-  //   firstName: 'marvin',
-  //   lastName: 'werkmeister',
-  //   phoneNumber: '555-555-5555',
-  //   email: 'marwerk@getMaxListeners.com',
-  //   address: 'Timbuktustrasse 5',
-  //   city: 'Berlin',
-  //   password: '12345678',
-  // })
-  // console.log(chalk.bgGreenBright('----> Create Account <----'), marwerk.data)
+  const marwerk = await axios.post('/users', {
+    firstName: 'marvin',
+    lastName: 'werkmeister',
+    phoneNumber: '555-555-5555',
+    email: 'marwerk@gmail.com',
+    address: 'Timbuktustrasse 5',
+    city: 'Berlin',
+    password: '12345',
+  })
+  console.log(chalk.bgGreenBright('----> Create Account <----'), marwerk.data)
 
   //   const loggedInMarvin = await axios.post('/accounts/session', {
   //     email: 'marwerk@getMaxListeners.com',
@@ -163,7 +163,7 @@ async function main() {
 // const hotelInfo = await axios.get('/hotels/LasCalas')
 // console.log(chalk.bgGreenBright('----> Fetch Hotel Info & Bookings <----'), hotelInfo.data)
 
-main().catch(error =>
+main().catch(err =>
   console.log(chalk.bgRedBright('Error message:', err.data.message ? err.data.message : err))
 )
 
