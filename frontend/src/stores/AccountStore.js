@@ -4,12 +4,10 @@ import axios from 'axios'
 axios.defaults.withCredentials = true
 axios.defaults.baseURL = import.meta.env.VITE_API_BASE_URL
 
-export const useAccountStore = defineStore('account', {
-  state: () => ({ user: null }),
-  getters: {
-    username: (state) => state.user?.username,
-    isLoggedIn: (state) => !!state.user
-  },
+export const useAccountStore = defineStore('Account', {
+  state: () => ({
+    user: null
+  }),
   actions: {
     async fetchUser() {
       try {
@@ -30,5 +28,8 @@ export const useAccountStore = defineStore('account', {
       await axios.delete('/accounts/session')
       this.user = null
     }
+    // async signUp({ username, email, password }) {
+    //   await axios.post('/accounts', { username, email, password })
+    // }
   }
 })

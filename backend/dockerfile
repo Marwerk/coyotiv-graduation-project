@@ -3,15 +3,19 @@
 # Install OS and node.js
 FROM node:alpine
 
-RUN npm install -g nodemon
-
 # Set working directory in /app
 WORKDIR /app
 
+# nodemon for development
+RUN npm install -g nodemon
+
+# copy package.json and package-lock.json to working directory
 ADD package.json package-lock.json ./
 
+# install dependencies
 RUN npm install
 
+# copy bin folder
 ADD bin ./bin
 
 CMD [ "nodemon" ]

@@ -1,9 +1,10 @@
 const express = require('express')
-const User = require('../models/user')
 
 const router = express.Router()
 
-//  GET Route Handler
+const User = require('../models/user')
+
+// GET
 router.get('/', async function (req, res, next) {
   res.send(await User.find())
 })

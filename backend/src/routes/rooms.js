@@ -11,7 +11,9 @@ router.get('/', async function (req, res, next) {
 
 // POST Route Handler
 router.post('/', async function (req, res, next) {
-  const roomNumberExists = await Room.findOne({ doorNumber: req.body.doorNumber })
+  const roomNumberExists = await Room.findOne({
+    doorNumber: req.body.doorNumber,
+  })
 
   if (roomNumberExists) {
     res.status(200).send(roomNumberExists)

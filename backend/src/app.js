@@ -6,24 +6,20 @@ const logger = require('morgan')
 const cors = require('cors')
 const session = require('express-session')
 const MongoStore = require('connect-mongo')
-
 const mongoose = require('mongoose')
+const passport = require('passport')
+
+const User = require('./models/user')
 
 require('dotenv').config()
 require('./database-connection')
 
-// requires the model with Passport-Local Mongoose plugged in
-const passport = require('passport')
-const User = require('./models/user')
-
-// use static authenticate method of model in LocalStrategy
+// Passport setup
 passport.use(User.createStrategy())
-
-// use static serialize and deserialize of model for passport session support
 passport.serializeUser(User.serializeUser())
 passport.deserializeUser(User.deserializeUser())
 
-// Here we "require" the routes
+// Require the routes
 const usersRouter = require('./routes/users')
 const hotelsRouter = require('./routes/hotels')
 const bookingsRouter = require('./routes/bookings')
@@ -40,29 +36,29 @@ app.use(cors({ origin: true, credentials: true }))
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'pug')
 
+// Session setup
 const clientPromise = mongoose.connection
   .asPromise()
   // eslint-disable-next-line no-return-assign, no-param-reassign
   .then(connection => (connection = connection.getClient()))
 
-app.use(
-  session({
-    secret: 'asdfg25050525!!__rwet5',
-    resave: false,
-    saveUninitialized: true,
-    cookie: {
-      secure: process.env.NODE_ENV === 'production',
-      sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
-      maxAge: 1000 * 60 * 60 * 24 * 15, // cookie expires after 15 days
-    },
-    store: MongoStore.create({ clientPromise, stringify: false }),
-  })
-)
+const sessionMiddleware = session({
+  secret: 'asdg2356gb34!!rwet5',
+  resave: false,
+  saveUninitialized: true,
+  cookie: {
+    secure: process.env.NODE_ENV === 'production',
+    maxAge: 1000 * 60 * 60 * 24 * 15, // 15 days
+  },
+  store: MongoStore.create({ clientPromise, stringify: false }),
+})
 
-app.set('trust proxy', 1)
+app.use(sessionMiddleware)
 
 app.use(passport.session())
+app.set('trust proxy', 1)
 
+// Middleware to track number of visits and history of each session
 app.use((req, res, next) => {
   const numberOfVisits = req.session.numberOfVisits || 0
   req.session.numberOfVisits = numberOfVisits + 1
@@ -81,8 +77,7 @@ app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')))
 
-// Here we "build" the routes
-
+// Build the routes
 app.use('/users', usersRouter)
 app.use('/hotels', hotelsRouter)
 app.use('/bookings', bookingsRouter)
@@ -90,12 +85,13 @@ app.use('/rooms', roomsRouter)
 app.use('/accounts', accountsRouter)
 
 // catch 404 and forward to error handler
-app.use(function (req, res, next) {
+app.use((req, res, next) => {
   next(createError(404))
 })
 
 // Express.js error handler
-app.use(function (err, req, res, next) {
+app.use((err, req, res, next) => {
+  // set locals, only providing error in development
   res.locals.message = err.message
   res.locals.error = req.app.get('env') === 'development' ? err : {}
 

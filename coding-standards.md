@@ -42,10 +42,10 @@ Use numbers appropriately (e.g. ISO9000)
 
 ## Docker commands
 
-- docker compose up --build
+To prevent mongo logs to show in the terminal:
+
 - docker compose up -d mongo
-- docker compose up backend
-- docker compose up frontend
+- docker compose up backend frontend
 
 ## On Vue.js CSS components
 

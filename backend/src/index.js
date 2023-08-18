@@ -7,7 +7,7 @@ axios.defaults.baseURL = 'http://localhost:3000'
 // ------------------------------------------------------------------------ //
 
 async function main() {
-  // CREATE
+  // CREATE INSTANCES
   const hotelLasCalas = await axios.post('/hotels', {
     name: 'LasCalas',
     location: 'Asuncion, PY',
@@ -164,7 +164,7 @@ async function main() {
 // console.log(chalk.bgGreenBright('----> Fetch Hotel Info & Bookings <----'), hotelInfo.data)
 
 main().catch(error =>
-  console.log(chalk.bgRedBright('Error message:', error.data ? error.data : error))
+  console.log(chalk.bgRedBright('Error message:', err.data.message ? err.data.message : err))
 )
 
 // ------------------------------------------------------------------------ //

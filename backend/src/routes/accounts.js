@@ -6,7 +6,8 @@ const passport = require('passport')
 
 const User = require('../models/user')
 
-router.get('/session', (req, res) => {
+router.get('/session', async function (req, res, next) {
+  console.log('The current user is:', req.user)
   res.send(req.user)
 })
 
