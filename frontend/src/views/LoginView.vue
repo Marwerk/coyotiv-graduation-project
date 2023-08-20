@@ -1,5 +1,5 @@
 <script>
-import { useAccountStore } from '../stores/AccountStore'
+import { useAccountStore } from '../stores/accountStore'
 import { mapActions } from 'pinia'
 
 export default {

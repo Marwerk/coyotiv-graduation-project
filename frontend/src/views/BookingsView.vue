@@ -1,7 +1,7 @@
 <!-- eslint-disable no-unused-vars -->
 <script>
-import { useBookingStore } from '../stores/BookingStore'
-import { useAccountStore } from '../stores/AccountStore'
+import { useBookingStore } from '../stores/bookingStore'
+import { useAccountStore } from '../stores/accountStore'
 
 export default {
   components: {

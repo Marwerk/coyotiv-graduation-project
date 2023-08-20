@@ -1,6 +1,6 @@
 <script>
 import { ref } from 'vue'
-import { useAccountStore } from '../stores/AccountStore'
+import { useSignupStore } from '../stores/signupStore'
 
 export default {
   setup() {
@@ -8,7 +8,7 @@ export default {
     const email = ref('')
     const password = ref('')
 
-    const store = useAccountStore()
+    const store = useSignupStore()
 
     const handleSignUp = async () => {
       await store.signUp({ name: name.value, email: email.value, password: password.value })
@@ -42,7 +42,7 @@ export default {
         <label for="password">Password:</label>
         <input v-model="password" type="password" id="password" required />
       </div>
-      <button type="submit">Register</button>
+      <button type="submit">Sign Up</button>
     </form>
 
     <p v-if="registrationError" class="error">{{ registrationError }}</p>

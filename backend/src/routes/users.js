@@ -4,13 +4,12 @@ const router = express.Router()
 
 const User = require('../models/user')
 
-// GET
+// Get all users
 router.get('/', async function (req, res, next) {
   res.send(await User.find())
 })
 
-// POST Route Handler
-
+// Post new user
 router.post('/', async function (req, res, next) {
   const { name, email, password } = req.body
 

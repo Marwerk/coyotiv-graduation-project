@@ -27,15 +27,6 @@ export const useAccountStore = defineStore('Account', {
     async logout() {
       await axios.delete('/accounts/session')
       this.user = null
-    },
-    async signUp({ name, email, password }) {
-      try {
-        const response = await axios.post('/users', { name, email, password })
-        this.user = response.data
-        this.registrationError = null
-      } catch (error) {
-        this.registrationError = error.response ? error.response.data : 'Unknown error'
-      }
     }
   }
 })

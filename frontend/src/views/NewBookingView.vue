@@ -2,7 +2,7 @@
 <script>
 import axios from 'axios'
 
-import { useBookingStore } from '../stores/BookingStore'
+import { useBookingStore } from '../stores/bookingStore'
 
 export default {
   components: {},
