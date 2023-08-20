@@ -26,7 +26,7 @@ export default {
 
 <template>
   <theNavbar />
-  <h1>{{ user?.email }} is logged in</h1>
+  <h1 v-if="user">{{ user?.email }} is logged in</h1>
   <Suspense>
     <RouterView />
   </Suspense>
