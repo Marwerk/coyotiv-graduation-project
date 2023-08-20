@@ -42,7 +42,7 @@ export default {
         <label for="password">Password:</label>
         <input v-model="password" type="password" id="password" required />
       </div>
-      <button type="submit">Sign Up</button>
+      <button to="/" button type="submit">Sign Up</button>
     </form>
 
     <p v-if="registrationError" class="error">{{ registrationError }}</p>
