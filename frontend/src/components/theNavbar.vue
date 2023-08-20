@@ -1,16 +1,12 @@
 <script>
-import { RouterLink, RouterView } from 'vue-router'
+import { RouterLink } from 'vue-router'
 import { useAccountStore } from '@/stores/accountStore'
 import { mapActions, mapState } from 'pinia'
 
 export default {
   name: 'theNavbar',
   components: {
-    RouterLink,
-    RouterView
-  },
-  async mounted() {
-    await this.fetchUser()
+    RouterLink
   },
   computed: {
     ...mapState(useAccountStore, ['user'])
@@ -50,9 +46,6 @@ export default {
       </nav>
     </div>
   </header>
-  <Suspense>
-    <RouterView />
-  </Suspense>
 </template>
 
 <style scoped>
