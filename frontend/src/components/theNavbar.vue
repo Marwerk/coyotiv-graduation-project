@@ -40,7 +40,7 @@ export default {
             <router-link to="/signup">Sign Up</router-link>
           </li>
           <li v-if="user">
-            <a @click="logout">Log Out</a>
+            <router-link to="/" @click="logout">Log Out</router-link>
           </li>
         </ul>
       </nav>
