@@ -17,35 +17,24 @@ export default {
 }
 </script>
 
-<template>
-  <header>
-    <div class="container">
-      <span class="logo-text">LAS CALAS - APART HOTEL</span>
-
-      <nav>
-        <ul>
-          <li>
-            <router-link to="/">Home</router-link>
-          </li>
-          <li>
-            <router-link to="/rooms">Rooms</router-link>
-          </li>
-          <li>
-            <router-link to="/contact">Contact</router-link>
-          </li>
-          <li v-if="!user">
-            <router-link to="/login">Login</router-link>
-          </li>
-          <li v-if="!user">
-            <router-link to="/signup">Sign Up</router-link>
-          </li>
-          <li v-if="user">
-            <router-link to="/" @click="logout">Log Out</router-link>
-          </li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+<template lang="pug">
+header
+  .container
+    span.logo-text LAS CALAS - APART HOTEL
+    nav
+      ul
+        li
+          router-link(to='/') Home
+        li
+          router-link(to='/rooms') Rooms
+        li
+          router-link(to='/contact') Contact
+        li(v-if='!user')
+          router-link(to='/login') Login
+        li(v-if='!user')
+          router-link(to='/signup') Sign Up
+        li(v-if='user')
+          router-link(to='/' @click='logout') Log Out
 </template>
 
 <style scoped>

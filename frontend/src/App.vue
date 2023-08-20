@@ -32,4 +32,9 @@ export default {
   </Suspense>
 </template>
 
-<style scoped></style>
+<style scoped>
+h1 {
+  text-align: center;
+  padding-top: 100px;
+}
+</style>
