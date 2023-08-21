@@ -6,7 +6,7 @@ main
 
   .content
     h1 Welcome to Las Calas
-    p In the heart of the capital of Paraguay, Asunción
+    p In the heart of Paraguay
 </template>
 
 <style scoped>
