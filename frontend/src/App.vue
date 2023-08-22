@@ -24,15 +24,11 @@ export default {
 
 <template>
   <theNavbar />
-  <h1 v-if="user">{{ user?.email }} is logged in</h1>
-  <Suspense>
-    <RouterView />
-  </Suspense>
+  <div class="spacer">
+    <Suspense>
+      <RouterView />
+    </Suspense>
+  </div>
 </template>
 
-<style scoped>
-h1 {
-  text-align: center;
-  padding-top: 100px;
-}
-</style>
+<style scoped></style>
