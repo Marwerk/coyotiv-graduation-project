@@ -1,4 +1,5 @@
 <script>
+import '@/assets/base.css'
 import { RouterLink } from 'vue-router'
 import { useAccountStore } from '@/stores/accountStore'
 import { mapActions, mapState } from 'pinia'
@@ -19,56 +20,114 @@ export default {
 
 <template lang="pug">
 header
-  .container
-    span.logo-text LAS CALAS - APART HOTEL
-    nav
-      ul
-        li
-          router-link(to='/') Home
-        li
-          router-link(to='/rooms') Rooms
-        li
-          router-link(to='/contact') Contact
-        li(v-if='!user')
-          router-link(to='/login') Login
-        li(v-if='!user')
-          router-link(to='/signup') Sign Up
-        li(v-if='user')
-          router-link(to='/' @click='logout') Log Out
+  h1.logo Las Calas - Apart Hotel
+  input#nav-toggle.nav-toggle(type='checkbox')
+  nav
+    ul
+      li
+        router-link(to='/') Home
+      li
+        router-link(to='/rooms') Rooms
+      li
+        router-link(to='/contact') Contact
+      li(v-if='!user')
+        router-link(to='/login') Log In
+      li(v-if='!user')
+        router-link(to='/signup') Sign Up
+      li(v-if='user')
+        router-link(to='/' @click='logout') Log Out
+  label.nav-toggle-label(for='nav-toggle')
+    span
 </template>
 
 <style scoped>
-body {
-  margin: 0;
-  background: #222;
-  font-family: 'Work Sans', sans-serif;
-  font-weight: 800;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-.container {
-  max-width: 100%;
-  margin: 0 auto;
+body {
+  margin: 0;
+  background: #585858;
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 400;
+}
+
+.content {
+  height: 200vh;
+  background-color: #585858;
+  background-blend-mode: multiply;
+  background-size: cover;
+  display: grid;
+  place-items: center;
 }
 
 header {
-  background: #55d6aa;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  background: var(--nav-background);
+  text-align: center;
+  position: fixed;
+  z-index: 999;
+  width: 100%;
 }
 
-header::after {
+h1 {
+  color: #ffff;
+}
+
+.nav-toggle {
+  display: none;
+}
+
+.nav-toggle-label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-left: 1em;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+/* How to make the triple bar of the burger menu */
+.nav-toggle-label span,
+.nav-toggle-label span::before,
+.nav-toggle-label span::after {
+  display: block;
+  background: white;
+  height: 2px;
+  width: 2em;
+  border-radius: 2px;
+  position: relative;
+}
+
+.nav-toggle-label span::before,
+.nav-toggle-label span::after {
   content: '';
-  display: table;
-  clear: both;
+  position: absolute;
 }
 
-.logo-text {
-  float: left;
-  padding: 10px 0;
-  font-size: 20px;
+.nav-toggle-label span::before {
+  bottom: 7px;
 }
+
+.nav-toggle-label span::after {
+  top: 7px;
+}
+
+/* End of burger menu*/
 
 nav {
-  float: right;
+  position: absolute;
+  text-align: left;
+  top: 100%;
+  left: 0;
+  background: var(--nav-background);
+  width: 100%;
+  /* Transition animation for the burger menu */
+  transform: scale(1, 0);
+  transform-origin: top;
+  transition: transform 400ms ease-in-out;
 }
 
 nav ul {
@@ -78,38 +137,85 @@ nav ul {
 }
 
 nav li {
-  display: inline-block;
-  margin-left: 20px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-
-  position: relative;
+  margin-left: 1em;
 }
 
 nav a {
-  color: #444;
+  color: white;
   text-decoration: none;
-  text-transform: uppercase;
-  font-size: 14px;
+  font-size: 1.2rem;
+  /* text-transform: uppercase; */
+  opacity: 0;
+  transition: opacity 150ms ease-in-out;
 }
 
 nav a:hover {
-  color: #000;
+  color: #585858;
 }
 
-nav a::before {
-  content: '';
-  display: block;
-  height: 5px;
-  background-color: #444;
-
-  position: absolute;
-  top: 0;
-  width: 0%;
+h1:hover {
+  color: #585858;
 }
 
-nav a:hover::before {
-  width: 100%;
-  transition: all ease-in-out 270ms;
+.nav-toggle:checked ~ nav {
+  transform: scale(1, 1);
+}
+
+.nav-toggle:checked ~ nav a {
+  opacity: 1;
+  transition: opacity 250ms ease-in-out 250ms;
+}
+
+@media screen and (min-width: 800px) {
+  .nav-toggle-label {
+    display: none;
+  }
+
+  header {
+    display: grid;
+    grid-template-columns: 1fr auto minmax(600px, 3fr) 1fr;
+  }
+
+  .logo {
+    grid-column: 2 / 3;
+  }
+
+  nav {
+    all: unset;
+    grid-column: 3 / 4;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  nav ul {
+    display: flex;
+  }
+
+  nav li {
+    margin-left: 3em;
+    margin-bottom: 0;
+  }
+  nav a {
+    opacity: 1;
+    position: relative;
+  }
+
+  nav a::before {
+    content: '';
+    display: block;
+    height: 5px;
+    background: #585858;
+    position: absolute;
+    top: -0.85em;
+    left: 0;
+    right: 0;
+    transform: scale(0, 1);
+    transition: transform ease-in-out 250ms;
+  }
+
+  nav a:hover::before {
+    transform: scale(1, 1);
+  }
 }
 </style>

@@ -1,11 +1,4 @@
-/* TODO:
-
-check Fede's code
-
-
-:after
-add :root {
-  color variables
+/* Define CSS variables at the root level of the document to make them available globally */
+:root {
+  --nav-background: rgba(0, 214, 170, 0.85);
 }
-
-*/
