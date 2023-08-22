@@ -20,12 +20,10 @@ export default {
 
 <template lang="pug">
 header
-  h1.logo Las Calas - Apart Hotel
+  router-link.logo-text(to='/') Las Calas
   input#nav-toggle.nav-toggle(type='checkbox')
   nav
     ul
-      li
-        router-link(to='/') Home
       li
         router-link(to='/rooms') Rooms
       li
@@ -68,11 +66,17 @@ header {
   text-align: center;
   position: fixed;
   z-index: 999;
+  padding-bottom: 0.3em;
   width: 100%;
 }
-
-h1 {
-  color: #ffff;
+a.logo-text {
+  display: inline-block;
+  position: relative;
+  font-size: 1.8rem;
+  color: #fff;
+  text-align: left;
+  padding-left: 1em;
+  text-decoration: none;
 }
 
 .nav-toggle {
@@ -115,6 +119,10 @@ h1 {
   top: 7px;
 }
 
+/* Cursor pointer for burger menu on hover */
+.nav-toggle-label:hover {
+  cursor: pointer;
+}
 /* End of burger menu*/
 
 nav {
@@ -133,6 +141,7 @@ nav {
 nav ul {
   margin: 0;
   padding: 0;
+  padding-bottom: 0.5em;
   list-style: none;
 }
 
@@ -153,7 +162,8 @@ nav a:hover {
   color: #585858;
 }
 
-h1:hover {
+a.logo-text:hover {
+  cursor: pointer;
   color: #585858;
 }
 
@@ -167,17 +177,20 @@ h1:hover {
 }
 
 @media screen and (min-width: 800px) {
+  .spacer {
+    padding-top: 5em; /* adjust based on navbar height */
+  }
   .nav-toggle-label {
     display: none;
   }
 
   header {
     display: grid;
-    grid-template-columns: 1fr auto minmax(600px, 3fr) 1fr;
+    grid-template-columns: 0.35fr auto minmax(600px, 2fr) 0.06fr;
   }
 
-  .logo {
-    grid-column: 2 / 3;
+  a.logo-text {
+    grid-column: 1 / 2;
   }
 
   nav {
@@ -201,20 +214,36 @@ h1:hover {
     position: relative;
   }
 
+  /* The animated gray bar above the nav links */
   nav a::before {
     content: '';
     display: block;
     height: 5px;
     background: #585858;
     position: absolute;
-    top: -0.85em;
+    top: -0.45em;
     left: 0;
     right: 0;
     transform: scale(0, 1);
     transition: transform ease-in-out 250ms;
   }
+  .logo-text::before {
+    content: '';
+    display: block;
+    height: 5px;
+    background: #585858;
+    position: absolute;
+    top: 0em;
+    left: 12%;
+    right: 35%;
+    transform: scale(0, 1);
+    transition: transform ease-in-out 250ms;
+  }
 
   nav a:hover::before {
+    transform: scale(1, 1);
+  }
+  .logo-text:hover::before {
     transform: scale(1, 1);
   }
 }
