@@ -74,25 +74,6 @@ export default {
   transform: translateY(-50%);
 }
 
-/* Styling specific to booking section, including font and background */
-#booking {
-  font-family: 'Montserrat', sans-serif;
-  background-image: url('../assets/img/LasCalasFront.jpg'); /* Background image */
-  background-size: cover; /* Covering entire container */
-  background-position: center; /* Centering background image */
-}
-
-/* Semi-transparent overlay for booking background */
-#booking::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  top: 0;
-  background: rgba(47, 103, 177, 0.6); /* Opacity of 0.6 */
-}
-
 /* Booking form styling */
 .booking-form {
   background-color: #fcf6f5; /* Background color of the form */

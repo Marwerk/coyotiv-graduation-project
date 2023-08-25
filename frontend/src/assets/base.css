@@ -12,7 +12,7 @@
 /* Styling specific to booking section, including font and background */
 #booking {
   font-family: 'Montserrat', sans-serif;
-  background-image: url('@/img/LasCalasFront.jpg'); /* Background image */
+  background-image: url('./img/LasCalasFront.jpg'); /* Background image */
   background-size: cover; /* Covering entire container */
   background-position: center; /* Centering background image */
 }
