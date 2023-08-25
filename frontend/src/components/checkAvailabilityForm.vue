@@ -1,4 +1,6 @@
 <script>
+import { useBookingStore } from '../stores/bookingStore.js'
+
 export default {
   name: 'checkAvailabilityForm',
   data() {
@@ -8,6 +10,25 @@ export default {
         checkOut: '',
         rooms: '',
         guests: ''
+      },
+      isAvailable: null // Data property to store availability status
+    }
+  },
+  methods: {
+    async checkAvailability() {
+      const store = useBookingStore()
+      try {
+        await store.checkAvailability(this.form)
+
+        // Check if rooms are available
+        if (store.availableRooms.length > 0) {
+          this.isAvailable = true
+        } else {
+          this.isAvailable = false
+        }
+      } catch (error) {
+        console.error('Error checking availability:', error)
+        this.isAvailable = false
       }
     }
   }
@@ -54,7 +75,11 @@ export default {
                     span.select-arrow
                 .col-sm-4
               .form-btn
-                button.submit-btn Check Availability
+                button.submit-btn(@click="checkAvailability") Check Availability
+                // Pop-up message
+                div(v-if="isAvailable !== null")
+                  span(v-if="isAvailable") Rooms are available!
+                  span(v-else) Sorry, no rooms are available.
 </template>
 
 <style>

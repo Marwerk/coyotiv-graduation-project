@@ -4,6 +4,7 @@ import axios from 'axios'
 export const useBookingStore = defineStore('bookings', {
   state: () => ({
     bookings: [],
+    availableRooms: [],
     currentBooking: {
       guest: {
         firstName: '',
@@ -14,7 +15,8 @@ export const useBookingStore = defineStore('bookings', {
       checkIn: '',
       checkOut: '',
       room: ''
-    }
+    },
+    error: null
   }),
 
   getters: {
@@ -30,20 +32,17 @@ export const useBookingStore = defineStore('bookings', {
 
     async fetchBookings() {
       try {
-        const response = await axios.get('/bookings')
-        this.bookings = response.data
+        const { data } = await axios.get('/bookings')
+        this.bookings = data
       } catch (error) {
-        console.error('Error fetching bookings:', error)
+        this.error = error
       }
     },
 
     async addBooking() {
-      console.log('Trying to add a new booking with data:', this.currentBooking)
-
       try {
-        const response = await axios.post('/bookings', this.currentBooking)
-        console.log('Booking response from server:', response.data)
-        this.bookings.push(response.data)
+        const { data } = await axios.post('/bookings', this.currentBooking)
+        this.bookings.push(data)
         this.currentBooking = {
           guest: {
             firstName: '',
@@ -55,15 +54,27 @@ export const useBookingStore = defineStore('bookings', {
           checkOut: '',
           room: ''
         }
-        alert('Booking successful!')
       } catch (error) {
-        console.error('Error booking room:', error)
-        alert('Error booking room.')
+        this.error = error
       }
     },
 
-    removeBookingById(id) {
-      this.bookings = this.bookings.filter((booking) => booking._id !== id)
+    async checkAvailability(payload) {
+      try {
+        const { data } = await axios.post('/bookings/availability', payload) // Make sure to use the correct endpoint here
+        this.availableRooms = data || []
+      } catch (error) {
+        this.error = error
+      }
+    },
+
+    async deleteBooking(id) {
+      try {
+        await axios.delete(`/bookings/${id}`)
+        this.bookings = this.bookings.filter((booking) => booking._id !== id)
+      } catch (error) {
+        this.error = error
+      }
     }
   }
 })
