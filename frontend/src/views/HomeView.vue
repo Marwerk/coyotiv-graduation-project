@@ -1,18 +1,17 @@
 <!-- eslint-disable no-unused-vars -->
 <script>
-// import bookingForm from '@/components/testBookingForm1.vue'
-import bookingForm from '../components/theBookingForm.vue'
+import checkAvailabilityForm from '../components/checkAvailabilityForm.vue'
 
 export default {
   components: {
-    bookingForm
+    checkAvailabilityForm
   }
 }
 </script>
 
 <template lang="pug">
 main
-  bookingForm
+  checkAvailabilityForm
 </template>
 
 <style></style>
