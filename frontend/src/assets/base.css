@@ -1,9 +1,29 @@
 /* Define CSS variables at the root level of the document to make them available globally */
 :root {
-  --nav-background: rgba(0, 214, 170, 0.85);
+  --nav-background: #2bae66;
+  --nav-background: rgb(47, 103, 177);
 }
 
 /* This setting makes it so that the content of the page appears below the navbar */
 .spacer {
-  padding-top: 3em; /* adjust based on navbar height */
+  padding-top: 3em;
+}
+
+/* Styling specific to booking section, including font and background */
+#booking {
+  font-family: 'Montserrat', sans-serif;
+  background-image: url('@/img/LasCalasFront.jpg'); /* Background image */
+  background-size: cover; /* Covering entire container */
+  background-position: center; /* Centering background image */
+}
+
+/* Semi-transparent overlay for booking background */
+#booking::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  background: rgba(47, 103, 177, 0.6); /* Opacity of 0.6 */
 }
