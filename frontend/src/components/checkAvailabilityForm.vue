@@ -1,6 +1,6 @@
 <script>
 export default {
-  name: 'bookingForm',
+  name: 'checkAvailabilityForm',
   data() {
     return {
       form: {
