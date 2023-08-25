@@ -1,3 +1,5 @@
+<!-- // TODO: center the list items in the navbar -->
+
 <script>
 import '@/assets/base.css'
 import { RouterLink } from 'vue-router'
@@ -62,6 +64,7 @@ body {
 }
 
 header {
+  /* background-color: transparent; */
   background: var(--nav-background);
   text-align: center;
   position: fixed;
@@ -73,7 +76,7 @@ a.logo-text {
   display: inline-block;
   position: relative;
   font-size: 1.8rem;
-  color: #fff;
+  color: #fcf6f5;
   text-align: left;
   padding-left: 1em;
   text-decoration: none;
@@ -98,7 +101,7 @@ a.logo-text {
 .nav-toggle-label span::before,
 .nav-toggle-label span::after {
   display: block;
-  background: white;
+  background: #fcf6f5;
   height: 2px;
   width: 2em;
   border-radius: 2px;
@@ -141,7 +144,7 @@ nav {
 nav ul {
   margin: 0;
   padding: 0;
-  padding-bottom: 0.5em;
+  padding-bottom: 0em;
   list-style: none;
 }
 
@@ -150,7 +153,7 @@ nav li {
 }
 
 nav a {
-  color: white;
+  color: #fcf6f5;
   text-decoration: none;
   font-size: 1.2rem;
   /* text-transform: uppercase; */
@@ -177,8 +180,9 @@ a.logo-text:hover {
 }
 
 @media screen and (min-width: 800px) {
+  /* add space between navbar height and content */
   .spacer {
-    padding-top: 5em; /* adjust based on navbar height */
+    padding-top: 5em;
   }
   .nav-toggle-label {
     display: none;
