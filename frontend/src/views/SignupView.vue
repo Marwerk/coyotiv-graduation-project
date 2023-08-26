@@ -1,56 +1,95 @@
 <script>
-import { ref } from 'vue'
 import { useSignupStore } from '../stores/signupStore'
 
 export default {
-  setup() {
-    const name = ref('')
-    const email = ref('')
-    const password = ref('')
-
-    const store = useSignupStore()
-
-    const handleSignUp = async () => {
-      await store.signUp({ name: name.value, email: email.value, password: password.value })
-    }
-
+  data() {
     return {
-      name,
-      email,
-      password,
-      registrationError: store.registrationError,
-      handleSignUp
+      name: '',
+      email: '',
+      password: '',
+      store: useSignupStore()
+    }
+  },
+  computed: {
+    registrationError() {
+      return this.store.registrationError
+    }
+  },
+  methods: {
+    async submitSignup() {
+      await this.store.signup({
+        name: this.name,
+        email: this.email,
+        password: this.password
+      })
     }
   }
 }
 </script>
 
-<template>
-  <div>
-    <h1>Sign Up</h1>
-
-    <form @submit.prevent="handleSignUp">
-      <div>
-        <label for="name">Name:</label>
-        <input v-model="name" type="text" id="name" required />
-      </div>
-      <div>
-        <label for="email">Email:</label>
-        <input v-model="email" type="email" id="email" required />
-      </div>
-      <div>
-        <label for="password">Password:</label>
-        <input v-model="password" type="password" id="password" required />
-      </div>
-      <button to="/" button type="submit">Sign Up</button>
-    </form>
-
-    <p v-if="registrationError" class="error">{{ registrationError }}</p>
-  </div>
+<template lang="pug">
+.container
+  h3 Create your account
+  form(@submit.prevent='submitSignup')
+    .form-group
+      label(for='name') Name:
+      input#name(v-model='name' type='text' required='' autocomplete='name')
+    .form-group
+      label(for='email') Email:
+      input#email(v-model='email' type='email' required='' autocomplete='email')
+    .form-group
+      label(for='password') Password:
+      input#password(v-model='password' type='password' required='')
+    .form-group.button-container
+      button.submit-btn(type='submit') Sign Up
+  p.error(v-if='registrationError') {{ registrationError }}
 </template>
 
-<style>
+<style scoped>
+.container {
+  width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  background-color: #ffffff;
+}
+
+.form-group {
+  margin-bottom: 20px;
+  /* display: flex;
+  justify-content: center; */
+}
+
+input {
+  width: 100%;
+  padding: 8px 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+}
+.submit-btn {
+  background-color: #007bff;
+  color: #ffffff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.submit-btn:hover {
+  background-color: #0056b3;
+}
+
 .error {
   color: red;
+  text-align: center;
 }
 </style>

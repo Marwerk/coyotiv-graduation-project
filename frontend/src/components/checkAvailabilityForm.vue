@@ -36,7 +36,7 @@ export default {
 </script>
 
 <template lang="pug">
-#booking.section
+#siteBackground.section
   .section-center
     .container
       .row
@@ -55,7 +55,7 @@ export default {
                 .col-sm-6
                   .form-group
                     span.form-label Check Out
-                    input.form-control(type='date' required='')
+                    input.form-control(type='date' autocomplete='' required='')
               .row
                 .col-sm-4
                   .form-group
