@@ -29,27 +29,28 @@ export default {
 </script>
 
 <template lang="pug">
-.container
-  h3 Create your account
-  form(@submit.prevent='submitSignup')
-    .form-group
-      label(for='name') Name:
-      input#name(v-model='name' type='text' required='' autocomplete='name')
-    .form-group
-      label(for='email') Email:
-      input#email(v-model='email' type='email' required='' autocomplete='email')
-    .form-group
-      label(for='password') Password:
-      input#password(v-model='password' type='password' required='')
-    .form-group.button-container
-      button.submit-btn(type='submit') Sign Up
-  p.error(v-if='registrationError') {{ registrationError }}
+.full-height-center
+  .container
+    h3 Create your account
+    form(@submit.prevent='submitSignup')
+      .form-group
+        label(for='name') Name:
+        input#name(v-model='name' type='text' required='' autocomplete='name')
+      .form-group
+        label(for='email') Email:
+        input#email(v-model='email' type='email' required='' autocomplete='email')
+      .form-group
+        label(for='password') Password:
+        input#password(v-model='password' type='password' required='')
+      .form-group.button-container
+        button.submit-btn(type='submit') Sign Up
+    p.error(v-if='registrationError') {{ registrationError }}
 </template>
 
 <style scoped>
 .container {
   width: 400px;
-  margin: 50px auto;
+  /* margin: 50px auto; */
   padding: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
@@ -58,8 +59,6 @@ export default {
 
 .form-group {
   margin-bottom: 20px;
-  /* display: flex;
-  justify-content: center; */
 }
 
 input {

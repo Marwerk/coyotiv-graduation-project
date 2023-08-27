@@ -9,21 +9,29 @@
   padding-top: 3em;
 }
 
+.full-height-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
 /* Styling specific to booking section, including font and background */
-#siteBackground {
+.site-background {
+  min-height: 100vh;
   font-family: 'Montserrat', sans-serif;
-  background-image: url('./img/LasCalasFront.jpg'); /* Background image */
+  background-image: url('./img/calas-front-pic.jpg'); /* Background image */
   background-size: cover; /* Covering entire container */
   background-position: center; /* Centering background image */
 }
 
-/* Semi-transparent overlay for booking background */
-#siteBackground::before {
+/* Semi-transparent overlay for background */
+/* .site-background::before {
   content: '';
   position: absolute;
   left: 0;
   right: 0;
   bottom: 0;
   top: 0;
-  background: rgba(47, 103, 177, 0.6); /* Opacity of 0.6 */
-}
+  background: rgba(47, 103, 177, 0.6);
+} */

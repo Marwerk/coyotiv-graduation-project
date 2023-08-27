@@ -21,17 +21,18 @@ export default {
 </script>
 
 <template lang="pug">
-.container
-  h3 Log in to your account
-  form(@submit.prevent="submitLogin")
-    .form-group
-      label(for="email") Email
-      input#email(type="email" autocomplete='email' v-model="email" required='')
-    .form-group
-      label(for="password") Password
-      input#password(type="password" v-model="password" required='')
-    .form-group.button-container
-      button.submit-btn(type="submit") Log in
+.full-height-center
+  .container
+    h3 Log in to your account
+    form(@submit.prevent="submitLogin")
+      .form-group
+        label(for="email") Email
+        input#email(type="email" autocomplete='email' v-model="email" required='')
+      .form-group
+        label(for="password") Password
+        input#password(type="password" v-model="password" required='')
+      .form-group.button-container
+        button.submit-btn(type="submit") Log in
 </template>
 
 <style scoped>

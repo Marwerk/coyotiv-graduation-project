@@ -36,7 +36,7 @@ export default {
 </script>
 
 <template lang="pug">
-#siteBackground.section
+.section
   .section-center
     .container
       .row
@@ -82,7 +82,7 @@ export default {
                   span(v-else) Sorry, no rooms are available.
 </template>
 
-<style>
+<style scoped>
 /* General styling for section */
 .section {
   position: relative; /* Positioning relative to its normal position */
@@ -95,7 +95,6 @@ export default {
   top: 50%; /* Positioned at 50% from the top */
   left: 0;
   right: 0;
-  -webkit-transform: translateY(-50%); /* Centered vertically */
   transform: translateY(-50%);
 }
 
@@ -103,7 +102,6 @@ export default {
 .booking-form {
   background-color: #fcf6f5; /* Background color of the form */
   padding: 50px 20px;
-  -webkit-box-shadow: 0px 5px 20px -5px rgba(0, 0, 0, 0.3); /* Shadow effect */
   box-shadow: 0px 5px 20px -5px rgba(0, 0, 0, 0.3);
   border-radius: 4px; /* Rounded corners */
 }
@@ -118,10 +116,6 @@ export default {
 .booking-form .form-control {
   background-color: #ebecee; /* Background color */
   border-radius: 4px; /* Rounded corners */
-
-  height: 40px; /* Fixed height */
-  -webkit-box-shadow: none; /* No shadow */
-  box-shadow: none;
   color: #3e485c; /* Text color */
   font-size: 14px; /* Font size */
 }
@@ -140,8 +134,6 @@ export default {
 
 /* Styling for select controls */
 .booking-form select.form-control {
-  -webkit-appearance: none; /* Removing default appearance */
-  -moz-appearance: none;
   appearance: none;
 }
 
