@@ -31,7 +31,7 @@ export default {
 <template lang="pug">
 .center-content
   .form-container
-    h3 Create your account
+    h3.text-center Create your account
     form(@submit.prevent='submitSignup')
       .form-group
         label(for='name') Name:
@@ -45,9 +45,17 @@ export default {
       .form-group.btn-center
         button.submit-btn(type='submit') Sign Up
     p.error(v-if='registrationError') {{ registrationError }}
+    .text-center
+      p.inline Already a user?
+      p.inline
+        router-link(to="/login") Log in
 </template>
 
 <style scoped>
+h3 {
+  justify-content: center;
+}
+
 .form-container {
   width: 350px;
 }
@@ -59,5 +67,16 @@ input {
   border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 14px;
+}
+
+router-link {
+  color: #007bff; /* A standard bootstrap blue */
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.inline {
+  display: inline-block;
+  margin-right: 5px;
 }
 </style>
