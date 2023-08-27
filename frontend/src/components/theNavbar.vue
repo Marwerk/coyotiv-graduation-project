@@ -162,12 +162,12 @@ nav a {
 }
 
 nav a:hover {
-  color: #585858;
+  color: var(--nav-hover-text);
 }
 
 a.logo-text:hover {
   cursor: pointer;
-  color: #585858;
+  color: var(--nav-hover-text);
 }
 
 .nav-toggle:checked ~ nav {
@@ -223,7 +223,7 @@ a.logo-text:hover {
     content: '';
     display: block;
     height: 5px;
-    background: #585858;
+    background: var(--nav-hover-text);
     position: absolute;
     top: -0.45em;
     left: 0;
@@ -235,7 +235,7 @@ a.logo-text:hover {
     content: '';
     display: block;
     height: 5px;
-    background: #585858;
+    background: var(--nav-hover-text);
     position: absolute;
     top: 0em;
     left: 12%;

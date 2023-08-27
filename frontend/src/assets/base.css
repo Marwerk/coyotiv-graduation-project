@@ -1,7 +1,8 @@
 /* Define CSS variables at the root level of the document to make them available globally */
 :root {
-  --nav-background: #2bae66;
+  --nav-background1: #2bae66;
   --nav-background: rgb(47, 103, 177);
+  --nav-hover-text: #474747;
 }
 
 /* This setting makes it so that the content of the page appears below the navbar */
