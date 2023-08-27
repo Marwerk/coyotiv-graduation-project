@@ -22,13 +22,13 @@ export default {
 }
 </script>
 
-<template>
-  <theNavbar />
-  <div class="spacer">
-    <Suspense>
-      <RouterView />
-    </Suspense>
-  </div>
+<template lang="pug">
+.site-background
+  theNavbar
+
+  .center-content
+    Suspense
+      RouterView
 </template>
 
 <style></style>

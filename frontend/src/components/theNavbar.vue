@@ -50,7 +50,7 @@ header
 body {
   margin: 0;
   background: #585858;
-  font-family: 'Work Sans', sans-serif;
+  font-family: var(--main-font);
   font-weight: 400;
 }
 
@@ -162,12 +162,12 @@ nav a {
 }
 
 nav a:hover {
-  color: #585858;
+  color: var(--nav-hover-text);
 }
 
 a.logo-text:hover {
   cursor: pointer;
-  color: #585858;
+  color: var(--nav-hover-text);
 }
 
 .nav-toggle:checked ~ nav {
@@ -181,9 +181,6 @@ a.logo-text:hover {
 
 @media screen and (min-width: 800px) {
   /* add space between navbar height and content */
-  .spacer {
-    padding-top: 5em;
-  }
   .nav-toggle-label {
     display: none;
   }
@@ -223,7 +220,7 @@ a.logo-text:hover {
     content: '';
     display: block;
     height: 5px;
-    background: #585858;
+    background: var(--nav-hover-text);
     position: absolute;
     top: -0.45em;
     left: 0;
@@ -235,7 +232,7 @@ a.logo-text:hover {
     content: '';
     display: block;
     height: 5px;
-    background: #585858;
+    background: var(--nav-hover-text);
     position: absolute;
     top: 0em;
     left: 12%;

@@ -29,37 +29,35 @@ export default {
 </script>
 
 <template lang="pug">
-.container
-  h3 Create your account
-  form(@submit.prevent='submitSignup')
-    .form-group
-      label(for='name') Name:
-      input#name(v-model='name' type='text' required='' autocomplete='name')
-    .form-group
-      label(for='email') Email:
-      input#email(v-model='email' type='email' required='' autocomplete='email')
-    .form-group
-      label(for='password') Password:
-      input#password(v-model='password' type='password' required='')
-    .form-group.button-container
-      button.submit-btn(type='submit') Sign Up
-  p.error(v-if='registrationError') {{ registrationError }}
+.center-content
+  .form-container
+    h3.text-center Create your account
+    form(@submit.prevent='submitSignup')
+      .form-group
+        label(for='name') Name:
+        input#name(v-model='name' type='text' required='' autocomplete='name')
+      .form-group
+        label(for='email') Email:
+        input#email(v-model='email' type='email' required='' autocomplete='email')
+      .form-group
+        label(for='password') Password:
+        input#password(v-model='password' type='password' required='')
+      .form-group.btn-center
+        button.submit-btn(type='submit') Sign Up
+    p.error(v-if='registrationError') {{ registrationError }}
+    .text-center
+      p.inline Already a user?
+      p.inline
+        router-link(to="/login") Log in
 </template>
 
 <style scoped>
-.container {
-  width: 400px;
-  margin: 50px auto;
-  padding: 20px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-  background-color: #ffffff;
+h3 {
+  justify-content: center;
 }
 
-.form-group {
-  margin-bottom: 20px;
-  /* display: flex;
-  justify-content: center; */
+.form-container {
+  width: 350px;
 }
 
 input {
@@ -71,26 +69,14 @@ input {
   font-size: 14px;
 }
 
-.button-container {
-  display: flex;
-  justify-content: center;
-}
-.submit-btn {
-  background-color: #007bff;
-  color: #ffffff;
-  padding: 10px 15px;
-  border: none;
-  border-radius: 4px;
+router-link {
+  color: #007bff; /* A standard bootstrap blue */
   cursor: pointer;
-  transition: background-color 0.2s;
+  text-decoration: underline;
 }
 
-.submit-btn:hover {
-  background-color: #0056b3;
-}
-
-.error {
-  color: red;
-  text-align: center;
+.inline {
+  display: inline-block;
+  margin-right: 5px;
 }
 </style>
