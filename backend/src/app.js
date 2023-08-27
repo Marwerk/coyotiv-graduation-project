@@ -43,7 +43,7 @@ const clientPromise = mongoose.connection
   .then(connection => (connection = connection.getClient()))
 
 const sessionMiddleware = session({
-  secret: 'asdg2356gb34!!rwet5',
+  secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: true,
   cookie: {
