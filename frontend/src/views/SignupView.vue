@@ -30,7 +30,7 @@ export default {
 
 <template lang="pug">
 .center-content
-  .container
+  .form-container
     h3 Create your account
     form(@submit.prevent='submitSignup')
       .form-group
@@ -42,19 +42,14 @@ export default {
       .form-group
         label(for='password') Password:
         input#password(v-model='password' type='password' required='')
-      .form-group.btn-container
+      .form-group.btn-center
         button.submit-btn(type='submit') Sign Up
     p.error(v-if='registrationError') {{ registrationError }}
 </template>
 
 <style scoped>
-.container {
-  width: 400px;
-  /* margin: 50px auto; */
-  padding: 20px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-  background-color: #ffffff;
+.form-container {
+  width: 350px;
 }
 
 input {

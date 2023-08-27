@@ -44,7 +44,7 @@ export default {
 
 <template lang="pug">
 
-div.container
+div.form-container
   h1.mb-4 Book a Room
   form(@submit.prevent="bookRoom")
     // First Name

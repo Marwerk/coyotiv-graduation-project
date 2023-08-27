@@ -37,10 +37,10 @@ export default {
 
 <template lang="pug">
 .center-content
-  .container
-    .text-cta
-      h1 Book your stay!
-      p Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vero laborum consequatur est perferendis sapiente minus mollitia quis, esse adipisci exercitationem voluptatum! Quisquam, voluptas. Quisquam, voluptas.
+  .text-cta
+    h1 Book your stay!
+    p Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vero laborum consequatur est perferendis sapiente minus mollitia quis, esse adipisci exercitationem voluptatum! Quisquam, voluptas. Quisquam, voluptas.
+  .form-container
     .booking-form
       form
         .row
@@ -69,7 +69,7 @@ export default {
                 option 2
                 option 3
               .select-arrow
-        .form-btn.btn-container
+        .form-btn.btn-center
           button.submit-btn(@click="checkAvailability") Check Availability
           div(v-if="isAvailable !== null")
             span(v-if="isAvailable") Rooms are available!
@@ -77,12 +77,12 @@ export default {
 </template>
 
 <style scoped>
-.container {
+/* .form-container {
   display: flex;
   flex-wrap: wrap;
   max-width: 1200px;
   width: 100%;
-}
+} */
 
 .text-cta {
   flex: 1;
@@ -101,12 +101,12 @@ export default {
   color: rgba(255, 255, 255, 0.8);
 }
 
-.booking-form {
+/* .booking-form {
   background-color: #fcf6f5;
   padding: 20px;
   box-shadow: 0px 5px 20px -5px rgba(0, 0, 0, 0.3);
   border-radius: 4px;
-}
+} */
 
 .form-label {
   display: block;
