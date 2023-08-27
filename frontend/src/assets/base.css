@@ -17,7 +17,7 @@
 
 .site-background {
   min-height: 100vh; /* Fallback for browsers that do not support Custom Properties */
-  background-image: url('./img/calas-front-pic.jpg'); /* Wallpaper */
+  background-image: url('./img/lascalas-wallpaper.jpg'); /* Wallpaper */
   background-size: cover; /* Make background image cover the entire container */
   background-position: center; /* Center the image */
 }
