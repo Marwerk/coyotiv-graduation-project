@@ -36,109 +36,86 @@ export default {
 </script>
 
 <template lang="pug">
-.section
-  .section-center
-    .container
-      .row
-        .col-md-7.col-md-push-5
-          .booking-cta
-            h1 Book your stay!
-            p Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vero laborum consequatur est perferendis sapiente minus mollitia quis, esse adipisci exercitationem voluptatum! Quisquam, voluptas. Quisquam, voluptas.
-        .col-md-4.col-md-pull-7
-          .booking-form
-            form
-              .row
-                .col-sm-6
-                  .form-group
-                    span.form-label Check In
-                    input.form-control(type='date' required='')
-                .col-sm-6
-                  .form-group
-                    span.form-label Check Out
-                    input.form-control(type='date' autocomplete='' required='')
-              .row
-                .col-sm-4
-                  .form-group
-                    span.form-label Rooms
-                    select.form-control
-                      option 1
-                      option 2
-                      option 3
-                    span.select-arrow
-                .col-sm-4
-                  .form-group
-                    span.form-label Guests
-                    select.form-control
-                      option 1
-                      option 2
-                      option 3
-                    span.select-arrow
-                .col-sm-4
-              .form-btn
-                button.submit-btn(@click="checkAvailability") Check Availability
-                // Pop-up message
-                div(v-if="isAvailable !== null")
-                  span(v-if="isAvailable") Rooms are available!
-                  span(v-else) Sorry, no rooms are available.
+.center-content
+  .container
+    .text-cta
+      h1 Book your stay!
+      p Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vero laborum consequatur est perferendis sapiente minus mollitia quis, esse adipisci exercitationem voluptatum! Quisquam, voluptas. Quisquam, voluptas.
+    .booking-form
+      form
+        .row
+          .col-half
+            .form-group
+              label.form-label Check In
+              input.form-control(type='date' required='')
+          .col-half
+            .form-group
+              label.form-label Check Out
+              input.form-control(type='date' required='')
+        .row
+          .col-third
+            .form-group
+              label.form-label Rooms
+              select.form-control
+                option 1
+                option 2
+                option 3
+              .select-arrow
+          .col-third
+            .form-group
+              label.form-label Guests
+              select.form-control
+                option 1
+                option 2
+                option 3
+              .select-arrow
+        .form-btn.btn-container
+          button.submit-btn(@click="checkAvailability") Check Availability
+          div(v-if="isAvailable !== null")
+            span(v-if="isAvailable") Rooms are available!
+            span(v-else) Sorry, no rooms are available.
 </template>
 
 <style scoped>
-/* General styling for section */
-.section {
-  position: relative; /* Positioning relative to its normal position */
-  height: 100vh; /* Height is set to 100% of the viewport height */
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  width: 100%;
 }
 
-/* Styling for centering content within the section */
-.section .section-center {
-  position: absolute; /* Absolute positioning within the section */
-  top: 50%; /* Positioned at 50% from the top */
-  left: 0;
-  right: 0;
-  transform: translateY(-50%);
+.text-cta {
+  flex: 1;
+  margin-right: 50px;
 }
 
-/* Booking form styling */
+.text-cta h1 {
+  font-size: 52px;
+  color: #fcf6f5;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.text-cta p {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
 .booking-form {
-  background-color: #fcf6f5; /* Background color of the form */
-  padding: 50px 20px;
+  background-color: #fcf6f5;
+  padding: 20px;
   box-shadow: 0px 5px 20px -5px rgba(0, 0, 0, 0.3);
-  border-radius: 4px; /* Rounded corners */
+  border-radius: 4px;
 }
 
-/* Styling for form input fields e.g. check in/out, rooms, guests */
-.booking-form .form-group {
-  position: relative;
-  margin-bottom: 30px; /* Space below each form group */
+.form-label {
+  display: block;
+  color: #3e485c;
+  font-weight: 700;
+  margin-bottom: 6px;
 }
 
-/* General styling for background of form input fields */
-.booking-form .form-control {
-  background-color: #ebecee; /* Background color */
-  border-radius: 4px; /* Rounded corners */
-  color: #3e485c; /* Text color */
-  font-size: 14px; /* Font size */
-}
-
-/* Placeholder color styling for form controls */
-.booking-form .form-control::-webkit-input-placeholder,
-.booking-form .form-control:-ms-input-placeholder,
-.booking-form .form-control::placeholder {
-  color: rgba(62, 72, 92, 0.3); /* Lighter color for placeholders */
-}
-
-/* Styling for invalid date inputs */
-.booking-form input[type='date'].form-control:invalid {
-  color: rgba(62, 72, 92, 0.3); /* Color for invalid dates */
-}
-
-/* Styling for select controls */
-.booking-form select.form-control {
-  appearance: none;
-}
-
-/* Styling for the arrow beside the select control */
-.booking-form select.form-control + .select-arrow {
+.select-arrow {
   position: absolute;
   right: 0px;
   bottom: 4px;
@@ -147,76 +124,27 @@ export default {
   height: 32px;
   text-align: center;
   pointer-events: none;
-  color: rgba(62, 72, 92, 0.3); /* Arrow color */
-  font-size: 14px;
+  color: rgba(62, 72, 92, 0.3);
 }
 
-/* Styling for the arrow icon */
-.booking-form select.form-control + .select-arrow:after {
+.select-arrow:after {
   content: '\279C';
   display: block;
-  -webkit-transform: rotate(90deg); /* Rotation of arrow */
   transform: rotate(90deg);
 }
 
-/* Styling for form labels */
-.booking-form .form-label {
-  display: inline-block;
-  color: #3e485c; /* Text color */
-  font-weight: 700; /* Bold text */
-  margin-bottom: 6px;
-  margin-left: 7px;
-}
-
-/* Styling for the Check Availability button */
-.booking-form .submit-btn {
-  display: inline-block;
-  color: #fcf6f5;
-  background-color: var(--nav-background); /* Background color from a custom property */
-  font-weight: 700;
-  padding: 14px 30px;
-  border-radius: 4px; /* Rounded corners */
-  border: none;
-  -webkit-transition: 0.2s all; /* Transition effect */
-  transition: 0.2s all;
-}
-
-/* Hover and focus effect for the Check Availability button */
-.booking-form .submit-btn:hover,
-.booking-form .submit-btn:focus {
-  opacity: 0.9; /* Reduced opacity */
-}
-
-/* Styling for the booking call to action (CTA) */
-.booking-cta {
-  margin-top: 80px; /* Margin at the top */
-  margin-bottom: 30px; /* Margin at the bottom */
-}
-
-/* Styling for the headings within the booking CTA */
-.booking-cta h1 {
-  font-size: 52px; /* Large font size */
-  text-transform: uppercase; /* Uppercase text */
-  color: #fcf6f5;
-  font-weight: 700;
-}
-
-/* Styling for paragraph text within the booking CTA */
-.booking-cta p {
-  font-size: 16px; /* Font size */
-  color: rgba(255, 255, 255, 0.8); /* Slightly transparent text color */
-}
-
-@media screen and (min-width: 800px) {
-  .booking-cta h1 {
-    font-size: 36px; /* Smaller font size for devices narrower than 800px */
+@media screen and (max-width: 800px) {
+  .text-cta {
+    margin-right: 0;
+    margin-bottom: 30px;
   }
+
+  .text-cta h1 {
+    font-size: 36px;
+  }
+
   .booking-form {
-    padding: 20px 10px; /* Reduced padding */
-  }
-  .booking-cta {
-    margin-top: 30px; /* Reduced margin */
-    margin-bottom: 10px;
+    padding: 20px 10px;
   }
 }
 </style>

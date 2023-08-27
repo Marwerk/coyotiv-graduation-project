@@ -21,7 +21,7 @@ export default {
 </script>
 
 <template lang="pug">
-.full-height-center
+.center-content
   .container
     h3 Log in to your account
     form(@submit.prevent="submitLogin")
@@ -31,7 +31,7 @@ export default {
       .form-group
         label(for="password") Password
         input#password(type="password" v-model="password" required='')
-      .form-group.button-container
+      .form-group.btn-container
         button.submit-btn(type="submit") Log in
 </template>
 
@@ -45,10 +45,6 @@ export default {
   background-color: #ffffff;
 }
 
-.form-group {
-  margin-bottom: 20px;
-}
-
 input {
   width: 100%;
   padding: 8px 10px;
@@ -56,30 +52,5 @@ input {
   border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 14px;
-}
-
-/* Centers the button within the form */
-.button-container {
-  display: flex;
-  justify-content: center;
-}
-/* submit button styling */
-.submit-btn {
-  background-color: #007bff;
-  color: #ffffff;
-  padding: 10px 15px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.2s;
-}
-
-.submit-btn:hover {
-  background-color: #0056b3;
-}
-
-.error {
-  color: red;
-  text-align: center;
 }
 </style>

@@ -16,7 +16,6 @@ onMounted(async () => {
 </script>
 
 <template lang="pug">
-
 div
   h1 All Rooms
   ul

@@ -50,7 +50,7 @@ header
 body {
   margin: 0;
   background: #585858;
-  font-family: 'Work Sans', sans-serif;
+  font-family: var(--main-font);
   font-weight: 400;
 }
 
@@ -181,9 +181,6 @@ a.logo-text:hover {
 
 @media screen and (min-width: 800px) {
   /* add space between navbar height and content */
-  .spacer {
-    padding-top: 5em;
-  }
   .nav-toggle-label {
     display: none;
   }

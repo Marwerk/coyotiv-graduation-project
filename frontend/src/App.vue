@@ -25,7 +25,8 @@ export default {
 <template lang="pug">
 .site-background
   theNavbar
-  .spacer
+
+  .center-content
     Suspense
       RouterView
 </template>
