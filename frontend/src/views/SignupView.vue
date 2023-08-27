@@ -48,7 +48,7 @@ export default {
     .text-center
       p.inline Already a user?
       p.inline
-        router-link(to="/login") Log in
+        router-link(to="/login") Log in (test)
 </template>
 
 <style scoped>
