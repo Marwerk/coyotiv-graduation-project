@@ -47,28 +47,26 @@ export default {
           .col-half
             .form-group
               label.form-label Check In
-              input.form-control(type='date' required='')
+                input.form-control(type='date' required='')
           .col-half
             .form-group
               label.form-label Check Out
-              input.form-control(type='date' required='')
+                input.form-control(type='date' required='')
         .row
           .col-third
             .form-group
-              label.form-label Rooms
-              select.form-control
-                option 1
-                option 2
-                option 3
-              .select-arrow
+              label.form-label(for="rooms") Rooms
+                select#rooms.form-control(name="rooms" type='number' required='' autocomplete="1")
+                  option 1
+                  option 2
+                  option 3
           .col-third
             .form-group
-              label.form-label Guests
-              select.form-control
-                option 1
-                option 2
-                option 3
-              .select-arrow
+              label.form-label(for="guests") Guests
+                select#guests.form-control(name="guests" type='number' required='' autocomplete="1")
+                  option 1
+                  option 2
+                  option 3
         .form-btn.btn-center
           button.submit-btn(@click="checkAvailability") Check Availability
           div(v-if="isAvailable !== null")
@@ -77,13 +75,6 @@ export default {
 </template>
 
 <style scoped>
-/* .form-container {
-  display: flex;
-  flex-wrap: wrap;
-  max-width: 1200px;
-  width: 100%;
-} */
-
 .text-cta {
   flex: 1;
   margin-right: 50px;
@@ -101,36 +92,11 @@ export default {
   color: rgba(255, 255, 255, 0.8);
 }
 
-/* .booking-form {
-  background-color: #fcf6f5;
-  padding: 20px;
-  box-shadow: 0px 5px 20px -5px rgba(0, 0, 0, 0.3);
-  border-radius: 4px;
-} */
-
 .form-label {
   display: block;
   color: #3e485c;
   font-weight: 700;
   margin-bottom: 6px;
-}
-
-.select-arrow {
-  position: absolute;
-  right: 0px;
-  bottom: 4px;
-  width: 32px;
-  line-height: 32px;
-  height: 32px;
-  text-align: center;
-  pointer-events: none;
-  color: rgba(62, 72, 92, 0.3);
-}
-
-.select-arrow:after {
-  content: '\279C';
-  display: block;
-  transform: rotate(90deg);
 }
 
 @media screen and (max-width: 800px) {
