@@ -1,10 +1,5 @@
 <script>
-import roomDetails from './roomDetails.vue'
-
 export default {
-  components: {
-    roomDetails
-  },
   props: {
     type: {
       type: String,
@@ -18,7 +13,7 @@ export default {
   computed: {
     roomImageUrl() {
       // Dynamically import the image based on room type
-      return new URL(`../assets/${this.type}-room.jpg`, import.meta.url).href;
+      return `/src/assets/img/${this.type}-room.jpg`;
     }
   }
 }
@@ -32,5 +27,8 @@ export default {
     .card-header
       h3 {{ type.charAt(0).toUpperCase() + type.slice(1) }} Room
     .card-content
-      roomDetails(:room="rooms[0]")
+      .div
+        p Capacity: {{ rooms[0].capacity }} guests
+        //- ul.amenities-list
+        //-   li.amenity-item(v-for="amenity in rooms[0].amenities" :key="amenity") {{ amenity }}
 </template>

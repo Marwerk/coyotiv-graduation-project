@@ -1,26 +1,42 @@
-<!-- eslint-disable no-unused-vars -->
-<script setup>
-import { ref, onMounted } from 'vue'
-import axios from 'axios'
+<script>
+import roomCards from '../components/roomCards.vue'
+import { useRoomStore } from '../stores/roomStore'
 
-const rooms = ref([])
+export default {
+  components: {
+    roomCards
+  },
+  computed: {
+    // groups rooms by type
+    groupedRooms() {
+      const store = useRoomStore();
+      const grouped = {};
 
-onMounted(async () => {
-  try {
-    const response = await axios.get('/rooms')
-    rooms.value = response.data
-  } catch (error) {
-    console.error('Error fetching rooms:', error)
+      for (const room of store.rooms) {
+        if (!grouped[room.type]) {
+          grouped[room.type] = [];
+        }
+        grouped[room.type].push(room);
+      }
+
+      return grouped;
+    }
+  },
+  created() {
+    const store = useRoomStore()
+    store.fetchAllRooms()
   }
-})
+}
 </script>
 
 <template lang="pug">
-div
-  h1 All Rooms
-  ul
-    li(v-for="room in rooms" :key="room._id")
-      | Room {{ room.type }}: {{ room.description }} (Capacity: {{ room.capacity }})
+h2 Rooms
+.div.cards-container
+  roomCards(v-for="(roomsOfType, type) in groupedRooms" :key="type" :type="type" :rooms="roomsOfType")
 </template>
 
-<style lang=""></style>
+<style scoped>
+h2 {
+  color: #fff;
+}
+</style>
