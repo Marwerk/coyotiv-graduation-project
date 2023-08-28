@@ -6,34 +6,25 @@ export default {
   components: {
     roomCards
   },
-  computed: {
-    // groups rooms by type
-    groupedRooms() {
-      const store = useRoomStore();
-      const grouped = {};
-
-      for (const room of store.rooms) {
-        if (!grouped[room.type]) {
-          grouped[room.type] = [];
-        }
-        grouped[room.type].push(room);
-      }
-
-      return grouped;
-    }
+  data() {
+    return {
+      rooms: [],
+      roomsFetched: false
+    };
   },
   created() {
-    const store = useRoomStore()
-    store.fetchAllRooms()
+    const store = useRoomStore();
+    store.fetchAllRooms().then(fetchedRooms => {
+      this.rooms = fetchedRooms;
+      this.roomsFetched = true;
+    });
   }
 }
 </script>
 
 <template lang="pug">
-h2 Rooms
-.site-wallpaper-overlay
 .div.cards-container
-  roomCards(v-for="(roomsOfType, type) in groupedRooms" :key="type" :type="type" :rooms="roomsOfType")
+  roomCards(v-if="roomsFetched" :rooms="rooms")
 </template>
 
 <style scoped>
