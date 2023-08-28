@@ -15,7 +15,7 @@
   height: 100vh;
 }
 
-.site-background {
+.site-wallpaper {
   min-height: 100vh; /* Fallback for browsers that do not support Custom Properties */
   background-image: url('./img/lascalas-wallpaper.jpg'); /* Wallpaper */
   background-size: cover; /* Make background image cover the entire container */
@@ -23,15 +23,15 @@
 }
 
 /* Semi-transparent overlay for background */
-/* .site-background::before {
+.site-wallpaper-overlay {
   content: '';
   position: absolute;
   left: 0;
   right: 0;
   bottom: 0;
   top: 0;
-  background: rgba(47, 103, 177, 0.6);
-} */
+  background: rgba(47, 103, 177, 0.377);
+}
 
 .text-center {
   text-align: center;

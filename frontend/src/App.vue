@@ -23,7 +23,7 @@ export default {
 </script>
 
 <template lang="pug">
-.site-background
+.site-wallpaper
   theNavbar
 
   .center-content

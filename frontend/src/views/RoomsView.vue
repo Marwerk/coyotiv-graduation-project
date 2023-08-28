@@ -31,6 +31,7 @@ export default {
 
 <template lang="pug">
 h2 Rooms
+.site-wallpaper-overlay
 .div.cards-container
   roomCards(v-for="(roomsOfType, type) in groupedRooms" :key="type" :type="type" :rooms="roomsOfType")
 </template>

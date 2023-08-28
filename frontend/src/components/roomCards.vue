@@ -29,6 +29,6 @@ export default {
     .card-content
       .div
         p Capacity: {{ rooms[0].capacity }} guests
-        //- ul.amenities-list
-        //-   li.amenity-item(v-for="amenity in rooms[0].amenities" :key="amenity") {{ amenity }}
+        ul.amenities-list
+          li.amenity-item(v-for="amenity in rooms[0].amenities" :key="amenity") {{ amenity }}
 </template>
