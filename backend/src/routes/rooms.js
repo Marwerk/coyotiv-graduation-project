@@ -3,13 +3,18 @@ const Room = require('../models/room')
 
 const router = express.Router()
 
-//  GET Route Handler
+// Simple example of async in the blow below:
+// the Room.find() returns a "promise" from the DB, a promise that will resolve to an array of rooms, once that data is available (within the DB).
+// We can "await" that promise and then send (res.send()) the result back to the client.
+// The res.send() method won't be called until the promise is resolved :) cute, right?
+
+// GET all rooms
 router.get('/', async function (req, res, next) {
   const allRooms = await Room.find()
   res.send(allRooms)
 })
 
-// POST Route Handler
+// POST a room, if the room number already exists, return that existing room
 router.post('/', async function (req, res, next) {
   const roomNumberExists = await Room.findOne({
     doorNumber: req.body.doorNumber,
