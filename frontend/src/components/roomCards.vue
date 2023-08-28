@@ -49,3 +49,54 @@ div(v-for="(roomsOfType, type) in groupedRooms" :key="type")
         ul.amenities-list
           li.amenity-item(v-for="amenity in roomsOfType[0].amenities" :key="amenity") {{ amenity }}
 </template>
+
+<style scoped>
+h3 {
+  font-size: large;
+  text-align: center;
+}
+
+.card {
+  width: 300px;
+  padding: 20px;
+  margin: 15px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s;
+}
+
+/* cute 'lil card hover effect */
+.card:hover {
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
+  transform: translateY(-5px);
+}
+
+.card-header {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.card-content {
+  margin-bottom: -20px;
+  text-align: center;
+}
+
+.card-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px 8px 0 0;
+}
+
+.amenities-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.amenity-item {
+  font-size: 0.9em;
+  color: #555;
+}
+</style>
