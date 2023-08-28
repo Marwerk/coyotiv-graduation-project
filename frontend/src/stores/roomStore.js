@@ -1,16 +1,25 @@
-import axios from 'axios'
 import { defineStore } from 'pinia'
+import axios from 'axios'
 
-axios.defaults.withCredentials = true
-axios.defaults.baseURL = import.meta.env.VITE_API_BASE_URL
+export const useRoomStore = defineStore('roomStore',{
+  state: () => ({
+    rooms: [],
+  }),
 
-export const useRoomStore = defineStore('Room', {
   actions: {
-    async fetchRooms() {
-      return (await axios.get('/rooms')).data
+    async fetchAllRooms() {
+      const response = await axios.get('/rooms')
+      this.rooms = response.data
     },
-    async fetchRooms(id) {
-      return (await axios.get(`/rooms/${id}`)).data
+
+    async createRoom(roomData) {
+      const response = await axios.post('/rooms', roomData)
+      this.rooms.push(response.data)
+    },
+
+    async isRoomAvailable(doorNumber, checkInDate, checkOutDate) {
+      const room = this.rooms.find(room => room.doorNumber === doorNumber)
+      return room.isAvailable(checkInDate, checkOutDate)
     }
   }
 })
