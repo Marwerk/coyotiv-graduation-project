@@ -1,80 +1,23 @@
-import { defineStore } from 'pinia'
 import axios from 'axios'
+import { defineStore } from 'pinia'
 
-export const useBookingStore = defineStore('bookings', {
-  state: () => ({
-    bookings: [],
-    availableRooms: [],
-    currentBooking: {
-      guest: {
-        firstName: '',
-        lastName: '',
-        email: '',
-        phoneNumber: ''
-      },
-      checkIn: '',
-      checkOut: '',
-      room: ''
-    },
-    error: null
-  }),
+axios.defaults.withCredentials = true
+axios.defaults.baseURL = import.meta.env.VITE_API_BASE_URL
 
-  getters: {
-    totalBookings() {
-      return this.bookings.length
-    }
-  },
-
+export const useBookingStore = defineStore('booking', {
   actions: {
-    setBookingData(data) {
-      this.currentBooking = data
-    },
-
     async fetchBookings() {
-      try {
-        const { data } = await axios.get('/bookings')
-        this.bookings = data
-      } catch (error) {
-        this.error = error
-      }
+      return (await axios.get('/bookings')).data
     },
-
-    async addBooking() {
-      try {
-        const { data } = await axios.post('/bookings', this.currentBooking)
-        this.bookings.push(data)
-        this.currentBooking = {
-          guest: {
-            firstName: '',
-            lastName: '',
-            email: '',
-            phoneNumber: ''
-          },
-          checkIn: '',
-          checkOut: '',
-          room: ''
-        }
-      } catch (error) {
-        this.error = error
-      }
+    async fetchBookings(id) {
+      return (await axios.get(`/bookings/${id}`)).data
     },
-
-    async checkAvailability(payload) {
-      try {
-        const { data } = await axios.post('/bookings/availability', payload) // Make sure to use the correct endpoint here
-        this.availableRooms = data || []
-      } catch (error) {
-        this.error = error
-      }
-    },
-
-    async deleteBooking(id) {
-      try {
-        await axios.delete(`/bookings/${id}`)
-        this.bookings = this.bookings.filter((booking) => booking._id !== id)
-      } catch (error) {
-        this.error = error
-      }
+    async bookRoom(roomId, checkIn, checkOut) {
+      return (await axios.post('/bookings', {
+        room: roomId,
+        checkIn: checkIn,
+        checkOut: checkOut
+      })).data
     }
   }
 })

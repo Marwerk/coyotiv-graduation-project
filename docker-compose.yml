@@ -10,7 +10,7 @@ services:
       - ./backend/.env
     environment:
       - MONGODB_CONNECTION_STRING=mongodb://mongo:27017/hotel
-      # Comment out the above line and uncomment the below lines if you want to use secrets from GitHub
+      # Comment out the above line and uncomment the below lines if you want to use secrets from GitHub // TODO: add to README
       # - MONGO_CONNECTION_STRING=${MONGO_URI}
       # - OPENAI_API_KEY=${OPENAI_API_KEY}
       # - SESSION_SECRET=${SESSION_SECRET}
