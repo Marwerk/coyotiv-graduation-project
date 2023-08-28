@@ -25,7 +25,9 @@ router.post('/', async function (req, res, next) {
       res.status(400).send('No rooms available')
     } else {
       const room = availableRooms[0]
+
       const booking = await currentUser.book(room, req.body.checkIn, req.body.checkOut)
+
       res.send(booking)
     }
   } catch (error) {
