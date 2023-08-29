@@ -10,6 +10,7 @@ export const useRoomStore = defineStore('roomStore',{
     async fetchAllRooms() {
       const response = await axios.get('/rooms')
       this.rooms = response.data
+      return this.rooms
     },
 
     async createRoom(roomData) {
