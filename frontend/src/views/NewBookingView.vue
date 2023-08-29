@@ -1,8 +1,7 @@
 <!-- eslint-disable no-unused-vars -->
 <script>
-import axios from 'axios'
-
-import { useBookingStore } from '../stores/bookingStore'
+import { mapActions } from 'pinia'
+import { useBookingStore } from '../stores/oldBookingStore'
 
 export default {
   components: {},
@@ -23,19 +22,22 @@ export default {
   },
 
   computed: {
-    bookingStore() {
-      return useBookingStore()
-    }
+    // bookingStore() {
+    //   return useBookingStore()
+    // }
   },
 
   methods: {
+    ...mapActions(useBookingStore, ['addBooking', 'setBookingData']),
+
     async bookRoom() {
       try {
-        this.bookingStore.setBookingData(this.bookingForm)
-        await this.bookingStore.addBooking()
+        this.setBookingData(this.bookingForm)
+        await this.addBooking()
         alert('Booking successful!')
       } catch (err) {
-        alert('Error booking room.')
+        alert(`Error booking room ${err.message}`)
+        console.log(err)
       }
     }
   }
@@ -50,22 +52,22 @@ div.form-container
     // First Name
     .mb-3
       label(for="firstName") First Name
-      input#firstName.form-control(type="text" v-model="bookingForm.guest.firstName" required)
+      input#firstName.form-control(type="text" v-model="bookingForm.guest.firstName")
 
     // Last Name
     .mb-3
       label(for="lastName") Last Name
-      input#lastName.form-control(type="text" v-model="bookingForm.guest.lastName" required)
+      input#lastName.form-control(type="text" v-model="bookingForm.guest.lastName")
 
     // Email
     .mb-3
       label(for="email") Email
-      input#email.form-control(type="email" v-model="bookingForm.guest.email" required)
+      input#email.form-control(type="email" v-model="bookingForm.guest.email")
 
     // Phone Number
     .mb-3
       label(for="phoneNumber") Phone Number
-      input#phoneNumber.form-control(type="tel" v-model="bookingForm.guest.phoneNumber" required)
+      input#phoneNumber.form-control(type="tel" v-model="bookingForm.guest.phoneNumber")
 
     // Room Type
     .mb-3

@@ -39,7 +39,6 @@ export default {
 .center-content
   .text-cta
     h1 Book your stay!
-    p Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vero laborum consequatur est perferendis sapiente minus mollitia quis, esse adipisci exercitationem voluptatum! Quisquam, voluptas. Quisquam, voluptas.
   .form-container
     .booking-form
       form
