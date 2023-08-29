@@ -1,8 +1,9 @@
 const mongoose = require('mongoose')
 const autopopulate = require('mongoose-autopopulate')
 const passportLocalMongoose = require('passport-local-mongoose')
-const Booking = require('./booking')
+const EventBus = require('../events/eventBus')
 const Hotel = require('./hotel')
+const Booking = require('./booking')
 
 const userSchema = new mongoose.Schema({
   firstName: String,
@@ -24,12 +25,17 @@ class User {
     const checkInDate = new Date(checkIn)
     const checkOutDate = new Date(checkOut)
 
-    const booking = await Booking.create({
-      guest: this,
-      room,
-      checkInDate,
-      checkOutDate,
+    EventBus.on('booking', user => {
+      console.log('start of booking creation')
+      Booking.create({
+        guest: user,
+        room: 'single',
+        checkInDate: '2020-01-01',
+        checkOutDate: '2020-01-02',
+      })
+      console.log('booking created')
     })
+    const booking = EventBus.emit('booking')
 
     this.bookings.push(booking)
     await this.save()
