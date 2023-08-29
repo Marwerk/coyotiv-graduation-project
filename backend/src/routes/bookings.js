@@ -12,7 +12,9 @@ router.get('/', async function (req, res, next) {
 
 /* POST route handler */
 router.post('/', async function (req, res, next) {
+  const eventBus = req.app.get('eventBus')
   try {
+    eventBus.emit('booking:creating')
     const currentUser = await User.findOne({ _id: req.body.user })
     const rooms = await Room.find({ type: req.body.type })
 
@@ -27,6 +29,7 @@ router.post('/', async function (req, res, next) {
       const room = availableRooms[0]
 
       const booking = await currentUser.book(room, req.body.checkIn, req.body.checkOut)
+      eventBus.emit('booking:created', currentUser)
 
       res.send(booking)
     }

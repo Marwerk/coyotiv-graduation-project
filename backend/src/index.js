@@ -9,15 +9,6 @@ axios.defaults.baseURL = 'http://localhost:3000'
 // ------------------------------------------------------------------------ //
 
 async function main() {
-  const allUsers = await axios.get('/users')
-  console.log(chalk.bgGreenBright('----> List of all users <----'), allUsers.data)
-
-  const marvinBooking = await axios.post('/bookings', {
-    type: 'suite',
-    checkIn: '2023-09-01',
-    checkOut: '2023-09-05',
-    user: allUsers.data[0]._id,
-  })
   // CREATE INSTANCES
   const hotelLasCalas = await axios.post('/hotels', {
     name: 'LasCalas',
@@ -75,6 +66,15 @@ async function main() {
     doorNumber: 6,
     capacity: 2,
     amenities: ['wifi', 'tv', 'air conditioning'],
+  })
+  const allUsers = await axios.get('/users')
+  console.log(chalk.bgGreenBright('----> List of all users <----'), allUsers.data)
+
+  const marvinBooking = await axios.post('/bookings', {
+    type: 'suite',
+    checkIn: '2023-09-01',
+    checkOut: '2023-09-05',
+    user: allUsers.data[0]._id,
   })
 }
 
