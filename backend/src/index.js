@@ -1,7 +1,7 @@
 const axios = require('axios')
 const { response } = require('express')
 const chalk = require('chalk')
-const EventBus = require('./events/eventBus')
+const EventBus = require('./events/event-bus')
 const Booking = require('./models/booking')
 
 axios.defaults.baseURL = 'http://localhost:3000'
