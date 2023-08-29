@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const autopopulate = require('mongoose-autopopulate')
 const passportLocalMongoose = require('passport-local-mongoose')
-const EventBus = require('../events/eventBus')
+const EventBus = require('../events/event-bus')
 const Hotel = require('./hotel')
 const Booking = require('./booking')
 

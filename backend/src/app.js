@@ -9,6 +9,8 @@ const MongoStore = require('connect-mongo')
 const mongoose = require('mongoose')
 const passport = require('passport')
 
+const eventBus = require('./events/event-bus')
+
 const User = require('./models/user')
 
 require('dotenv').config()
@@ -35,6 +37,9 @@ app.use(cors({ origin: true, credentials: true }))
 // view engine setup
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'pug')
+
+// set up eventbus singleton
+app.set('eventBus', eventBus)
 
 // Session setup
 const clientPromise = mongoose.connection

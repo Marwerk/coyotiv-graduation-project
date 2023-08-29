@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 const autopopulate = require('mongoose-autopopulate')
-const EventBus = require('../events/eventBus')
+const EventBus = require('../events/event-bus')
 
 const MILLISECONDS_IN_A_DAY = 1000 * 60 * 60 * 24
 
