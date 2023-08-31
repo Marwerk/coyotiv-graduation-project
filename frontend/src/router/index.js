@@ -1,12 +1,4 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
-import UsersView from '../views/UsersView.vue'
-import RoomsView from '../views/RoomsView.vue'
-import ContactView from '../views/ContactView.vue'
-import BookingsView from '../views/BookingsView.vue'
-import LoginView from '../views/LoginView.vue'
-import SignupView from '../views/SignupView.vue'
-import ErrorView from '../views/ErrorView.vue'
 
 // Views = pages of your webapp
 const router = createRouter({
@@ -15,42 +7,42 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: HomeView
+      component: () => import('../views/HomeView.vue')
     },
     {
       path: '/rooms',
       name: 'rooms',
-      component: RoomsView
+      component: () => import('../views/RoomsView.vue')
     },
     {
       path: '/login',
       name: 'login',
-      component: LoginView
+      component: () => import('../views/LoginView.vue')
     },
     {
       path: '/users',
       name: 'users',
-      component: UsersView
+      component: () => import('../views/UsersView.vue')
     },
     {
       path: '/signup',
       name: 'signup',
-      component: SignupView
+      component: () => import('../views/SignupView.vue')
     },
     {
       path: '/contact',
       name: 'contact',
-      component: ContactView
+      component: () => import('../views/ContactView.vue')
     },
     {
       path: '/bookings',
       name: 'bookings',
-      component: BookingsView
+      component: () => import('../views/BookingsView.vue')
     },
     {
       path: '/:pathMatch(.*)*',
       name: '404',
-      component: ErrorView
+      component: () => import('../views/ErrorView.vue')
     }
   ]
 })

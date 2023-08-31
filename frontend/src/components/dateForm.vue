@@ -1,6 +1,7 @@
 <script>
 import { mapActions } from 'pinia'
 import { useBookingStore } from '../stores/bookingStore'
+import { useAccountStore } from '../stores/accountStore'
 
 export default {
   components: {},
@@ -8,21 +9,31 @@ export default {
   data() {
     return {
       bookingForm: {
+        type: '',
         checkIn: '',
         checkOut: '',
-        guests: '',
-        type: '' // room type!!
+        guests: ''
       }
     }
   },
 
+  computed: {
+    userId() {
+      const accountStore = useAccountStore()
+      return accountStore.user?._id
+    }
+  },
   methods: {
-    ...mapActions(useBookingStore, ['addBooking', 'setBookingData']),
+    ...mapActions(useBookingStore, ['bookRoom']),
 
-    async bookRoom() {
+    async handleBookRoom() {
       try {
-        this.setBookingData(this.bookingForm)
-        await this.addBooking()
+        await this.bookRoom(
+          this.userId,
+          this.bookingForm.type,
+          this.bookingForm.checkIn,
+          this.bookingForm.checkOut
+        )
         alert('Booking successful!')
       } catch (err) {
         alert(`Error booking room ${err.message}`)
@@ -35,7 +46,7 @@ export default {
 
 <template lang="pug">
 .form-container
-  form.booking-form(@submit.prevent='bookRoom')
+  form.booking-form(@submit.prevent='handleBookRoom')
     .form-group
       label(for='checkIn') Check-in Date
       input#checkIn(type='date' v-model='bookingForm.checkIn' required='')

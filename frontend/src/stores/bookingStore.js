@@ -5,86 +5,17 @@ axios.defaults.withCredentials = true
 axios.defaults.baseURL = import.meta.env.VITE_API_BASE_URL
 
 export const useBookingStore = defineStore('Booking', {
-  state: () => ({
-    bookings: [],
-    availableRooms: [],
-    currentBooking: {
-      guest: {
-        firstName: '',
-        lastName: '',
-        email: '',
-        phoneNumber: ''
-      },
-      checkIn: '',
-      checkOut: '',
-      room: ''
-    },
-    error: null
-  }),
-
-  getters: {
-    totalBookings() {
-      return this.bookings.length
-    }
-  },
-
   actions: {
-    setBookingData(data) {
-      this.currentBooking = data
-    },
-
     async fetchBookings() {
-      try {
-        const { data } = await axios.get('/bookings')
-        this.bookings = data
-      } catch (error) {
-        this.error = error
-      }
+      return (await axios.get('/bookings')).data
     },
 
-    async addBooking(userId) {
-      try {
-        const bookingData = {
-          user: userId,
-          type: this.currentBooking.room, // might have to change room -> type
-          checkIn: this.currentBooking.checkIn,
-          checkOut: this.currentBooking.checkOut
-        }
-
-        const { data } = await axios.post('/bookings', bookingData)
-        this.bookings.push(data)
-        this.currentBooking = {
-          guest: {
-            firstName: '',
-            lastName: '',
-            email: '',
-            phoneNumber: ''
-          },
-          checkIn: '',
-          checkOut: '',
-          room: ''
-        }
-      } catch (error) {
-        this.error = error
-      }
-    },
-
-    async checkAvailability(payload) {
-      try {
-        const { data } = await axios.post('/bookings/availability', payload) // Make sure to use the correct endpoint here
-        this.availableRooms = data || []
-      } catch (error) {
-        this.error = error
-      }
-    },
-
-    async deleteBooking(id) {
-      try {
-        await axios.delete(`/bookings/${id}`)
-        this.bookings = this.bookings.filter((booking) => booking._id !== id)
-      } catch (error) {
-        this.error = error
-      }
+    async bookRoom(userId, type, checkIn, checkOut) {
+      return (await axios.post('/bookings', {
+        user: userId,
+        type: type,
+        checkIn: checkIn,
+        checkOut: checkOut,})).data
     }
   }
 })
