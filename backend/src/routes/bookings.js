@@ -20,12 +20,12 @@ router.post('/', async function (req, res, next) {
       room.isAvailable(req.body.checkIn, req.body.checkOut)
     )
 
-    // temporal logs for debugging
-    console.log('User:', currentUser)
-    console.log('Requested Room Type:', req.body.type)
-    console.log('Check-In:', req.body.checkIn)
-    console.log('Check-Out:', req.body.checkOut)
-    console.log('Available Rooms:', availableRooms)
+    // // temporal logs for debugging
+    // console.log('User:', currentUser)
+    // console.log('Requested Room Type:', req.body.type)
+    // console.log('Check-In:', req.body.checkIn)
+    // console.log('Check-Out:', req.body.checkOut)
+    // console.log('Available Rooms:', availableRooms)
 
     if (availableRooms.length === 0) {
       console.log('No rooms available')
