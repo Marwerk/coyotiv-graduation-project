@@ -9,9 +9,6 @@ export const useBookingStore = defineStore('booking', {
     async fetchBookings() {
       return (await axios.get('/bookings')).data
     },
-    async fetchBookings(id) {
-      return (await axios.get(`/bookings/${id}`)).data
-    },
     async bookRoom(roomId, checkIn, checkOut) {
       return (await axios.post('/bookings', {
         room: roomId,
