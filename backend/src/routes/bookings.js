@@ -13,12 +13,19 @@ router.get('/', async function (req, res, next) {
 /* POST route handler */
 router.post('/', async function (req, res, next) {
   try {
-    const currentUser = await User.findOne({ _id: req.body.user })
+    const currentUser = await User.findById(req.body.user)
     const rooms = await Room.find({ type: req.body.type })
 
     const availableRooms = rooms.filter(room =>
       room.isAvailable(req.body.checkIn, req.body.checkOut)
     )
+
+    // temporal logs for debugging
+    console.log('User:', currentUser)
+    console.log('Requested Room Type:', req.body.type)
+    console.log('Check-In:', req.body.checkIn)
+    console.log('Check-Out:', req.body.checkOut)
+    console.log('Available Rooms:', availableRooms)
 
     if (availableRooms.length === 0) {
       console.log('No rooms available')
