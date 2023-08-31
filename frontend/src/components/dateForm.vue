@@ -1,4 +1,3 @@
-<!-- eslint-disable no-unused-vars -->
 <script>
 import { mapActions } from 'pinia'
 import { useBookingStore } from '../stores/bookingStore'
