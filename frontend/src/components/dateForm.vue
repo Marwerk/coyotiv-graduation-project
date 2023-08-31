@@ -27,6 +27,10 @@ export default {
     ...mapActions(useBookingStore, ['bookRoom']),
 
     async handleBookRoom() {
+      if (!this.userId) {
+        alert('Please log in to book a room')
+        return
+      }
       try {
         await this.bookRoom(
           this.userId,
