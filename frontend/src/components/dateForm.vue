@@ -21,6 +21,19 @@ export default {
     userId() {
       const accountStore = useAccountStore()
       return accountStore.user?._id
+    },
+    estimatedPrice() {
+      const MILLISECONDS_IN_A_DAY = 1000 * 60 * 60 * 24
+      const pricePerNight = 100 // your rate per night
+
+      if (!this.bookingForm.checkIn || !this.bookingForm.checkOut) return 0
+
+      const checkInDate = new Date(this.bookingForm.checkIn)
+      const checkOutDate = new Date(this.bookingForm.checkOut)
+      const differenceInMilliseconds = checkOutDate - checkInDate
+      const differenceInDays = differenceInMilliseconds / MILLISECONDS_IN_A_DAY
+
+      return differenceInDays * pricePerNight
     }
   },
   methods: {
@@ -69,7 +82,12 @@ export default {
         option(value='double') Double
         option(value='suite') Suite
     .form-group
+      label Estimated Price
+      div ${{ estimatedPrice }}
+    .form-group
       button.submit-btn(type='submit') Book Now
+
+
 </template>
 
 <style scoped>
