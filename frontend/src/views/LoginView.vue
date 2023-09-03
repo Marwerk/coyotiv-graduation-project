@@ -14,6 +14,7 @@ export default {
     ...mapActions(useAccountStore, ['login']),
     async submitLogin() {
       await this.login({ email: this.email, password: this.password })
+      // TODO: push to Home
       this.$router.push('/rooms')
     }
   }

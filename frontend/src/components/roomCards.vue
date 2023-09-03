@@ -9,29 +9,29 @@ export default {
   computed: {
     // groups rooms by type
     groupedRooms() {
-      const grouped = {};
+      const grouped = {}
 
       for (const room of this.rooms) {
         if (!grouped[room.type]) {
-          grouped[room.type] = [];
+          grouped[room.type] = []
         }
-        grouped[room.type].push(room);
+        grouped[room.type].push(room)
       }
 
       // sort groups by desired order
-      const sortOrder = ['single', 'double', 'suite'];
-      const orderedGroups = {};
+      const sortOrder = ['single', 'double', 'suite']
+      const orderedGroups = {}
 
-      sortOrder.forEach(type => {
+      sortOrder.forEach((type) => {
         if (grouped[type]) {
-          orderedGroups[type] = grouped[type];
+          orderedGroups[type] = grouped[type]
         }
-      });
+      })
 
-      return orderedGroups;
+      return orderedGroups
     },
     roomImageUrl() {
-      return type => `/src/assets/img/${type}-room.jpg`;
+      return (type) => `/src/assets/img/${type}-room.jpg`
     }
   }
 }
@@ -46,8 +46,9 @@ div(v-for="(roomsOfType, type) in groupedRooms" :key="type")
     .card-content
       div
         p Capacity: {{ roomsOfType[0].capacity }} {{ roomsOfType[0].capacity === 1 ? 'guest' : 'guests' }}
-        ul.amenities-list
-          li.amenity-item(v-for="amenity in roomsOfType[0].amenities" :key="amenity") {{ amenity }}
+        // TODO: polish amenities display
+        //- ul.amenities-list
+        //-   li.amenity-item(v-for="amenity in roomsOfType[0].amenities" :key="amenity") {{ amenity }}
 </template>
 
 <style scoped>

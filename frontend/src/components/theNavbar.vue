@@ -35,6 +35,8 @@ header
       li(v-if='!user')
         router-link(to='/signup') Sign Up
       li(v-if='user')
+        router-link(to='/user') My Account
+      li(v-if='user')
         router-link(to='/' @click='logout') Log Out
   label.nav-toggle-label(for='nav-toggle')
     span

@@ -3,8 +3,6 @@
 import { ref, onMounted } from 'vue'
 import axios from 'axios'
 
-// import TheNavBar from '../components/TheNavBar.vue'
-
 const users = ref([])
 
 onMounted(async () => {
