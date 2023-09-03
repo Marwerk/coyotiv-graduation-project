@@ -28,8 +28,8 @@ header
     ul
       li
         router-link(to='/rooms') Rooms
-      li
-        router-link(to='/contact') Contact
+      //- li
+      //-   router-link(to='/contact') Contact
       li(v-if='!user')
         router-link(to='/login') Log In
       li(v-if='!user')

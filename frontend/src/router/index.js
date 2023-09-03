@@ -29,11 +29,11 @@ const router = createRouter({
       name: 'signup',
       component: () => import('../views/SignupView.vue')
     },
-    {
-      path: '/contact',
-      name: 'contact',
-      component: () => import('../views/ContactView.vue')
-    },
+    // {
+    //   path: '/contact',
+    //   name: 'contact',
+    //   component: () => import('../views/ContactView.vue')
+    // },
     {
       path: '/bookings',
       name: 'bookings',
