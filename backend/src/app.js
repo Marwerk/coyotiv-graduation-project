@@ -27,6 +27,7 @@ const roomsRouter = require('./routes/rooms')
 const accountsRouter = require('./routes/accounts')
 
 const app = express()
+app.set('trust proxy', 1)
 
 // CORS
 // in the future, origin should be your frontend_url
@@ -58,7 +59,6 @@ app.use(sessionMiddleware)
 
 app.use(passport.initialize())
 app.use(passport.session())
-app.set('trust proxy', 1)
 
 // Middleware to track number of visits and history of each session
 app.use((req, res, next) => {
