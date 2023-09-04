@@ -44,9 +44,18 @@ router.post('/', async function (req, res, next) {
 })
 
 /* DELETE booking by ID */
+// eslint-disable-next-line consistent-return
 router.delete('/:bookingId', async function (req, res, next) {
-  const deleteBooking = await Booking.findByIdAndDelete(req.params.bookingId)
-  res.send(deleteBooking)
+  const booking = await Booking.findById(req.params.bookingId)
+
+  if (!booking) return next({ status: 404, message: 'Booking not found' })
+
+  if (req.user !== booking.user)
+    return next({ status: 403, message: 'User is not the owner of this booking' })
+
+  await booking.user.cancelBooking(booking)
+
+  res.sendStatus(200)
 })
 
 // PATCH route handler to update a booking by ID
