@@ -5,12 +5,12 @@ const Room = require('../models/room')
 
 const router = express.Router()
 
-/* GET route handler */
+/* GET all bookings */
 router.get('/', async function (req, res, next) {
   res.send(await Booking.find())
 })
 
-/* POST route handler */
+/* POST new booking */
 router.post('/', async function (req, res, next) {
   try {
     const currentUser = await User.findById(req.body.user)
@@ -43,15 +43,41 @@ router.post('/', async function (req, res, next) {
   }
 })
 
-/* DELETE route handler */
-router.delete('/:id', async function (req, res, next) {
-  const deleteBooking = await Booking.findByIdAndDelete(req.params.id)
-  res.send(deleteBooking)
+/* DELETE booking by ID */
+// eslint-disable-next-line consistent-return
+router.delete('/:bookingId', async function (req, res, next) {
+  const booking = await Booking.findById(req.params.bookingId)
+
+  if (!booking) return next({ status: 404, message: 'Booking not found' })
+
+  if (req.user !== booking.user)
+    return next({ status: 403, message: 'User is not the owner of this booking' })
+
+  await booking.user.cancelBooking(booking)
+
+  res.sendStatus(200)
 })
 
-// TODO PATCH Route Handler
+// PATCH route handler to update a booking by ID
+router.put('/:bookingId', async function (req, res, next) {
+  try {
+    const updatedBooking = await Booking.findByIdAndUpdate(
+      req.params.bookingId,
+      { checkIn: req.body.checkIn, checkOut: req.body.checkOut },
+      { new: true }
+    )
 
-// TODO DELETE Route Handler
+    if (!updatedBooking) {
+      res.status(404).send('Booking not found')
+      return
+    }
+
+    res.send(updatedBooking)
+  } catch (error) {
+    console.error(error)
+    res.status(500).send('Something went wrong while updating')
+  }
+})
 
 // ------------------------------------------------------------------------ //
 

@@ -28,6 +28,7 @@ export default {
 }
 </script>
 
+<!-- // TODO: perhaps we could move the signup component to be next to the welcome intro text @ /home? -->
 <template lang="pug">
 .center-content
   .form-container

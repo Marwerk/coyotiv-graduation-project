@@ -16,6 +16,17 @@ export const useBookingStore = defineStore('Booking', {
         type: type,
         checkIn: checkIn,
         checkOut: checkOut,})).data
+    },
+
+    async updateBooking(bookingId, checkIn, checkOut) {
+      return (await axios.put(`/bookings/${bookingId}`, {
+        checkIn: checkIn,
+        checkOut: checkOut,
+      })).data
+    },
+
+    async deleteBookingById(bookingId) {
+      return (await axios.delete(`/bookings/${bookingId}`)).data
     }
   }
 })

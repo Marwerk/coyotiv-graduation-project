@@ -10,9 +10,6 @@ export default {
     theNavbar,
     RouterView
   },
-  async mounted() {
-    await this.fetchUser()
-  },
   computed: {
     ...mapState(useAccountStore, ['user'])
   },

@@ -3,6 +3,7 @@ const autopopulate = require('mongoose-autopopulate')
 const passportLocalMongoose = require('passport-local-mongoose')
 const Booking = require('./booking')
 const Hotel = require('./hotel')
+const Room = require('./room')
 
 const userSchema = new mongoose.Schema({
   firstName: String,
@@ -31,15 +32,35 @@ class User {
       checkOutDate,
     })
 
-    this.bookings.push(booking)
+    this.bookings.push(booking._id)
     await this.save()
 
-    room.bookings.push(booking)
+    room.bookings.push(booking._id)
     await room.save()
 
-    const hotel = await Hotel.findOne({ _id: room.hotel })
-    hotel.bookings.push(booking)
+    const hotel = await Hotel.findOne({ _id: room.hotel._id || room.hotel })
+    hotel.bookings.push(booking._id)
     await hotel.save()
+
+    return booking
+  }
+
+  async cancelBooking(booking) {
+    // cancel the booking
+    await Booking.findByIdAndDelete(booking._id)
+
+    // remove booking from User
+    const userBookingIndex = this.bookings.indexOf(booking._id)
+    this.bookings.splice(userBookingIndex, 1)
+
+    // remove booking from Room
+    const roomInstance = await Room.findById(booking.room)
+    const roomBookingIndex = roomInstance.bookings.indexOf(booking._id)
+    roomInstance.bookings.splice(roomBookingIndex, 1)
+    await roomInstance.save()
+
+    // update(save) User and Room
+    await this.save()
 
     return booking
   }
