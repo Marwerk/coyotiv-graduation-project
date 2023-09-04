@@ -18,7 +18,42 @@ export default {
   },
   methods: {
     ...mapActions(useAccountStore, ['fetchUser']),
-    ...mapActions(useBookingStore, ['fetchBookings'])
+    ...mapActions(useBookingStore, ['fetchBookings', 'updateBooking', 'deleteBookingById']),
+
+    async handleUpdateBooking(bookingId) {
+      const newCheckIn = prompt('Enter new check-in date:', 'yyyy-mm-dd')
+      const newCheckOut = prompt('Enter new check-out date:', 'yyyy-mm-dd')
+
+      if (newCheckIn && newCheckOut) {
+        try {
+          await this.updateBooking(bookingId, newCheckIn, newCheckOut)
+          alert('Booking updated successfully')
+
+          // Refresh the user data after successfully updating the booking
+          await this.fetchUser()
+        } catch (error) {
+          alert('Error updating booking')
+          console.error(error)
+        }
+      }
+    },
+
+    async handleDeleteBooking(bookingId) {
+      const confirmDelete = confirm('Are you sure you want to delete this booking?')
+
+      if (confirmDelete) {
+        try {
+          await this.deleteBookingById(bookingId)
+          alert('Booking deleted successfully')
+
+          // Refresh the user data after successfully deleting the booking
+          await this.fetchUser()
+        } catch (error) {
+          alert('Error deleting booking')
+          console.error(error)
+        }
+      }
+    }
   }
 }
 </script>
@@ -42,6 +77,8 @@ div
         |           {{ booking.checkOutDate }}
         strong Total Price:
         |  ${{ booking.totalPrice }}
+      button(@click='handleUpdateBooking(booking._id)') Update
+      button(@click='handleDeleteBooking(booking._id)') Delete
   div(v-else='')
     p Loading...
 

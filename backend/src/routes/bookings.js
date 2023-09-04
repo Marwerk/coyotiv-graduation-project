@@ -5,12 +5,12 @@ const Room = require('../models/room')
 
 const router = express.Router()
 
-/* GET route handler */
+/* GET all bookings */
 router.get('/', async function (req, res, next) {
   res.send(await Booking.find())
 })
 
-/* POST route handler */
+/* POST new booking */
 router.post('/', async function (req, res, next) {
   try {
     const currentUser = await User.findById(req.body.user)
@@ -43,15 +43,32 @@ router.post('/', async function (req, res, next) {
   }
 })
 
-/* DELETE route handler */
-router.delete('/:id', async function (req, res, next) {
-  const deleteBooking = await Booking.findByIdAndDelete(req.params.id)
+/* DELETE booking by ID */
+router.delete('/:bookingId', async function (req, res, next) {
+  const deleteBooking = await Booking.findByIdAndDelete(req.params.bookingId)
   res.send(deleteBooking)
 })
 
-// TODO PATCH Route Handler
+// PATCH route handler to update a booking by ID
+router.put('/:bookingId', async function (req, res, next) {
+  try {
+    const updatedBooking = await Booking.findByIdAndUpdate(
+      req.params.bookingId,
+      { checkIn: req.body.checkIn, checkOut: req.body.checkOut },
+      { new: true }
+    )
 
-// TODO DELETE Route Handler
+    if (!updatedBooking) {
+      res.status(404).send('Booking not found')
+      return
+    }
+
+    res.send(updatedBooking)
+  } catch (error) {
+    console.error(error)
+    res.status(500).send('Something went wrong while updating')
+  }
+})
 
 // ------------------------------------------------------------------------ //
 
