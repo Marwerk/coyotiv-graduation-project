@@ -6,8 +6,7 @@ const Hotel = require('./hotel')
 const Room = require('./room')
 
 const userSchema = new mongoose.Schema({
-  firstName: String,
-  lastName: String,
+  name: String,
   phoneNumber: String,
   address: String,
   city: String,
@@ -54,10 +53,13 @@ class User {
     this.bookings.splice(userBookingIndex, 1)
 
     // remove booking from Room
-    const roomInstance = await Room.findById(booking.room)
-    const roomBookingIndex = roomInstance.bookings.indexOf(booking._id)
-    roomInstance.bookings.splice(roomBookingIndex, 1)
-    await roomInstance.save()
+    // if (!booking.room) {
+    //   throw new Error('Booking does not have an associated room.')
+    // }
+    // const roomInstance = await Room.findById(booking.room)
+    // const roomBookingIndex = roomInstance.bookings.indexOf(booking._id)
+    // roomInstance.bookings.splice(roomBookingIndex, 1)
+    // await roomInstance.save()
 
     // update(save) User and Room
     await this.save()
