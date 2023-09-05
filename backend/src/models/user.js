@@ -31,14 +31,14 @@ class User {
       checkOutDate,
     })
 
-    this.bookings.push(booking._id)
+    this.bookings.push(booking)
     await this.save()
 
-    room.bookings.push(booking._id)
+    room.bookings.push(booking)
     await room.save()
 
     const hotel = await Hotel.findOne({ _id: room.hotel._id || room.hotel })
-    hotel.bookings.push(booking._id)
+    hotel.bookings.push(booking)
     await hotel.save()
 
     return booking

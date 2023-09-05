@@ -69,6 +69,7 @@ div.form-container
     //- p
     //-   strong Name:
     //-   |  {{ user.name || 'Unknown User'}}
+    // TODO: couldn't display user name, for some reason, the name is not stored in the server on signup, only email
     p
       strong Email:
       |  {{ user.email }}

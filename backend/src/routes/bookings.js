@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable func-names */
 const express = require('express')
 const Booking = require('../models/booking')
 const User = require('../models/user')
@@ -66,12 +68,12 @@ router.delete('/:bookingId', async function (req, res, next) {
   res.send({ message: 'Booking deleted successfully', booking })
 })
 
-// PUT route handler to update a booking by ID
+// PUT route handler to UPDATE a booking by ID
 router.put('/:bookingId', async function (req, res, next) {
   try {
     const updatedBooking = await Booking.findByIdAndUpdate(
       req.params.bookingId,
-      { checkIn: req.body.checkIn, checkOut: req.body.checkOut },
+      { checkInDate: req.body.checkIn, checkOutDate: req.body.checkOut },
       { new: true }
     )
 
