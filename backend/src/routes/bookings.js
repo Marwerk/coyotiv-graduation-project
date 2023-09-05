@@ -51,6 +51,13 @@ router.delete('/:bookingId', async function (req, res, next) {
 
   if (!booking) return next({ status: 404, message: 'Booking not found' })
 
+  // Additional step to check the associated room and remove the booking from its bookings array
+  const room = await Room.findOne({ bookings: booking._id })
+  if (room) {
+    room.bookings.pull(booking._id)
+    await room.save()
+  }
+
   if (req.user.email !== booking.guest.email)
     return next({ status: 403, message: 'User is not the owner of this booking' })
 
