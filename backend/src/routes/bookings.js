@@ -34,7 +34,7 @@ router.post('/', async function (req, res, next) {
       const room = availableRooms[0]
 
       const booking = await currentUser.book(room, req.body.checkIn, req.body.checkOut)
-
+      console.log('Booking created for:', currentUser.name)
       res.send(booking)
     }
   } catch (error) {
@@ -47,18 +47,19 @@ router.post('/', async function (req, res, next) {
 // eslint-disable-next-line consistent-return
 router.delete('/:bookingId', async function (req, res, next) {
   const booking = await Booking.findById(req.params.bookingId)
+  console.log('Booking owner:', booking.email)
 
   if (!booking) return next({ status: 404, message: 'Booking not found' })
 
-  if (req.user !== booking.user)
+  if (req.user.email !== booking.guest.email)
     return next({ status: 403, message: 'User is not the owner of this booking' })
 
-  await booking.user.cancelBooking(booking)
+  await booking.guest.cancelBooking(booking)
 
-  res.sendStatus(200)
+  res.send({ message: 'Booking deleted successfully', booking })
 })
 
-// PATCH route handler to update a booking by ID
+// PUT route handler to update a booking by ID
 router.put('/:bookingId', async function (req, res, next) {
   try {
     const updatedBooking = await Booking.findByIdAndUpdate(

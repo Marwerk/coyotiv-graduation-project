@@ -26,7 +26,14 @@ export const useBookingStore = defineStore('Booking', {
     },
 
     async deleteBookingById(bookingId) {
-      return (await axios.delete(`/bookings/${bookingId}`)).data
+      try {
+        const response = await axios.delete(`/bookings/${bookingId}`);
+        return response.data;
+      } catch (error) {
+        console.error("Error deleting the booking:", error);
+        throw error;
+      }
     }
+
   }
 })

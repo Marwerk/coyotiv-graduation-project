@@ -9,8 +9,9 @@ export default {
     ...mapState(useAccountStore, ['user'])
   },
   async mounted() {
-    // Assuming you may want to fetch fresh user data when this view mounts
+    // Assuming we may want to fetch fresh user data when this view mounts
     await this.fetchUser()
+    console.log('fetched user:', this.user)
 
     // Assuming you might need to fetch bookings, you can use the fetchBookings method.
     // Just ensure to handle and store the bookings data appropriately in your bookingStore.
@@ -46,25 +47,33 @@ export default {
           await this.deleteBookingById(bookingId)
           alert('Booking deleted successfully')
 
-          // Refresh the user data after successfully deleting the booking
-          await this.fetchUser()
+          // Remove the deleted booking from user's bookings list
+          this.user.bookings = this.user.bookings.filter((booking) => booking._id !== bookingId)
         } catch (error) {
-          alert('Error deleting booking')
+          alert(`Error deleting booking: ${error.message}`)
           console.error(error)
         }
       }
+    },
+    // format date for readability
+    formatDate(dateString) {
+      const date = new Date(dateString)
+      const day = date.getDate()
+      const month = date.toLocaleString('default', { month: 'long' }) // This gives the full month name
+      const year = date.getFullYear()
+      return `${day} of ${month} ${year}`
     }
   }
 }
 </script>
 
 <template lang="pug">
-div
+div.form-container
   div(v-if='user')
     h2 User Profile
     p
       strong Name:
-      |  {{ user.firstName }} {{ user.lastName }}
+      |  {{ user.name || 'Unknown User'}}
     p
       strong Email:
       |  {{ user.email }}
@@ -72,9 +81,11 @@ div
     div(v-for='booking in user.bookings' :key='booking._id')
       p
         strong Check-in:
-        |  {{ booking.checkInDate }}
+        |  {{ formatDate(booking.checkInDate) }}
+        br
         strong Check-out:
-        |           {{ booking.checkOutDate }}
+        |  {{ formatDate(booking.checkOutDate) }}
+        br
         strong Total Price:
         |  ${{ booking.totalPrice }}
       button(@click='handleUpdateBooking(booking._id)') Update
@@ -86,6 +97,6 @@ div
 
 <style scoped>
 div {
-  color: white;
+  color: rgb(0, 0, 0);
 }
 </style>
