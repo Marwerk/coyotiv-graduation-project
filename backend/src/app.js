@@ -67,7 +67,7 @@ app.use((req, res, next) => {
   req.session.history = req.session.history || []
   req.session.history.push({ url: req.url, date: new Date(), ip: req.ip })
 
-  console.log('Number of visits:', req.session.numberOfVisits)
+  // console.log('Number of visits:', req.session.numberOfVisits)
 
   next()
 })

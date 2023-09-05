@@ -11,11 +11,6 @@ export default {
   async mounted() {
     // Assuming we may want to fetch fresh user data when this view mounts
     await this.fetchUser()
-    console.log('fetched user:', this.user)
-
-    // Assuming you might need to fetch bookings, you can use the fetchBookings method.
-    // Just ensure to handle and store the bookings data appropriately in your bookingStore.
-    // await this.fetchBookings();
   },
   methods: {
     ...mapActions(useAccountStore, ['fetchUser']),
@@ -55,7 +50,7 @@ export default {
         }
       }
     },
-    // format date for readability
+    // Format date for readability
     formatDate(dateString) {
       const date = new Date(dateString)
       const day = date.getDate()
@@ -70,10 +65,11 @@ export default {
 <template lang="pug">
 div.form-container
   div(v-if='user')
-    h2 User Profile
-    p
-      strong Name:
-      |  {{ user.name || 'Unknown User'}}
+    h3 User Profile
+    //- p
+    //-   strong Name:
+    //-   |  {{ user.name || 'Unknown User'}}
+    // TODO: couldn't display user name, for some reason, the name is not stored in the server on signup, only email
     p
       strong Email:
       |  {{ user.email }}
@@ -98,5 +94,9 @@ div.form-container
 <style scoped>
 div {
   color: rgb(0, 0, 0);
+}
+
+p {
+  font-size: 18px;
 }
 </style>

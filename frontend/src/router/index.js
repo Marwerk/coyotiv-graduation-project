@@ -35,11 +35,6 @@ const router = createRouter({
     //   component: () => import('../views/ContactView.vue')
     // },
     {
-      path: '/bookings',
-      name: 'bookings',
-      component: () => import('../views/BookingsView.vue')
-    },
-    {
       path: '/:pathMatch(.*)*',
       name: '404',
       component: () => import('../views/ErrorView.vue')
