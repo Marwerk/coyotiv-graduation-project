@@ -36,13 +36,13 @@ export default {
     form(@submit.prevent='submitSignup')
       .form-group
         label(for='name') Name:
-        input#name(v-model='name' type='text' required='' autocomplete='name')
+        input#name(v-model='name' type='text' required='' autocomplete='name' :required="true")
       .form-group
         label(for='email') Email:
-        input#email(v-model='email' type='email' required='' autocomplete='email')
+        input#email(v-model='email' type='email' required='' autocomplete='email' :required="true")
       .form-group
         label(for='password') Password:
-        input#password(v-model='password' type='password' required='')
+        input#password(v-model='password' type='password' :required="true")
       .form-group.btn-center
         button.submit-btn(type='submit') Sign Up
     p.error(v-if='registrationError') {{ registrationError }}

@@ -58,7 +58,7 @@ router.delete('/:bookingId', async function (req, res, next) {
   res.sendStatus(200)
 })
 
-// PATCH route handler to update a booking by ID
+// PUT route handler to update a booking by ID
 router.put('/:bookingId', async function (req, res, next) {
   try {
     const updatedBooking = await Booking.findByIdAndUpdate(
