@@ -53,13 +53,21 @@ export default {
           console.error(error)
         }
       }
+    },
+    // format date for readability
+    formatDate(dateString) {
+      const date = new Date(dateString)
+      const day = date.getDate()
+      const month = date.toLocaleString('default', { month: 'long' }) // This gives the full month name
+      const year = date.getFullYear()
+      return `${day} of ${month} ${year}`
     }
   }
 }
 </script>
 
 <template lang="pug">
-div
+div.form-container
   div(v-if='user')
     h2 User Profile
     p
@@ -72,9 +80,11 @@ div
     div(v-for='booking in user.bookings' :key='booking._id')
       p
         strong Check-in:
-        |  {{ booking.checkInDate }}
+        |  {{ formatDate(booking.checkInDate) }}
+        br
         strong Check-out:
-        |           {{ booking.checkOutDate }}
+        |  {{ formatDate(booking.checkOutDate) }}
+        br
         strong Total Price:
         |  ${{ booking.totalPrice }}
       button(@click='handleUpdateBooking(booking._id)') Update
@@ -86,6 +96,6 @@ div
 
 <style scoped>
 div {
-  color: white;
+  color: rgb(0, 0, 0);
 }
 </style>
