@@ -7,9 +7,20 @@ const Room = require('../models/room')
 
 const router = express.Router()
 
-/* GET all bookings */
+/* GET bookings depending on user role */
 router.get('/', async function (req, res, next) {
-  res.send(await Booking.find())
+  if (!req.user) {
+    return res.status(403).send('Authentication required.')
+  }
+
+  // If the logged-in user has the admin role, fetch all the bookings
+  if (req.user.role === 'admin') {
+    return res.send(await Booking.find())
+  }
+
+  // If the logged-in user doesn't have the admin role, fetch only their bookings
+  const userBookings = await Booking.find({ guest: req.user._id })
+  return res.send(userBookings)
 })
 
 /* POST new booking */
@@ -21,13 +32,6 @@ router.post('/', async function (req, res, next) {
     const availableRooms = rooms.filter(room =>
       room.isAvailable(req.body.checkIn, req.body.checkOut)
     )
-
-    // // temporal logs for debugging
-    // console.log('User:', currentUser)
-    // console.log('Requested Room Type:', req.body.type)
-    // console.log('Check-In:', req.body.checkIn)
-    // console.log('Check-Out:', req.body.checkOut)
-    // console.log('Available Rooms:', availableRooms)
 
     if (availableRooms.length === 0) {
       console.log('No rooms available')
