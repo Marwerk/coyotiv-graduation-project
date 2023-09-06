@@ -6,6 +6,7 @@ axios.defaults.baseURL = import.meta.env.VITE_API_BASE_URL
 
 export const useAccountStore = defineStore('Account', {
   state: () => ({
+    // TODO: define its shape in the state more clearly for readability, e.g. _id, name, email, role instead of just "null"
     user: null
   }),
   actions: {

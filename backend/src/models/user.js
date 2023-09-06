@@ -7,9 +7,12 @@ const Room = require('./room')
 
 const userSchema = new mongoose.Schema({
   name: String,
-  phoneNumber: String,
-  address: String,
-  city: String,
+  email: String,
+  role: {
+    type: String,
+    enum: ['user', 'admin'],
+    default: 'user',
+  },
   bookings: [
     {
       type: mongoose.Schema.Types.ObjectId,
