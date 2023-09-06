@@ -7,8 +7,12 @@ export default {
   computed: {
     ...mapState(useBookingStore, ['allBookings'])
   },
+  async created() {
+    // Fetch fresh booking data when component is created
+    await this.fetchBookings()
+  },
   methods: {
-    ...mapActions(useBookingStore, ['updateBooking', 'deleteBookingById']),
+    ...mapActions(useBookingStore, ['fetchBookings', 'updateBooking', 'deleteBookingById']),
 
     async handleUpdateBooking(bookingId) {
       const newCheckIn = prompt('Enter new check-in date:', 'yyyy-mm-dd')

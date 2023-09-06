@@ -4,16 +4,23 @@ import { useRoomStore } from '@/stores/roomStore'
 
 export default {
   name: 'RoomManagement',
+
   computed: {
     ...mapState(useRoomStore, ['rooms', 'newRoom', 'updatingRoom'])
   },
+  async created() {
+    // Fetch fresh room data when component is created
+    await this.fetchAllRooms()
+  },
+
   methods: {
     ...mapActions(useRoomStore, [
       'setNewRoomField',
       'createRoom',
       'deleteRoom',
       'updateRoom',
-      'setUpdatingRoom'
+      'setUpdatingRoom',
+      'fetchAllRooms'
     ]),
     startUpdating(room) {
       this.setUpdatingRoom(room)

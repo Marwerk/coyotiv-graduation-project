@@ -17,7 +17,7 @@ const userSchema = new mongoose.Schema({
     {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Booking',
-      autopopulate: { maxDepth: 1 },
+      autopopulate: { maxDepth: 2 },
     },
   ],
 })
@@ -54,15 +54,6 @@ class User {
     // remove booking from User
     const userBookingIndex = this.bookings.indexOf(booking._id)
     this.bookings.splice(userBookingIndex, 1)
-
-    // remove booking from Room
-    // if (!booking.room) {
-    //   throw new Error('Booking does not have an associated room.')
-    // }
-    // const roomInstance = await Room.findById(booking.room)
-    // const roomBookingIndex = roomInstance.bookings.indexOf(booking._id)
-    // roomInstance.bookings.splice(roomBookingIndex, 1)
-    // await roomInstance.save()
 
     // update(save) User and Room
     await this.save()
