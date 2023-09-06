@@ -81,14 +81,17 @@ div.form-container
     div(v-if="user.role === 'admin'")
       div(v-for='booking in allBookings' :key='booking._id')
         p
+          strong User:
+          |  {{ booking.guest.email }}
+          br
           strong Check-in:
           |  {{ formatDate(booking.checkInDate) }}
           br
           strong Check-out:
           |  {{ formatDate(booking.checkOutDate) }}
           br
-          strong Room Type:
-          |  {{ booking.roomType }}
+          strong Room Type & Number:
+          |  {{ booking.room.type }} # {{ booking.room.doorNumber }}
           br
           strong Total Price:
           |  ${{ booking.totalPrice }}
@@ -103,8 +106,8 @@ div.form-container
           strong Check-out:
           |  {{ formatDate(booking.checkOutDate) }}
           br
-          strong Room Type:
-          |  {{ booking.roomType }}
+          strong Room Type & Number:
+          |  {{ booking.room.type }} # {{ booking.room.doorNumber }}
           br
           strong Total Price:
           |  ${{ booking.totalPrice }}

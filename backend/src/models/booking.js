@@ -6,6 +6,7 @@ const MILLISECONDS_IN_A_DAY = 1000 * 60 * 60 * 24
 const bookingSchema = new mongoose.Schema(
   {
     guest: { type: mongoose.Schema.Types.ObjectId, ref: 'User', autopopulate: { maxDepth: 1 } },
+    room: { type: mongoose.Schema.Types.ObjectId, ref: 'Room', autopopulate: { maxDepth: 2 } },
     checkInDate: String,
     checkOutDate: String,
   },
