@@ -14,7 +14,7 @@ router.get('/', async function (req, res, next) {
   res.send(allRooms)
 })
 
-// POST a room, if the room number already exists, return that existing room
+// POST a room, if the room number already exists, return that existing room (prevents creation of rooms that already exist by checking their door number)
 router.post('/', async function (req, res, next) {
   const roomNumberExists = await Room.findOne({
     doorNumber: req.body.doorNumber,
@@ -38,9 +38,25 @@ router.post('/', async function (req, res, next) {
   }
 })
 
-// TODO PATCH Route Handler
+// PATCH a room
+router.patch('/:id', async function (req, res, next) {
+  try {
+    const room = await Room.findByIdAndUpdate(req.params.id, req.body, { new: true })
+    res.status(200).send(room)
+  } catch (error) {
+    res.status(400).send(error)
+  }
+})
 
-// TODO DELETE Route Handler
+// DELETE a room
+router.delete('/:id', async function (req, res, next) {
+  try {
+    await Room.findByIdAndDelete(req.params.id)
+    res.status(204).send()
+  } catch (error) {
+    res.status(400).send(error)
+  }
+})
 
 // ------------------------------------------------------------------------ //
 
