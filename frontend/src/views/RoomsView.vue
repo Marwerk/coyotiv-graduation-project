@@ -25,9 +25,10 @@ export default {
 </script>
 
 <template lang="pug">
-.div.cards-container
-  roomCards(v-if="roomsFetched" :rooms="rooms")
-  dateForm(v-if="roomsFetched")
+.site-wallpaper
+  .div.cards-container
+    roomCards(v-if="roomsFetched" :rooms="rooms")
+    dateForm(v-if="roomsFetched")
 </template>
 
 <style scoped>

@@ -90,8 +90,8 @@ div.form-container
           strong Check-out:
           |  {{ formatDate(booking.checkOutDate) }}
           br
-          strong Room Type & Number:
-          |  {{ booking.room.type }} # {{ booking.room.doorNumber }}
+          strong Room:
+          |  '{{ booking.room.type }}' type, door # {{ booking.room.doorNumber }}
           br
           strong Total Price:
           |  ${{ booking.totalPrice }}
@@ -106,8 +106,8 @@ div.form-container
           strong Check-out:
           |  {{ formatDate(booking.checkOutDate) }}
           br
-          strong Room Type & Number:
-          |  {{ booking.room.type }} # {{ booking.room.doorNumber }}
+          strong Room:
+          |  '{{ booking.room.type }}' type, door # {{ booking.room.doorNumber }}
           br
           strong Total Price:
           |  ${{ booking.totalPrice }}
