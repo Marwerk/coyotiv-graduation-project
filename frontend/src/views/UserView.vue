@@ -6,7 +6,11 @@ import { useBookingStore } from '@/stores/bookingStore'
 export default {
   name: 'UserView',
   computed: {
-    ...mapState(useAccountStore, ['user'])
+    ...mapState(useAccountStore, ['user']),
+    ...mapState(useBookingStore, ['allBookings']) // retrieve all bookings from store
+  },
+  async created() {
+    await this.fetchBookings()
   },
   async mounted() {
     // Assuming we may want to fetch fresh user data when this view mounts
@@ -73,19 +77,38 @@ div.form-container
     p
       strong Email:
       |  {{ user.email }}
-    h3 Your Bookings
-    div(v-for='booking in user.bookings' :key='booking._id')
-      p
-        strong Check-in:
-        |  {{ formatDate(booking.checkInDate) }}
-        br
-        strong Check-out:
-        |  {{ formatDate(booking.checkOutDate) }}
-        br
-        strong Total Price:
-        |  ${{ booking.totalPrice }}
-      button(@click='handleUpdateBooking(booking._id)') Update
-      button(@click='handleDeleteBooking(booking._id)') Delete
+    h3 Bookings
+    div(v-if="user.role === 'admin'")
+      div(v-for='booking in allBookings' :key='booking._id')
+        p
+          strong Check-in:
+          |  {{ formatDate(booking.checkInDate) }}
+          br
+          strong Check-out:
+          |  {{ formatDate(booking.checkOutDate) }}
+          br
+          strong Room Type:
+          |  {{ booking.roomType }}
+          br
+          strong Total Price:
+          |  ${{ booking.totalPrice }}
+        button(@click='handleUpdateBooking(booking._id)') Update
+        button(@click='handleDeleteBooking(booking._id)') Delete
+    div(v-else)
+      div(v-for='booking in user.bookings' :key='booking._id')
+        p
+          strong Check-in:
+          |  {{ formatDate(booking.checkInDate) }}
+          br
+          strong Check-out:
+          |  {{ formatDate(booking.checkOutDate) }}
+          br
+          strong Room Type:
+          |  {{ booking.roomType }}
+          br
+          strong Total Price:
+          |  ${{ booking.totalPrice }}
+        button(@click='handleDeleteBooking(booking._id)') Delete
   div(v-else='')
     p Loading...
 
