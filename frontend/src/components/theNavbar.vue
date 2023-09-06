@@ -27,15 +27,15 @@ header
   nav
     ul
       li
-        router-link(to='/rooms') Rooms
+        router-link(to='/rooms') Book a Room
       //- li
       //-   router-link(to='/contact') Contact
       li(v-if='!user')
         router-link(to='/login') Log In
-      li(v-if='!user')
-        router-link(to='/signup') Sign Up
+      //- li(v-if='!user')
+      //-   router-link(to='/signup') Sign Up
       li(v-if='user')
-        router-link(to='/user') My Account
+        router-link(to='/user') Account
       li(v-if='user')
         router-link(to='/' @click='logout') Log Out
   label.nav-toggle-label(for='nav-toggle')
