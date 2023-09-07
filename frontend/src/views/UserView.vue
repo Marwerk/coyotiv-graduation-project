@@ -67,19 +67,23 @@ export default {
 </script>
 
 <template lang="pug">
-div.form-container
+div
   div(v-if='user')
-    h3 User Profile
-    p
-      strong Name:
-      |  {{ user.name || 'Unknown User'}}
-    // TODO: couldn't display user name, for some reason, the name is not stored in the server on signup, only email
-    p
-      strong Email:
-      |  {{ user.email }}
-    h3 Bookings
-    div(v-if="user.role === 'admin'")
-      div(v-for='booking in allBookings' :key='booking._id')
+
+    // User Profile section
+    div.form-container
+      h3 User Profile
+      p
+        strong Name:
+        |  {{ user.name || 'Unknown User'}}
+      p
+        strong Email:
+        |  {{ user.email }}
+
+  div(v-if="user.role === 'admin'")
+    div.form-container.booking-entries-container
+      h3 Bookings
+      div(v-for='booking in allBookings' :key='booking._id' class="booking-entry")
         p
           strong User:
           |  {{ booking.guest.email }}
@@ -97,8 +101,10 @@ div.form-container
           |  ${{ booking.totalPrice }}
         button(@click='handleUpdateBooking(booking._id)') Update
         button(@click='handleDeleteBooking(booking._id)') Delete
-    div(v-else)
-      div(v-for='booking in user.bookings' :key='booking._id')
+  div(v-else)
+    div.form-container.booking-entries-container
+      h3 Bookings
+      div(v-for='booking in user.bookings' :key='booking._id' class="booking-entry")
         p
           strong Check-in:
           |  {{ formatDate(booking.checkInDate) }}
@@ -112,9 +118,6 @@ div.form-container
           strong Total Price:
           |  ${{ booking.totalPrice }}
         button(@click='handleDeleteBooking(booking._id)') Delete
-  div(v-else='')
-    p Loading...
-
 </template>
 
 <style scoped>
@@ -122,7 +125,40 @@ div {
   color: rgb(0, 0, 0);
 }
 
-p {
-  font-size: 18px;
+.booking-entry {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #e0e0e0;
+  padding: 10px;
+  margin-bottom: 20px;
+  max-width: 400px; /* Set a maximum width for each booking entry */
+  box-shadow: 0 0 10px #ccc;
+  border-radius: 5px;
+  overflow: hidden; /* Hide overflowing content */
+  text-overflow: ellipsis; /* Add ellipsis (...) for long content */
+  white-space: nowrap; /* Prevent text from wrapping */
+}
+
+.booking-entries-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start; /* Adjust as needed for alignment */
+  gap: 20px; /* Adjust as needed for spacing */
+}
+
+.booking-entry button {
+  margin-top: 10px;
+}
+
+.form-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+  border: 0.5px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  box-shadow: 0 0 10px #ccc;
 }
 </style>
