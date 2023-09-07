@@ -61,9 +61,10 @@ h3 {
   width: 300px;
   padding: 20px;
   margin: 15px;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  border: 0.5px solid #ccc; /* Add border for styling */
+  border-radius: 5px; /* Add border radius for styling */
+  background-color: #fff; /* Add background color for styling */
+  box-shadow: 0 0 10px #ccc; /* Add box shadow for styling */
   transition: all 0.3s;
 }
 

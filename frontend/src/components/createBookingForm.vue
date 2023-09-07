@@ -93,9 +93,9 @@ export default {
 <style scoped>
 .form-container {
   display: inline-block; /* This makes the container's width based on its content */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-  background-color: #fcf6f5;
+  border-radius: 5px; /* Add border radius for styling */
+  background-color: #fff; /* Add background color for styling */
+  box-shadow: 0 0 10px #ccc; /* Add box shadow for styling */
   max-width: 800px;
   margin: 0 auto;
   padding: 10px;

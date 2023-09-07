@@ -59,7 +59,8 @@ h3 {
 }
 
 .form-container {
-  width: 350px;
+  max-width: 350px;
+  margin: 0 auto; /* Center the form horizontally within the column */
 }
 
 input {

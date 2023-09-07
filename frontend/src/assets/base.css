@@ -60,10 +60,11 @@
 
 .form-container {
   /* width: 400px; */
-  padding: 20px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-  background-color: #fcf6f5;
+  padding: 20px; /* Add padding for spacing */
+  border: 0.5px solid #ccc; /* Add border for styling */
+  border-radius: 5px; /* Add border radius for styling */
+  background-color: #fff; /* Add background color for styling */
+  box-shadow: 0 0 10px #ccc; /* Add box shadow for styling */
 }
 
 .form-group {
