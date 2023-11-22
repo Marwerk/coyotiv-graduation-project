@@ -12,8 +12,8 @@ export default {
     }
   },
   computed: {
-    registrationError() {
-      return this.store.registrationError
+    registrationFails() {
+      return this.store.registrationFails
     }
   },
   methods: {
@@ -46,7 +46,7 @@ export default {
         input#password(v-model='password' type='password' :required="true")
       .form-group.btn-center
         button.submit-btn(type='submit') Sign Up
-    p.error(v-if='registrationError') {{ registrationError }}
+    p.error(v-if='registrationFails') {{ registrationFails }}
     .text-center
       p.inline Already a user?
       p.inline

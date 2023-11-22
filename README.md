@@ -6,6 +6,8 @@
 
 A MEVN stack website for a small, family owned hotel. Contains a simple user registration and booking creation/management system to showcase technologies and methodologies applied throughout Coyotiv's Software Engineering course.
 
+Coding standards applied throughout the project can be seen in the file "coding-standards.md"
+
 ## Accessing the app online
 
 A hosted production version is available at https://frontend-d4mfykq4iq-ew.a.run.app/
