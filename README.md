@@ -8,43 +8,69 @@ A MEVN stack website for a small, family owned hotel. Contains a simple user reg
 
 Coding standards applied throughout the project can be seen in the file "coding-standards.md"
 
-## Accessing the app online
+## Accessing the app online [DEPRECATED]
 
-A hosted production version is available at https://frontend-d4mfykq4iq-ew.a.run.app/
+A hosted production version is available at https://frontend-d4mfykq4iq-ew.a.run.app/ (NO LONGER AVAILABLE)
 
-## Setting up locally for development
+## Setting up for local development
 
 > **Note:**
 > The guide assumes you have Docker and Docker Compose installed locally. If not, refer to the [Docker documentation](https://docs.docker.com/compose/install/) for installation instructions.
 
 Create `.env` files in the frontend and backend directories with contents similar to the `.env.example` files.
 
-Then, run the app with the following:
+### Install Dependencies
 
+First, install the necessary packages for both the backend and frontend:
+
+#### Backend Setup
 ```bash
-docker compose up backend
-docker compose up frontend
+cd backend
+npm install
 ```
 
-This will start up the necessary Docker containers - the backend Node.js app, the MongoDB database, and the frontend Vue.js app.
-
-Alternatively, you can use the bash command below to start Node.js and Mongo container in the background, so you don't get the tons of log outputs from it.
-
+#### Frontend Setup
 ```bash
-docker compose up -d backend
+cd frontend
+npm install
 ```
+
+### Start the Services
+
+After installing the packages, return to the main project folder and start the services using Docker Compose:
+
+1. Start the MongoDB service:
+   ```bash
+   docker-compose up -d mongo
+   ```
+
+2. Start the backend service:
+   ```bash
+   docker-compose up backend
+   ```
+
+3. Start the frontend service:
+   ```bash
+   docker-compose up frontend
+   ```
 
 The backend API will be available at http://localhost:3000 and the frontend at http://localhost:5173.
 
 > **Note**: in dev environment, the app uses live reload for changes inside the `src` directory in both the frontend and backend. Any changes to files outside of `src`, e.g. package installations, will require a rebuild of the respective containers.
 
-### Customising the environment
+### Seed the Database
 
-If using your own MongoDB instance, there is no need to run the mongo service, so after modifying `backend/.env` accordingly you can just run the app with:
+To populate the database with initial data (hotel and rooms), run the following command:
 
 ```bash
-docker compose up frontend
+node backend/src/index.js
 ```
+
+This will create the necessary objects in the database for the application to function properly.
+
+[PENDING]
+
+Need to add base admin user to the database seed
 
 ## MIT License
 
