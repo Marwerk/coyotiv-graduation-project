@@ -6,6 +6,7 @@ axios.defaults.baseURL = "http://localhost:3000";
 
 // ------------------------------------------------------------------------ //
 
+// DATABASE SEEDING
 async function main() {
 	// CREATE INSTANCES
 	const hotelLasCalas = await axios.post("/hotels", {
